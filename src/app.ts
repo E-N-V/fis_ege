@@ -15,16 +15,14 @@ export default class app {
 		this.template();
 	}
 
-	private middlewares(middleWares: { forEach: (arg0: (middleWare: any) => void) => void }) {
-		middleWares.forEach((middleWare) => {
+	private middlewares(middleWares: any) {
+		for (const middleWare of middleWares)
 			this.app.use(middleWare);
-		});
 	}
 
-	private routes(routes: { forEach: (arg0: (route: any) => void) => void }) {
-		routes.forEach((route) => {
+	private routes(routes: any) {
+		for (const route of routes)
 			this.app.use(route);
-		});
 	}
 
 	private assets() {
