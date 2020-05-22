@@ -1,0 +1,22 @@
+{
+  "name": "fis_ege",
+  "version": "1.0.0",
+  "main": "./dist/bin/server.js",
+  "repository": "https://github.com/E-N-V/fis_ege",
+  "author": "E-N-V",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "tsc && cp src/views dist -r && cp src/public dist -r && cd dist && node bin/server.js"
+  },
+  "dependencies": {
+    "@types/cookie-parser": "^1.4.2",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "pug": "^2.0.4",
+    "typeorm": "^0.2.25"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.5"
+  }
+}
