@@ -1,0 +1,200 @@
+extends ../public/index
+
+block head_
+    title Добавить Абитуриента
+
+    //input(type="text", name="arr", list="<идентификатор>", value=id).form-control
+    //datalist(id="<идентификатор>")
+    //    option Тест
+    //    option(value="Текст2")
+block body_
+    a(href="/")
+        button.btn.btn-danger
+            |Назад. Введеные данные не сохранятся.
+    br
+    br
+    form(action="/add", method="post")
+    .card
+        .card-header
+            .form-group
+                label(for="p_p") №п/п
+                input(type="text", name="arr", id="p_p", readonly, value=id).form-control
+        .card-body.row
+            .form-group
+                .form-group
+                    label Дата заявления
+                    input(type="date", name="date_zayavlenia", value=time, pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}", required).form-control
+                .form-group
+                    label Ф.И.О.
+                    input(type="text", name="fio", placeholder="Иванов Иван Иванович").form-control
+                .form-group
+                    label Форма получения образования
+                    .form-control
+                        |Очная 
+                        input(type="radio", name="forma_polychenia_obrazovania", value="o")
+                        |Заочная 
+                        input(type="radio", name="forma_polychenia_obrazovania", value="z")
+                .form-group
+                    label Специальность
+                    input(type="text", name="Specialnost", list="Specialnost").form-control
+                    .form-text.text-muted Дважды нажмите на поле, и появится списокс вариантами.
+                    datalist(id="Specialnost")
+                        option МИЭ
+                        option СиХНП
+                        option СКД
+                        option НХТ о/о
+                        option ИИ
+                        option АИ
+                .form-group
+                    label Вид
+                    input(type="text", name="Vid", list="Vid").form-control
+                    .form-text.text-muted Дважды нажмите на поле, и появится списокс вариантами.
+                    datalist(id="Vid")
+                        option ЭП
+                        option ХНП
+                        option ОКДД
+                        option ОиПКММиТП
+                        option ТТ
+                .form-group
+                    label Приоритет о выборе специальности / вида (от 1 до 3)
+                    input(type="number", min="1", max="3", name="Prioritet", value="1").form-control
+                .form-group
+                    label № личного дела
+                    input(type="text", name="Nomer_lichnogo_dela", readonly, value=id+"/18").form-control 
+                .form-group
+                    label № экз.листа
+                    input(type="text", name="Nomer_egz_lista", value=id+"/18-_/_").form-control
+                .form-group
+                    label Основа обучения
+                    .form-control
+                        |бюджет 
+                        input(type="radio", name="osnova_obychenia", value="bugzet")
+                        |внебюджет 
+                        input(type="radio", name="osnova_obychenia", value="vnebugzet")
+                .form-group
+                    label Нуждаемость в общежитии
+                    .form-control
+                        |Да 
+                        input(type="radio", name="obshaga", value="t")
+                        |Нет
+                        input(type="radio", name="obshaga", value="f")
+                .form-group
+                    label Пол
+                    .form-control
+                        |М 
+                        input(type="radio", name="Sex", value="b")
+                        |Ж 
+                        input(type="radio", name="Sex", value="g")
+                .form-group
+                    label Дата рождения
+                    input(type="date", name="arr", pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}").form-control
+                .form-group
+                    label Гражданство
+                    input(type="text", name="grazhdanstvo", list="grazhd", pattern="\s{2}").form-control
+                    .form-text.text-muted Дважды нажмите на поле, и появится списокс вариантами.
+                    datalist(id="grazhd")
+                        option РФ
+                        option ИГ
+                .form-group
+                    label Адрес местожительства (прописка)
+                    input(type="text", name="addres_mesto_zitelstva").form-control
+                .form-group
+                    label Область
+                    input(type="text", name="oblast").form-control
+            .form-group
+                .form-group
+                    label Вид
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Паспортные данные (серия, номер, кем и когда выдан)
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Телефон
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Социальные категории (сирота, опекаемый, инвалид, ОВЗ)
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label СПО впервые / не впервые
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Уровень образования
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Базовое образование (учебное заведение)
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Год окончания учеб. завед.
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Иностранный язык
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Особые успехи в учении
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Дополнительное образование
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Замечания по л.д.
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Оригинал документа об образовании
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Копия паспорта
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Копия документа об образовании
+                    input(type="text", name="arr", disabled, value=id).form-control
+            .form-group
+                .form-group
+                    label Мед.справка Ф086
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Фото (кол-во)
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Оплата на коммерческую основу
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label № и дата договора подгот.курсов
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Оплата (сумма и № квитанции)
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Вступительное испытание (балл) (1)
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Средний балл документа об образовании (2)
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Сумма баллов (1+2)
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Средний балл профильных предметов (3)
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Сумма баллов (1+2+3)
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Решение приемной комиссии
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label № и дата приказа о зачислении
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Текущий возраст
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Совер., несов
+                    input(type="text", name="arr", disabled, value=id).form-control
+                .form-group
+                    label Приоритет, вид, оригинал аттестата
+                    input(type="text", name="arr", disabled, value=id).form-control
+        .card-footer
+            button(type="submit").btn.btn-primary
+                |Добавить
+            button(type="reset").btn.btn-warning
+                |Очистить поля
