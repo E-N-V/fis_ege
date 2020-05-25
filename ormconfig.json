@@ -1,0 +1,15 @@
+{
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "username": "FFE",
+    "password": "ffe",
+    "database": "fis_ege",
+    "synchronize": true,
+    "entities": [
+       "./database/entity/**/*.js"
+    ],
+    "cli": {
+       "entitiesDir": "./database/entity/"
+    }
+ }

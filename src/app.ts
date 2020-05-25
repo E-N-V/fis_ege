@@ -1,5 +1,6 @@
 import express, { Application } from "express";
 import { join } from "path";
+import { createConnection } from "typeorm";
 
 export default class app {
 	public app: Application;
@@ -9,6 +10,7 @@ export default class app {
 		this.app = express();
 		this.port = appInit.port;
 
+		this.db_connect();
 		this.middlewares(appInit.middleWares);
 		this.routes(appInit.routes);
 		this.assets();
@@ -16,13 +18,11 @@ export default class app {
 	}
 
 	private middlewares(middleWares: any) {
-		for (const middleWare of middleWares)
-			this.app.use(middleWare);
+		for (const middleWare of middleWares) this.app.use(middleWare);
 	}
 
 	private routes(routes: any) {
-		for (const route of routes)
-			this.app.use(route);
+		for (const route of routes) this.app.use(route);
 	}
 
 	private assets() {
@@ -32,6 +32,12 @@ export default class app {
 
 	private template() {
 		this.app.set("view engine", "pug");
+	}
+
+	private async db_connect() {
+		await createConnection()
+			.then(() => console.log("Database connected."))
+			.catch((err) => console.error(err));
 	}
 
 	public listen() {

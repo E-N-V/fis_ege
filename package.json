@@ -7,12 +7,15 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "tsc && cp src/views dist -r && cp src/public dist -r && cd dist && node bin/server.js"
+    "start": "tsc && cp src/database dist -r && cp src/views dist -r && cp src/public dist -r && cd dist && node bin/server.js"
   },
   "dependencies": {
     "@types/cookie-parser": "^1.4.2",
+    "@types/dotenv": "^8.2.0",
     "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mysql": "^2.18.1",
     "pug": "^2.0.4",
     "typeorm": "^0.2.25",
     "xlsx": "^0.16.1"

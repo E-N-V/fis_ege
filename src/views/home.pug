@@ -19,7 +19,6 @@ block body_
                 td Ф.И.О.
                 td Форма получения образования
                 td Специальность
-                td Вид
                 td Приоритет о выборе специальности / вида (от 1 до 3)
                 td № личного дела
                 td № экз.листа
@@ -29,8 +28,7 @@ block body_
                 td Дата рождения
                 td Гражданство
                 td Адрес местожительства (прописка)
-                td Район, Омск, Иногородние, Иностранцы
-                td Вид
+                td Область, Район, Иногородние, Иностранцы
                 td Паспортные данные (серия, номер, кем и когда выдан)
                 td Телефон
                 td Социальные категории (сирота, опекаемый, инвалид, ОВЗ)
@@ -61,14 +59,55 @@ block body_
                 td Совер., несов
                 td Приоритет, вид, оригинал аттестата
         tbody
-            if array
-                each item in array
+            if data
+                each item in data
                     tr
-                        td
+                        td=item.p_p
+                        td=item.date_zayv
+                        td=item.fio
+                        td=item.forma_poluch_obraz
+                        td=item.specialnost
+                        td=item.prioritet
+                        td=item.nomer_lichnoe_delo
+                        td=item.nomer_ekz_lista
+                        td=item.osnova_obych
+                        td=item.obshaga
+                        td=item.sex
+                        td=item.birthday
+                        td=item.grazhdanstvo
+                        td=item.addres_mesto_zitelstva
+                        td=item.oblast
+                        td=item.pasport
+                        td=item.tel
+                        td=item.soc_category
+                        td=item.SPO_vpervie_nevpervie
+                        td=item.lvl_obraz
+                        td=item.baz_obraz
+                        td=item.god_okonchania
+                        td=item.inostran_yazik
+                        td=item.osobie_yspexi_v_echebe
+                        td=item.dop_obraz
+                        td=item.zamechanie_po_ld
+                        td=item.orig_doc_obraz
+                        td=item.copy_passport
+                        td=item.copy_doc_obraz
+                        td=item.med_spravka
+                        td=item.photo
+                        td=item.oplata_na_komerch
+                        td=item.nomer_i_data_podg_kursov
+                        td=item.oplata_summ_kvitancia
+                        td=item.vstup_ispitanie_1
+                        td=item.avg_ball_obrazovanie_2
+                        td=item.sum_ballov_12
+                        td=item.avg_prof_predm_3
+                        td=item.sum_123
+                        td=item.reshenie_komissi
+                        td=item.nomer_i_data_prikaza_o_zachislenie
+                        td=item.age
+                        td=item.soversh_nesoversh
+                        td=item.prioritet_vid_orig_atestata
             else
                 tr
-                    td -
-                    td -
                     td -
                     td -
                     td -
