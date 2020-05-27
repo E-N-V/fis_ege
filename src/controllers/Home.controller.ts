@@ -11,6 +11,10 @@ export const HomeGETAdd = async (req: Request, res: Response) => {
     return res.status(200).render("add", {id})
 }
 
+export const HomeGETAuth = async (req: Request, res: Response) => {
+    return res.status(200).render("auth")
+}
+
 export const HomePOSTAdd = async(req: Request, res: Response) => {
     console.log(req.body)
     console.log(req.body.date_rozhd)
