@@ -13,8 +13,9 @@ const arrMiddlewares: any = [bodyParser.json(), bodyParser.urlencoded({ extended
  * Import routes
  */
 import HomeRouter from "../routes/home.route"
+import AuthRouter from "../routes/auth.route"
 
-const arrRoutes: any = [HomeRouter];
+const arrRoutes: any = [HomeRouter, AuthRouter];
 
 /**
  * Init Web-site

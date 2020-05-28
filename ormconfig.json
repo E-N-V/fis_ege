@@ -6,6 +6,7 @@
     "password": "ffe",
     "database": "fis_ege",
     "synchronize": true,
+    "logging": false,
     "entities": [
        "./database/entity/**/*.js"
     ],
