@@ -2,7 +2,7 @@
     border: none;
 }
 
-.btn-danger{
+.btn-danger,.clear-my,.submit-my{
     margin-top: 20px;
     margin-left: 25px;
     margin-right: 25px;
@@ -18,7 +18,7 @@
     background-color: #ff0019;
 }
 
-.btn-danger::before{
+.btn-danger::before,.clear-my::before,.submit-my::after{
     content: '';
     display: block;
     width: 70px;
@@ -150,6 +150,27 @@
     .form-buttons .form-button-my{
         width: 70px;
     }
+}
+
+.submit-my{
+    float: right;
+    padding-right: 0;
+    padding-left: 10px;
+}
+
+.submit-my::after{
+    background-image: url("/images/save.png");
+    float: right;
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+.clear-my{
+    float:left;
+}
+
+.clear-my::before{
+    background-image: url("/images/del.png");
 }
 
 @media (max-width:500px){

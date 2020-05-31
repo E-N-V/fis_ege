@@ -163,7 +163,12 @@ block body_
                         .form-group
                             label Приоритет, вид, оригинал аттестата
                             input(type="text", name="prioritet_vid_orig_atestata", required).form-control
+            //-TODO: забыл как сделать эту дичь :ССС
             .card-footer
+                button(type="submit").btn.btn-primary.submit-my
+                    |Добавить
+                button(type="reset").btn.btn-warning.clear-my
+                    |Очистить поля
                 if opt == "add"
                     button(type="submit").btn.btn-primary
                         |Добавить
