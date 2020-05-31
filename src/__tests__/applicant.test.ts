@@ -1,14 +1,29 @@
-import app from "../app";
 import request from "supertest";
-import {Request, Response} from "express"
-import typescript from 'express'
+import app from "../app";
+import HomeRouter from "../routes/home.route";
+import AuthRouter from "../routes/auth.route";
+import ApplicantRouter from "../routes/applicant.route";
+import * as bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
+import loggerMiddleware from "../middleware/logger";
+// Попробовал добавить app, все равно не работает :с
+// const arrRoutes: any = [HomeRouter, AuthRouter, ApplicantRouter];
+//
+// const arrMiddlewares: any = [bodyParser.json(), bodyParser.urlencoded({ extended: true }), cookieParser(), loggerMiddleware];
+//
+// const app = new App({
+//     port: Number(process.env.PORT) || 3000,
+//     routes: arrRoutes,
+//     middleWares: arrMiddlewares,
+// });
 
-describe("GET / - a simple api endpoint", () => {
-    it("Hello API Request", async () => {
-       request(app)
-           .get('/sdsds')
-           .set('Accept', 'application/json')
-           // .expect('Content-Type', /json/)
-           // .expect(200);
-    });
+// TODO: Сделать тесты
+
+it("Hello", async () => {
+    request(app)
+        .get('localhost:3000/test')
+        .expect('Hello test')
+        .expect(200)
+        .end()
 });
+

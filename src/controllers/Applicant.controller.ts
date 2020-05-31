@@ -1,6 +1,8 @@
 import {Request, Response} from "express"
 import Applicant from "../database/entity/Applicant"
 
+// TODO: Защитить контролллер от неавторизованных пользователей
+
 /**
  * Получить страницу всех аббитуриентов
  *
@@ -62,19 +64,29 @@ export const create = async (req: Request, res: Response) => {
 /**
  * Сохранить аббитуриента в базе данных
  *
+ * TODO: Сделать валидацию входящего запроса
+ * TODO: Добавить Observer для параметров, которые динамично создаются/изменяются
+ *
  * @param req
  * @param res
  */
 export const store = async (req: Request, res: Response) => {
     let data = new Applicant()
 
-    await data.save(req.params)
+    let result = await data.save(req.params)
 
-    return res.status(200)
+    if (result) {
+        return res.status(200).send(data)
+    } else  {
+        return res.status(500).send('Ошибка создания аббитуриента')
+    }
 }
 
 /**
  * Обновить аббитуриента в базе данных
+ *
+ * TODO: Сделать валидацию входящего запроса
+ * TODO: Добавить Observer для параметров, которые динамично создаются/изменяются
  *
  * @param req
  * @param res
@@ -88,7 +100,7 @@ export const update = async (req: Request, res: Response) => {
     if (result) {
         return res.status(200).send(data)
     } else  {
-        return res.status(404).send('Ошибка обновления')
+        return res.status(500).send('Ошибка обновления аббитуриента')
     }
 }
 
@@ -107,6 +119,6 @@ export const destroy = async (req: Request, res: Response) => {
     if (result) {
         return res.status(200).send(data)
     } else  {
-        return res.status(404).send('Ошибка удаления')
+        return res.status(500).send('Ошибка удаления аббитуриента')
     }
 }
