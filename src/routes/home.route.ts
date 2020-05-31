@@ -5,7 +5,6 @@ import { HomeGET, HomeGETAdd, HomePOSTAdd, HomeGETAuth } from "../controllers/Ho
 
 route.get(["/", "/home", "/index", "/index.html", "/home.html"], HomeGET)
 route.get("/add", HomeGETAdd)
-route.get("/auth", HomeGETAuth)
 route.post("/add", HomePOSTAdd)
 
 export default route

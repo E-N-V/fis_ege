@@ -1,5 +1,5 @@
 import {Request, Response} from "express"
 
-export const AuthGET = async (req: Request, res: Response): Promise<Response> =>{
-    return res.status(200).send("<p>Hello world</p>")
+export const AuthGET = async (req: Request, res: Response): Promise<void> =>{
+    return res.status(200).render("auth")
 }
