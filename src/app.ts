@@ -37,7 +37,10 @@ export default class app {
 	private async db_connect() {
 		await createConnection()
 			.then(() => console.log("Database connected."))
-			.catch((err) => console.error(err));
+			.catch((err) => {
+				console.error(err);
+				process.exit(1);
+			});
 	}
 
 	public listen() {

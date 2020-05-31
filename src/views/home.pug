@@ -34,29 +34,14 @@ block body_
                 td Социальные категории (сирота, опекаемый, инвалид, ОВЗ)
                 td СПО впервые / не впервые
                 td Уровень образования
-                td Базовое образование (учебное заведение)
                 td Год окончания учеб. завед.
-                td Иностранный язык
                 td Особые успехи в учении
-                td Дополнительное образование
-                td Замечания по л.д.
                 td Оригинал документа об образовании
-                td Копия паспорта
                 td Копия документа об образовании
-                td Мед.справка Ф086
-                td Фото (кол-во)
-                td Оплата на коммерческую основу
-                td № и дата договора подгот.курсов
-                td Оплата (сумма и № квитанции)
                 td Вступительное испытание (балл) (1)
                 td Средний балл документа об образовании (2)
-                td Сумма баллов (1+2)
-                td Средний балл профильных предметов (3)
-                td Сумма баллов (1+2+3)
                 td Решение приемной комиссии
                 td № и дата приказа о зачислении
-                td Текущий возраст
-                td Совер., несов
                 td Приоритет, вид, оригинал аттестата
         tbody
             if data
@@ -82,47 +67,17 @@ block body_
                         td=item.soc_category
                         td=item.SPO_vpervie_nevpervie
                         td=item.lvl_obraz
-                        td=item.baz_obraz
                         td=item.god_okonchania
-                        td=item.inostran_yazik
                         td=item.osobie_yspexi_v_echebe
-                        td=item.dop_obraz
-                        td=item.zamechanie_po_ld
                         td=item.orig_doc_obraz
-                        td=item.copy_passport
                         td=item.copy_doc_obraz
-                        td=item.med_spravka
-                        td=item.photo
-                        td=item.oplata_na_komerch
-                        td=item.nomer_i_data_podg_kursov
-                        td=item.oplata_summ_kvitancia
                         td=item.vstup_ispitanie_1
                         td=item.avg_ball_obrazovanie_2
-                        td=item.sum_ballov_12
-                        td=item.avg_prof_predm_3
-                        td=item.sum_123
                         td=item.reshenie_komissi
                         td=item.nomer_i_data_prikaza_o_zachislenie
-                        td=item.age
-                        td=item.soversh_nesoversh
                         td=item.prioritet_vid_orig_atestata
             else
                 tr
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
                     td -
                     td -
                     td -
