@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm"
 
 @Entity()
-export default class Abbiturient extends BaseEntity{
+export default class Applicant extends BaseEntity{
     @PrimaryGeneratedColumn()
     id!: number
 

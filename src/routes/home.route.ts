@@ -1,4 +1,4 @@
-import {Router} from "express"
+import { Router } from "express"
 const route = Router()
 
 import { HomeGET, HomeGETAdd, HomePOSTAdd, HomeGETAuth } from "../controllers/Home.controller"

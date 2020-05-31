@@ -49,6 +49,7 @@ export const HomePOSTAdd = async(req: Request, res: Response) => {
     ab.reshenie_komissi = req.body.reshenie_komissi
     ab.nomer_i_data_prikaza_o_zachislenie = req.body.nomer_i_data_prikaza_o_zachislenie
     ab.prioritet_vid_orig_atestata = req.body.prioritet_vid_orig_atestata
-    ab.save()
+    let result = ab.save()
+    console.log("result: ", result)
     return res.status(200).redirect("/")
 }
