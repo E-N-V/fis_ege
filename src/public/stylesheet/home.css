@@ -1,0 +1,232 @@
+
+.c1,.c2,.c3,.c4,.c5,.c6,.c7,.c8,.c9,.c10,.c11,.c12,.c13,.c14,.c15,.c16,.c17,.c18,.c19,.c20,.c21,.c22,.c23,.c24,.c25,.c26,.c27,.c28,.c29{
+    display: none;
+}
+
+#spotted{
+    display: initial;
+}
+.settings-but-my{
+    width: 90%;
+    margin-left: 5%;
+    box-sizing: border-box;
+    background-color: rgb(55, 53, 184);
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+}
+
+.settings-but-my::before,.settings-but-my::after{
+    content: '';
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(0, 0, 0, 0.6);
+    background-image: url("/images/filter.png");
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 80%;
+}
+
+.settings-but-my::after{
+    background-image: url("/images/fcl.png");
+}
+
+#fop::after{
+    background-image: url("/images/fop.png");
+}
+
+.settings-my{
+    display: none;
+    width: 90%;
+    margin-left: 5%;
+    background-color: lightgray;
+}
+
+ul{
+    margin-top: 20px;
+    display: none;
+    list-style: none;
+}
+
+li:first-child{
+    font-weight: bold;
+}
+
+.tCont{
+    width: 90%;
+    margin-left: 5%;
+    overflow-y: scroll;
+}
+
+tr{
+    white-space: nowrap;
+}
+
+.btn{
+    display: flex;
+    align-items: center;
+    border: none !important;
+    outline: none !important;
+    border-radius: 0;
+    padding: 0;
+    padding-right: 10px;
+    margin-right: 20px;
+}
+
+.btn::before{
+    content: '';
+    width: 70px;
+    height: 70px;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-right: 10px;
+    background-image: url("/images/userp.png");
+    background-position: 40% 50%;
+    background-repeat: no-repeat;
+    background-size: 80%;
+}
+
+.btn:focus{
+    border: none !important;
+    outline: none !important;
+}
+
+/**/
+
+.form-buttons{
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.form-buttons .form-button-my{
+    display: flex;
+    flex-wrap: 0;
+    align-items: center;
+    width: 300px;
+    margin-bottom: 20px;
+    background-color: rgb(89, 175, 255);
+    color: lightgray;
+    cursor: pointer;
+}
+
+.form-buttons .form-button-my:hover{
+    background-color: rgb(89, 106, 255);
+    color: white;
+}
+
+.form-buttons .form-button-my .ico-block-my{
+    height: 70px;
+    width: 70px;
+    background-color: rgba(0, 0, 0, .6);
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+#button1{
+    background-image: url("/images/user.png");
+}
+
+#button2{
+    background-image: url("/images/contacts.png");
+}
+
+#button3{
+    background-image: url("/images/tests.png");
+}
+
+.form-buttons .form-button-my span{
+    margin-left: 20px;
+}
+
+#activeButton{
+    background-color: rgb(55, 53, 184);
+    color: white;
+}
+
+#activeBlock{
+    display: block;
+}
+
+@media (max-width:910px){
+    .form-buttons .form-button-my span{
+        display: none;
+    }
+    .form-buttons .form-button-my{
+        width: 70px;
+    }
+}
+
+@media (max-width:500px){
+    
+    .form-blocks{
+        width: 90%;
+        margin-left: 5%;
+        max-width: 100%;
+    }
+
+    .form-buttons{
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+
+    .form-group-of-groups{
+        width: 100%;
+    }
+}
+
+.buttons-area{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.search-area{
+    display: flex;
+    align-items: center;
+    background-color: rgb(55, 53, 184);
+    flex-grow: 1;
+    height: 70px;
+}
+
+.search-area .search-text{
+    width: calc(100% - 80px);
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+
+.search-area .search-text:focus{
+    border-radius: 0;
+    border: none;
+    outline: none;
+}
+
+.search-area .search-button{
+    border-radius: 0;
+    border: none;
+    outline: none;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(33, 32, 104);
+    background-image: url("/images/search.png");
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.search-area .search-button:focus{
+    border-radius: 0;
+    border: none;
+    outline: none;
+}

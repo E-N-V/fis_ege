@@ -1,6 +1,8 @@
 extends ../public/index
 
 block head_
+    link(rel="stylesheet", href="stylesheet/home.css")
+    script(src="scripts/home.js")
     style.
         td{
             padding: 5px;
@@ -8,102 +10,189 @@ block head_
     title Домашная страница
 
 block body_
-    a(href="/add")
-        button.btn.btn-success
-            |Добавить аббитуриента
-    table(border="2")
-        thead
-            tr
-                td №п/п
-                td Дата заявления
-                td Ф.И.О.
-                td Форма получения образования
-                td Специальность
-                td Приоритет о выборе специальности / вида (от 1 до 3)
-                td № личного дела
-                td № экз.листа
-                td Основа обучения
-                td Нуждаемость в общежитии
-                td Пол
-                td Дата рождения
-                td Гражданство
-                td Адрес местожительства (прописка)
-                td Область, Район, Иногородние, Иностранцы
-                td Паспортные данные (серия, номер, кем и когда выдан)
-                td Телефон
-                td Социальные категории (сирота, опекаемый, инвалид, ОВЗ)
-                td СПО впервые / не впервые
-                td Уровень образования
-                td Год окончания учеб. завед.
-                td Особые успехи в учении
-                td Оригинал документа об образовании
-                td Копия документа об образовании
-                td Вступительное испытание (балл) (1)
-                td Средний балл документа об образовании (2)
-                td Решение приемной комиссии
-                td № и дата приказа о зачислении
-                td Приоритет, вид, оригинал аттестата
-        tbody
-            if data
-                each item in data
-                    tr
-                        td=item.p_p
-                        td=item.date_zayv
-                        td=item.fio
-                        td=item.forma_poluch_obraz
-                        td=item.specialnost
-                        td=item.prioritet
-                        td=item.nomer_lichnoe_delo
-                        td=item.nomer_ekz_lista
-                        td=item.osnova_obych
-                        td=item.obshaga
-                        td=item.sex
-                        td=item.birthday
-                        td=item.grazhdanstvo
-                        td=item.addres_mesto_zitelstva
-                        td=item.oblast
-                        td=item.pasport
-                        td=item.tel
-                        td=item.soc_category
-                        td=item.SPO_vpervie_nevpervie
-                        td=item.lvl_obraz
-                        td=item.god_okonchania
-                        td=item.osobie_yspexi_v_echebe
-                        td=item.orig_doc_obraz
-                        td=item.copy_doc_obraz
-                        td=item.vstup_ispitanie_1
-                        td=item.avg_ball_obrazovanie_2
-                        td=item.reshenie_komissi
-                        td=item.nomer_i_data_prikaza_o_zachislenie
-                        td=item.prioritet_vid_orig_atestata
-            else
+    h2 Домашняя страница
+    .buttons-area
+        a(href="/add")
+            button.btn.btn-success
+                |Добавить аббитуриента
+        //-TODO:неймингов нет но вы держитесь
+        form.search-area(action="", method="post")
+            input.search-text(type="text", name="" placeholder="поиск...")
+            input.search-button(type="submit", value="")
+    .settings-but-my(onclick="filterOpen()") фильтры
+    .settings-my
+
+
+        .form-buttons
+            .form-button-my(onclick="blockSwapp(0)" id="activeButton")
+                .ico-block-my#button1
+                span Личная информация
+            .form-button-my(onclick="blockSwapp(1)")
+                .ico-block-my#button2
+                span Контакты
+            .form-button-my(onclick="blockSwapp(2)")
+                .ico-block-my#button3
+                span Результаты
+
+
+
+        ul.form-group-of-groups#activeBlock
+            li Личная информация
+            li Дата заявления
+                input.catChk(type="checkbox", name="c2", onclick="updateTable(2)", checked)
+            li Ф.И.О.
+                input.catChk(type="checkbox", name="c3", onclick="updateTable(3)", checked)
+            li Форма получения образования
+                input.catChk(type="checkbox", name="c4", onclick="updateTable(4)", checked)
+            li Специальность
+                input.catChk(type="checkbox", name="c5", onclick="updateTable(5)", checked)
+            li Приоритет о выборе специальности / вида (от 1 до 3)
+                input.catChk(type="checkbox", name="c6", onclick="updateTable(6)")
+            li № личного дела
+                input.catChk(type="checkbox", name="c7", onclick="updateTable(7)")
+            li № экз.листа
+                input.catChk(type="checkbox", name="c8", onclick="updateTable(8)")
+            li Основа обучения
+                input.catChk(type="checkbox", name="c9", onclick="updateTable(9)")
+            li Нуждаемость в общежитии
+                input.catChk(type="checkbox", name="c10", onclick="updateTable(10)")
+            li Пол
+                input.catChk(type="checkbox", name="c11", onclick="updateTable(11)")
+            li Дата рождения
+                input.catChk(type="checkbox", name="c12", onclick="updateTable(12)")
+            li Гражданство
+                input.catChk(type="checkbox", name="c13", onclick="updateTable(13)")
+            li Адрес местожительства (прописка)
+                input.catChk(type="checkbox", name="c14", onclick="updateTable(14)")
+            li Область, Район, Иногородние, Иностранцы
+                input.catChk(type="checkbox", name="c15", onclick="updateTable(15)")
+        ul.form-group-of-groups 
+            li Контакты
+            li Паспортные данные (серия, номер, кем и когда выдан)
+                input.catChk(type="checkbox", name="c16", onclick="updateTable(16)")
+            li Телефон
+                input.catChk(type="checkbox", name="c17", onclick="updateTable(17)")
+            li Социальные категории (сирота, опекаемый, инвалид, ОВЗ)
+                input.catChk(type="checkbox", name="c18", onclick="updateTable(18)")
+            li СПО впервые / не впервые
+                input.catChk(type="checkbox", name="c19", onclick="updateTable(19)")
+            li Уровень образования
+                input.catChk(type="checkbox", name="c20", onclick="updateTable(20)")
+            li Год окончания учеб. завед.
+                input.catChk(type="checkbox", name="c21", onclick="updateTable(21)")
+            li Особые успехи в учении
+                input.catChk(type="checkbox", name="c22", onclick="updateTable(22)")
+            li Оригинал документа об образовании
+                input.catChk(type="checkbox", name="c23", onclick="updateTable(23)")
+            li Копия документа об образовании
+                input.catChk(type="checkbox", name="c24", onclick="updateTable(24)")
+        ul.form-group-of-groups
+            li Результаты
+            li Вступительное испытание (балл) (1)
+                input.catChk(type="checkbox", name="c25", onclick="updateTable(25)")
+            li Средний балл документа об образовании (2)
+                input.catChk(type="checkbox", name="c26", onclick="updateTable(26)")
+            li Решение приемной комиссии
+                input.catChk(type="checkbox", name="c27", onclick="updateTable(27)", checked)
+            li № и дата приказа о зачислении
+                input.catChk(type="checkbox", name="c28", onclick="updateTable(28)")
+            li Приоритет, вид, оригинал аттестата
+                input.catChk(type="checkbox", name="c29", onclick="updateTable(29)")
+
+    .tCont        
+        table(border="2")
+            thead
                 tr
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
-                    td -
+                    td.c1#spotted №п/п
+                    td.c2#spotted Дата заявления
+                    td.c3#spotted Ф.И.О.
+                    td.c4#spotted Форма получения образования
+                    td.c5 Специальность
+                    td.c6 Приоритет о выборе специальности / вида (от 1 до 3)
+                    td.c7 № личного дела
+                    td.c8 № экз.листа
+                    td.c9 Основа обучения
+                    td.c10 Нуждаемость в общежитии
+                    td.c11 Пол
+                    td.c12 Дата рождения
+                    td.c13 Гражданство
+                    td.c14 Адрес местожительства (прописка)
+                    td.c15 Область, Район, Иногородние, Иностранцы
+                    td.c16 Паспортные данные (серия, номер, кем и когда выдан)
+                    td.c17 Телефон
+                    td.c18 Социальные категории (сирота, опекаемый, инвалид, ОВЗ)
+                    td.c19 СПО впервые / не впервые
+                    td.c20 Уровень образования
+                    td.c21 Год окончания учеб. завед.
+                    td.c22 Особые успехи в учении
+                    td.c23 Оригинал документа об образовании
+                    td.c24 Копия документа об образовании
+                    td.c25 Вступительное испытание (балл) (1)
+                    td.c26 Средний балл документа об образовании (2)
+                    td.c27#spotted Решение приемной комиссии
+                    td.c28 № и дата приказа о зачислении
+                    td.c29 Приоритет, вид, оригинал аттестата
+            tbody
+                if data
+                    each item in data
+                        tr
+                            td.c1#spotted=item.p_p
+                            td.c2#spotted=item.date_zayv
+                            td.c3#spotted=item.fio
+                            td.c4#spotted=item.forma_poluch_obraz
+                            td.c5=item.specialnost
+                            td.c6=item.prioritet
+                            td.c7=item.nomer_lichnoe_delo
+                            td.c8=item.nomer_ekz_lista
+                            td.c9=item.osnova_obych
+                            td.c10=item.obshaga
+                            td.c11=item.sex
+                            td.c12=item.birthday
+                            td.c13=item.grazhdanstvo
+                            td.c14=item.addres_mesto_zitelstva
+                            td.c15=item.oblast
+                            td.c16=item.pasport
+                            td.c17=item.tel
+                            td.c18=item.soc_category
+                            td.c19=item.SPO_vpervie_nevpervie
+                            td.c20=item.lvl_obraz
+                            td.c21=item.god_okonchania
+                            td.c22=item.osobie_yspexi_v_echebe
+                            td.c23=item.orig_doc_obraz
+                            td.c24=item.copy_doc_obraz
+                            td.c25=item.vstup_ispitanie_1
+                            td.c26=item.avg_ball_obrazovanie_2
+                            td.c27#spotted=item.reshenie_komissi
+                            td.c28=item.nomer_i_data_prikaza_o_zachislenie
+                            td.c29=item.prioritet_vid_orig_atestata
+                else
+                    tr
+                        td.c1 -
+                        td.c2 -
+                        td.c3 -
+                        td.c4 -
+                        td.c5 -
+                        td.c6 -
+                        td.c7 -
+                        td.c8 -
+                        td.c9 -
+                        td.c10 -
+                        td.c11 -
+                        td.c12 -
+                        td.c13 -
+                        td.c14 -
+                        td.c15 -
+                        td.c16 -
+                        td.c17 -
+                        td.c18 -
+                        td.c19 -
+                        td.c20 -
+                        td.c21 -
+                        td.c22 -
+                        td.c23 -
+                        td.c24 -
+                        td.c25 -
+                        td.c26 -
+                        td.c27 -
+                        td.c28 -
+                        td.c29 -
