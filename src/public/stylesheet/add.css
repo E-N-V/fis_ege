@@ -150,6 +150,24 @@
     .form-buttons .form-button-my{
         width: 70px;
     }
+
+    .clear-my{
+        font-size: 0;
+        padding: 0;
+    }
+
+    .clear-my::before{
+        margin: 0;
+    }
+
+    .submit-my{
+        font-size: 0;
+        padding: 0 !important;
+    }
+
+    .submit-my::after{
+        margin: 0 !important;
+    }
 }
 
 .submit-my{

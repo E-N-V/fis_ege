@@ -289,6 +289,24 @@ li:first-child{
     .form-group-of-groups{
         width: 100%;
     }
+
+    .buttons-area{
+        flex-wrap: wrap;
+    }
+
+    .btn{
+        margin-bottom: 20px;
+        padding-right: 0;
+        width: 100%;
+    }
+
+    .abut{
+        width: 100%;
+    }
+
+    .btn::before{
+        margin-right: 30px;
+    }
 }
 
 .buttons-area{
