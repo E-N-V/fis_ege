@@ -40,7 +40,7 @@ header p{
 }
 
 article{
-    min-height: calc(100vh - 145px);
+    min-height: calc(100vh - 138px);
     margin-left: 5%;
     width: 90%;
     background-color: white;
