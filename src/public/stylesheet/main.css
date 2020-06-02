@@ -8,6 +8,7 @@ body{
 }
 
 nav{
+    height: 40px;
     background-color: rgb(55, 53, 184);
     color: rgb(168, 168, 168);
     font-weight: bold;
@@ -66,4 +67,12 @@ footer .container{
     border-top: 2px solid black;
     margin-left: 5%;
     width: 90%;
+}
+
+.aleft{
+    float: left;
+}
+
+.aright{
+    float: right;
 }
