@@ -8,122 +8,28 @@
     margin-left: 5px;
 }
 
-.c1{
+tr:hover{
+    background-color: rgb(214, 245, 255);
+}
 
+.c1{
+    background-color: rgb(193, 239, 255, .6);
+    font-weight: bold;
 }
 
 .c2{
-
+    background-color: rgba(193, 239, 255, .6);
 }
 
 .c3{
-
+    background-color: rgba(193, 239, 255, .6);
 }
 
-.c4{
-
+.ftr:hover,.ftr{
+    background-color: rgb(55, 53, 184) !important;
+    color: white !important;
+    font-weight: bold;
 }
-
-.c5{
-
-}
-
-.c6{
-
-}
-
-.c7{
-
-}
-
-.c8{
-
-}
-
-.c9{
-
-}
-
-.c10{
-
-}
-
-.c11{
-
-}
-
-.c12{
-
-}
-
-.c13{
-
-}
-
-.c14{
-
-}
-
-.c15{
-
-}
-
-.c16{
-
-}
-
-.c17{
-
-}
-
-.c18{
-
-}
-
-.c19{
-
-}
-
-.c20{
-
-}
-
-.c21{
-
-}
-
-.c22{
-
-}
-
-.c23{
-
-}
-
-.c24{
-
-}
-
-.c25{
-
-}
-
-.c26{
-
-}
-
-.c27{
-    width: 240px;
-}
-
-.c28{
-
-}
-
-.c29{
-
-}
-
 
 #spotted{
     display: table-cell;
