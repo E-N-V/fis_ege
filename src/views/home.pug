@@ -38,10 +38,6 @@ block body_
 
         ul.form-group-of-groups#activeBlock
             li Личная информация
-            li Дата заявления
-                input.catChk(type="checkbox", name="c2", onclick="updateTable(2)", checked)
-            li Ф.И.О.
-                input.catChk(type="checkbox", name="c3", onclick="updateTable(3)", checked)
             li Форма получения образования
                 input.catChk(type="checkbox", name="c4", onclick="updateTable(4)", checked)
             li Специальность
@@ -107,7 +103,7 @@ block body_
                     td.c2#spotted Дата заявления
                     td.c3#spotted Ф.И.О.
                     td.c4#spotted Форма получения образования
-                    td.c5 Специальность
+                    td.c5#spotted Специальность
                     td.c6 Приоритет о выборе специальности / вида (от 1 до 3)
                     td.c7 № личного дела
                     td.c8 № экз.листа
@@ -140,7 +136,7 @@ block body_
                             td.c2#spotted=item.date_zayv
                             td.c3#spotted=item.fio
                             td.c4#spotted=item.forma_poluch_obraz
-                            td.c5=item.specialnost
+                            td.c5#spotted=item.specialnost
                             td.c6=item.prioritet
                             td.c7=item.nomer_lichnoe_delo
                             td.c8=item.nomer_ekz_lista

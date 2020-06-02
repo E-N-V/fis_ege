@@ -1,10 +1,132 @@
 
 .c1,.c2,.c3,.c4,.c5,.c6,.c7,.c8,.c9,.c10,.c11,.c12,.c13,.c14,.c15,.c16,.c17,.c18,.c19,.c20,.c21,.c22,.c23,.c24,.c25,.c26,.c27,.c28,.c29{
+    box-sizing: border-box;
     display: none;
 }
 
+.catChk{
+    margin-left: 5px;
+}
+
+.c1{
+
+}
+
+.c2{
+
+}
+
+.c3{
+
+}
+
+.c4{
+
+}
+
+.c5{
+
+}
+
+.c6{
+
+}
+
+.c7{
+
+}
+
+.c8{
+
+}
+
+.c9{
+
+}
+
+.c10{
+
+}
+
+.c11{
+
+}
+
+.c12{
+
+}
+
+.c13{
+
+}
+
+.c14{
+
+}
+
+.c15{
+
+}
+
+.c16{
+
+}
+
+.c17{
+
+}
+
+.c18{
+
+}
+
+.c19{
+
+}
+
+.c20{
+
+}
+
+.c21{
+
+}
+
+.c22{
+
+}
+
+.c23{
+
+}
+
+.c24{
+
+}
+
+.c25{
+
+}
+
+.c26{
+
+}
+
+.c27{
+    width: 240px;
+}
+
+.c28{
+
+}
+
+.c29{
+
+}
+
+
 #spotted{
-    display: initial;
+    display: table-cell;
 }
 .settings-but-my{
     width: 90%;
@@ -54,16 +176,6 @@ ul{
 
 li:first-child{
     font-weight: bold;
-}
-
-.tCont{
-    width: 90%;
-    margin-left: 5%;
-    overflow-y: scroll;
-}
-
-tr{
-    white-space: nowrap;
 }
 
 .btn{
@@ -229,4 +341,32 @@ tr{
     border-radius: 0;
     border: none;
     outline: none;
+}
+
+/**/
+
+.tCont{
+    width: 90%;
+    margin-left: 5%;
+    overflow-y: scroll;
+}
+
+table{
+
+}
+
+tr{
+    white-space: nowrap;
+}
+
+td{
+
+}
+
+thead{
+
+}
+
+tbody{
+    
 }
