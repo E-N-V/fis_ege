@@ -1,10 +1,38 @@
 
 .c1,.c2,.c3,.c4,.c5,.c6,.c7,.c8,.c9,.c10,.c11,.c12,.c13,.c14,.c15,.c16,.c17,.c18,.c19,.c20,.c21,.c22,.c23,.c24,.c25,.c26,.c27,.c28,.c29{
+    box-sizing: border-box;
     display: none;
 }
 
+.catChk{
+    margin-left: 5px;
+}
+
+tr:hover{
+    background-color: rgb(214, 245, 255);
+}
+
+.c1{
+    background-color: rgb(193, 239, 255, .6);
+    font-weight: bold;
+}
+
+.c2{
+    background-color: rgba(193, 239, 255, .6);
+}
+
+.c3{
+    background-color: rgba(193, 239, 255, .6);
+}
+
+.ftr:hover,.ftr{
+    background-color: rgb(55, 53, 184) !important;
+    color: white !important;
+    font-weight: bold;
+}
+
 #spotted{
-    display: initial;
+    display: table-cell;
 }
 .settings-but-my{
     width: 90%;
@@ -54,16 +82,6 @@ ul{
 
 li:first-child{
     font-weight: bold;
-}
-
-.tCont{
-    width: 90%;
-    margin-left: 5%;
-    overflow-y: scroll;
-}
-
-tr{
-    white-space: nowrap;
 }
 
 .btn{
@@ -177,6 +195,24 @@ tr{
     .form-group-of-groups{
         width: 100%;
     }
+
+    .buttons-area{
+        flex-wrap: wrap;
+    }
+
+    .btn{
+        margin-bottom: 20px;
+        padding-right: 0;
+        width: 100%;
+    }
+
+    .abut{
+        width: 100%;
+    }
+
+    .btn::before{
+        margin-right: 30px;
+    }
 }
 
 .buttons-area{
@@ -229,4 +265,33 @@ tr{
     border-radius: 0;
     border: none;
     outline: none;
+}
+
+/**/
+
+.tCont{
+    width: 90%;
+    margin-left: 5%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+table{
+    min-width: 100%;
+}
+
+tr{
+    white-space: nowrap;
+}
+
+td{
+
+}
+
+thead{
+
+}
+
+tbody{
+    
 }

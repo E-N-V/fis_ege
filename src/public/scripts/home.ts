@@ -11,7 +11,7 @@ function filterOpen(){
 }
 
 function updateTable(num:any){
-    const filterChk:any = document.getElementsByClassName("catChk")[num-2];
+    const filterChk:any = document.getElementsByClassName("catChk")[num-4];
     const idmy:any = "c"+num
     const filterTab:any = document.getElementsByClassName(idmy);
     if (filterChk.checked == true){
