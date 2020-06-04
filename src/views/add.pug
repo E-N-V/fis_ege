@@ -20,7 +20,7 @@ block body_
             .card-header
                 .form-group
                     label(for="p_p") №п/п
-                    input(type="text", name="arr", id="p_p", readonly, value=id).form-control
+                    input(type="text", name="p_p", id="p_p", readonly, value=id).form-control
             .card-body.row
                 .form-buttons
                     .form-button-my(onclick="blockSwap(0)" id="activeButton")
@@ -36,7 +36,7 @@ block body_
                     .form-group.form-group-of-groups(id="activeBlock")
                         .form-group
                             label Дата заявления
-                            input(type="date", name="date_zayavlenia", value=time, pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}", required).form-control
+                            input(type="date", name="date_zayv", value=time, pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}", required).form-control
                         .form-group
                             label Ф.И.О.
                             input(type="text", name="fio", placeholder="Иванов Иван Иванович", required).form-control
@@ -44,14 +44,14 @@ block body_
                             label Форма получения образования
                             .form-control
                                 |Очная
-                                input(type="radio", name="forma_polychenia_obrazovania", value="o", required)
+                                input(type="radio", name="forma_poluch_obraz", value="Очная", required)
                                 br
                                 |Заочная 
-                                input(type="radio", name="forma_polychenia_obrazovania", value="z", required)
+                                input(type="radio", name="forma_poluch_obraz", value="Заочная", required)
                                 br
                         .form-group
                             label Специальность
-                            input(type="text", name="Specialnost", list="Specialnost", required).form-control
+                            input(type="text", name="specialnost", list="Specialnost", required).form-control
                             .form-text.text-muted Дважды нажмите на поле, и появится списокс вариантами.
                             datalist(id="Specialnost")
                                 option МИЭ
@@ -62,43 +62,43 @@ block body_
                                 option АИ
                         .form-group
                             label Приоритет о выборе специальности / вида (от 1 до 3)
-                            input(type="number", min="1", max="3", name="Prioritet", value="1", required).form-control
+                            input(type="number", min="1", max="3", name="prioritet", value="1", required).form-control
                         .form-group
                             label № личного дела
-                            input(type="text", name="Nomer_lichnogo_dela", readonly, value=id+"/18", required).form-control 
+                            input(type="text", name="nomer_lichnoe_delo", readonly, value=id+"/18", required).form-control 
                         .form-group
                             label № экз.листа
-                            input(type="text", name="Nomer_egz_lista", value=id+"/18-_/_", required).form-control
+                            input(type="text", name="nomer_ekz_lista", value=id+"/18-_/_", required).form-control
                         .form-group
                             label Основа обучения
                             .form-control
                                 |бюджет 
-                                input(type="radio", name="osnova_obychenia", value="bugzet", required)
+                                input(type="radio", name="osnova_obych", value="бюджет", required)
                                 br
                                 |внебюджет 
-                                input(type="radio", name="osnova_obychenia", value="vnebugzet", required)
+                                input(type="radio", name="osnova_obych", value="внебюджет", required)
                                 br
                         .form-group
                             label Нуждаемость в общежитии
                             .form-control
                                 |Да 
-                                input(type="radio", name="obshaga", value="t", required)
+                                input(type="radio", name="obshaga", value="Да", required)
                                 br
                                 |Нет
-                                input(type="radio", name="obshaga", value="f", required)
+                                input(type="radio", name="obshaga", value="Нет", required)
                                 br
                         .form-group
                             label Пол
                             .form-control
                                 |М 
-                                input(type="radio", name="Sex", value="b", required)
+                                input(type="radio", name="sex", value="М", required)
                                 br
                                 |Ж 
-                                input(type="radio", name="Sex", value="g", required)
+                                input(type="radio", name="sex", value="Ж", required)
                                 br
                         .form-group
                             label Дата рождения
-                            input(type="date", name="date_rozhd", pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}", required).form-control
+                            input(type="date", name="birthday", pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}", required).form-control
                         .form-group
                             label Гражданство
                             input(type="text", name="grazhdanstvo", list="grazhd", required).form-control
@@ -121,7 +121,7 @@ block body_
                             input(type="text", name="tel", required).form-control
                         .form-group
                             label Социальные категории (сирота, опекаемый, инвалид, ОВЗ)
-                            input(type="text", name="soc_cat", list="soc_cat", required).form-control
+                            input(type="text", name="soc_category", list="soc_cat", required).form-control
                             .form-text.text-muted Дважды нажмите на поле, и появится списокс вариантами.
                             datalist(id="soc_cat")
                                 option ничего
@@ -131,10 +131,10 @@ block body_
                                 option ОВЗ
                         .form-group
                             label СПО впервые / не впервые
-                            input(type="text", name="spo", required).form-control
+                            input(type="text", name="SPO_vpervie_nevpervie", required).form-control
                         .form-group
                             label Уровень образования
-                            input(type="text", name="lvl", required).form-control
+                            input(type="text", name="lvl_obraz", required).form-control
                         .form-group
                             label Год окончания учеб. завед.
                             input(type="date", name="god_okonchania", required).form-control

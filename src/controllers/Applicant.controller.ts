@@ -1,7 +1,5 @@
 import {Request, Response} from "express"
 import Applicant from "../database/entity/Applicant"
-import {body, validationResult} from 'express-validator/check'
-import {sanitizeBody} from 'express-validator/filter'
 
 // TODO: Защитить методы контролллера от неавторизованных пользователей
 

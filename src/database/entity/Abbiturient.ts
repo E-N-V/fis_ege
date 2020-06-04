@@ -51,7 +51,7 @@ export default class Abbiturient extends BaseEntity{
     oblast!: string
 
     @Column()
-    pasport!: string
+    passport!: string
 
     @Column()
     tel!: string
