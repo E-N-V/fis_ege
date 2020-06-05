@@ -1,8 +1,9 @@
-import { Router } from "express"
-const route = Router()
+import { Router } from "express";
+const route = Router();
 
-import { AuthGET } from "../controllers/Auth.controller"
+import { AuthGET, AuthPOST } from "../controllers/Auth.controller";
 
-route.get("auth", AuthGET)
+route.get("/auth", AuthGET);
+route.post("/auth", AuthPOST);
 
-export default route
+export default route;

@@ -1,10 +1,8 @@
-import { Router } from "express"
-const route = Router()
+import { Router } from "express";
+const route = Router();
 
-import { HomeGET, HomeGETAdd, HomePOSTAdd, HomeGETAuth } from "../controllers/Home.controller"
+import { HomeGET } from "../controllers/Home.controller";
 
-route.get(["/", "/home", "/index", "/index.html", "/home.html"], HomeGET)
-route.get("/add", HomeGETAdd)
-route.post("/add", HomePOSTAdd)
+route.get(["/", "/home", "/index", "/index.html", "/home.html"], HomeGET);
 
-export default route
+export default route;

@@ -3,15 +3,19 @@ html(lang="ru")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet", href="stylesheet/bootstrap/bootstrap.min.css")
-        link(rel="stylesheet", href="stylesheet/main.css")
+        link(rel="stylesheet", href="http://localhost:3000/stylesheet/bootstrap/bootstrap.min.css")
+        link(rel="stylesheet", href="http://localhost:3000/stylesheet/main.css")
         block head_
     body
         nav
             a.aleft(href="/")
                 p Домашняя
-            a.aright(href="/auth")
-                p Вход
+            if !usr
+                a.aright(href="/auth")
+                    p Вход
+            else
+                .aright
+                    p=usr
         header
             br
             br

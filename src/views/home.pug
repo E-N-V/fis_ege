@@ -12,7 +12,7 @@ block head_
 block body_
     h2 Домашняя страница
     .buttons-area
-        a.abut(href="/add")
+        a.abut(href="/applicants")
             button.btn.btn-success
                 |Добавить аббитуриента
         //-TODO:неймингов нет но вы держитесь
@@ -99,6 +99,7 @@ block body_
         table(border="2")
             thead
                 tr.ftr
+                    td.c0.ftr Опции
                     td.c1.ftr#spotted №п/п
                     td.c2.ftr#spotted Дата заявления
                     td.c3.ftr#spotted Ф.И.О.
@@ -132,6 +133,9 @@ block body_
                 if data
                     each item in data
                         tr
+                            td.c0
+                                a(href="/applicants/"+item.id)
+                                    button Редактировать
                             td.c1#spotted=item.p_p
                             td.c2#spotted=item.date_zayv
                             td.c3#spotted=item.fio

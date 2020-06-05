@@ -6,8 +6,9 @@ import App from "../app";
 import * as bodyParser from "body-parser";
 import loggerMiddleware from "../middleware/logger";
 import cookieParser from "cookie-parser";
+import checkAuthMiddleware from "../middleware/checkAuth"
 
-const arrMiddlewares: any = [bodyParser.json(), bodyParser.urlencoded({ extended: true }), cookieParser(), loggerMiddleware];
+const arrMiddlewares: any = [bodyParser.json(), bodyParser.urlencoded({ extended: true }), cookieParser(), loggerMiddleware, checkAuthMiddleware];
 
 /**
  * Import routes

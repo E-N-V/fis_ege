@@ -1,20 +1,12 @@
 import {Request, Response} from "express"
-import Abbiturient from "../database/entity/Abbiturient"
+import Applicant from "../database/entity/Applicant"
 
 export const HomeGET = async (req: Request, res: Response) => {
-    let data = await Abbiturient.find()
-    return res.status(200).render("home", {data})
+    let data = await Applicant.find()
+    return res.status(200).render("home", {data, usr: req.cookies.usr})
 }
 
-export const HomeGETAdd = async (req: Request, res: Response) => {
-    let id = (await Abbiturient.find()).length + 1
-    return res.status(200).render("add", {id})
-}
-
-export const HomeGETAuth = async (req: Request, res: Response) => {
-    return res.status(200).render("auth")
-}
-
+/* 
 export const HomePOSTAdd = async(req: Request, res: Response) => {
     console.log(req.body)
     if (!req.body) return res.redirect("/add")
@@ -52,4 +44,4 @@ export const HomePOSTAdd = async(req: Request, res: Response) => {
     let result = await ab.save()
     console.log("result: ", result)
     return res.status(200).redirect("/")
-}
+} */
