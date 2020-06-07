@@ -1,5 +1,6 @@
 import express, { Application } from "express";
 import { join } from "path";
+import Seeder from "./database/seed/Seeder";
 import { createConnection } from "typeorm";
 
 export default class app {
@@ -36,7 +37,10 @@ export default class app {
 
 	private async db_connect() {
 		await createConnection()
-			.then(() => console.log("Database connected."))
+			.then(() => {
+				console.log("Database connected.");
+				new Seeder();
+			})
 			.catch((err) => {
 				console.error(err);
 				process.exit(1);

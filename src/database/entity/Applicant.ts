@@ -1,94 +1,82 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
 
 @Entity()
-export default class Applicant extends BaseEntity{
-    @PrimaryGeneratedColumn()
-    id!: number
+export default class Applicant extends BaseEntity {
+	@PrimaryGeneratedColumn()
+	id!: number;
 
-    @Column()
-    p_p!: string
+	@Column()
+	date_zayv!: string;
 
-    @Column()
-    date_zayv!: string
+	@Column()
+	fio!: string;
 
-    @Column()
-    fio!: string
+	@Column()
+	forma_poluch_obraz!: string;
 
-    @Column()
-    forma_poluch_obraz!: string
+	@Column()
+	specialnost!: string;
 
-    @Column()
-    specialnost!: string
+	@Column()
+	nomer_lichnoe_delo!: string;
 
-    @Column()
-    prioritet!: string
+	@Column()
+	nomer_ekz_lista!: string;
 
-    @Column()
-    nomer_lichnoe_delo!: string
+	@Column()
+	osnova_obych!: string;
 
-    @Column()
-    nomer_ekz_lista!: string
+	@Column()
+	obshaga!: string;
 
-    @Column()
-    osnova_obych!: string
+	@Column()
+	sex!: string;
 
-    @Column()
-    obshaga!: string
+	@Column()
+	birthday!: string;
 
-    @Column()
-    sex!: string
+	@Column()
+	grazhdanstvo!: string;
 
-    @Column()
-    birthday!: string
+	@Column()
+	addres_mesto_zitelstva!: string;
 
-    @Column()
-    grazhdanstvo!: string
+	@Column()
+	oblast!: string;
 
-    @Column()
-    addres_mesto_zitelstva!: string
+	@Column()
+	passport!: string;
 
-    @Column()
-    oblast!: string
+	@Column()
+	tel!: string;
 
-    @Column()
-    passport!: string
+	@Column()
+	soc_category!: string;
 
-    @Column()
-    tel!: string
+	@Column()
+	SPO_vpervie_nevpervie!: string;
 
-    @Column()
-    soc_category!: string
+	@Column()
+	lvl_obraz!: string;
 
-    @Column()
-    SPO_vpervie_nevpervie!: string
+	@Column()
+	god_okonchania!: string;
 
-    @Column()
-    lvl_obraz!: string
+	@Column()
+	osobie_yspexi_v_echebe!: string;
 
-    @Column()
-    god_okonchania!: string
+	@Column()
+	orig_doc_obraz!: string;
 
-    @Column()
-    osobie_yspexi_v_echebe!: string
+	@Column()
+	copy_doc_obraz!: string;
 
-    @Column()
-    orig_doc_obraz!: string
+	@Column()
+	vstup_ispitanie_1!: string;
 
-    @Column()
-    copy_doc_obraz!: string
+	@Column()
+	avg_ball_obrazovanie_2!: string;
 
-    @Column()
-    vstup_ispitanie_1!: string
-
-    @Column()
-    avg_ball_obrazovanie_2!: string
-
-    @Column()
-    reshenie_komissi!: string
-
-    @Column()
-    nomer_i_data_prikaza_o_zachislenie!: string
-
-    @Column()
-    prioritet_vid_orig_atestata!: string
+	@Column()
+	reshenie_komissi!: string;
 }

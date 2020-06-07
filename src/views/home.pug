@@ -100,7 +100,7 @@ block body_
             thead
                 tr.ftr
                     td.c0.ftr Опции
-                    td.c1.ftr#spotted №п/п
+                    td.c1.ftr#spotted № аббитуриента
                     td.c2.ftr#spotted Дата заявления
                     td.c3.ftr#spotted Ф.И.О.
                     td.c4#spotted Форма получения образования
@@ -136,7 +136,7 @@ block body_
                             td.c0
                                 a(href="/applicants/"+item.id)
                                     button Редактировать
-                            td.c1#spotted=item.p_p
+                            td.c1#spotted=item.id
                             td.c2#spotted=item.date_zayv
                             td.c3#spotted=item.fio
                             td.c4#spotted=item.forma_poluch_obraz

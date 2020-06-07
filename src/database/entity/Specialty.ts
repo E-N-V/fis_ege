@@ -6,11 +6,31 @@ export default class SocCategory extends BaseEntity{
     id!: number
 
     @Column()
+    code!: string
+
+    @Column()
     name!: string
 
-    @Column()
-    etc!: string
+    @Column({
+        nullable: true
+    })
+    cvalificacia!: string
 
     @Column()
-    code!: string
+    forma_obychenia!: string
+
+    @Column({
+        nullable: true
+    })
+    base_9!: string
+
+    @Column({
+        nullable: true
+    })
+    base_11!: string
+
+    @Column({
+        nullable: true
+    })
+    amount!: number
 }
