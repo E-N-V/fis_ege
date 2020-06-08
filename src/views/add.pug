@@ -222,7 +222,7 @@ block body_
                                     input(type="radio", name="forma_poluch_obraz", value="Заочная", required)
                                     br
                             .form-group
-                                p Специальности
+                                label Специальности
                                 table
                                     tr
                                         td Приоритет
@@ -264,9 +264,11 @@ block body_
 
                                     tr
                                         td
-                                        td
+                                        td.tdbut
                                             .add-my#visible(onclick="add()") +
+                                            .add-zat#invisible +
                                             .del-my#invisible(onclick="del()") -
+                                            .del-zat#visible -
                                 .form-text.text-muted Дважды нажмите на поле, и появится список с вариантами.
                             .form-group
                                 label № личного дела

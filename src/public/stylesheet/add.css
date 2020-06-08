@@ -36,6 +36,10 @@
     border: none;
 }
 
+label{
+    font-weight: bold;
+}
+
 .card-header{
     background-color: white;
     border: none;
@@ -43,6 +47,7 @@
 }
 
 .card-header label{
+    font-weight: normal;
     margin-left: 20px;
     font-size: 30px;
     float: left;
@@ -221,7 +226,10 @@
     color: white;
     font-size: 20px;
     padding: 5px 15px;
-    display: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
 }
 
 .add-my{
@@ -229,7 +237,18 @@
 }
 
 .del-my{
-    display: none;
+
+}
+
+.add-zat, .del-zat{
+    background-color: lightgray;
+    color: rgb(95, 95, 95);
+    font-size: 20px;
+    padding: 5px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
 }
 
 td{
@@ -249,9 +268,13 @@ td{
 }
 
 #visible{
-    display: unset !important;
+    display: table-cell !important;
 }
 
 #invisible{
     display: none !important;
+}
+
+.tdbut{
+   padding-top: 10px; 
 }
