@@ -209,3 +209,49 @@
         width: 100%;
     }
 }
+
+/**/
+
+.tdnum{
+    text-align: right;
+}
+
+.del-my,.add-my{
+    background-color: rgb(89, 175, 255);
+    color: white;
+    font-size: 20px;
+    padding: 5px 15px;
+    display: unset;
+}
+
+.add-my{
+    margin-right: 10px;
+}
+
+.del-my{
+    display: none;
+}
+
+td{
+    padding-right: 10px;
+}
+
+.secondtr,.thirdtr{
+    display: none;
+}
+
+#activetr{
+    display: table-row;
+}
+
+#disabletr{
+    display: none;
+}
+
+#visible{
+    display: unset !important;
+}
+
+#invisible{
+    display: none !important;
+}

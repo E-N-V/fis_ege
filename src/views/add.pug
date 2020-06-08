@@ -222,19 +222,52 @@ block body_
                                     input(type="radio", name="forma_poluch_obraz", value="Заочная", required)
                                     br
                             .form-group
-                                label Специальность
-                                input(type="text", name="specialnost", list="Specialnost", required).form-control
-                                .form-text.text-muted Дважды нажмите на поле, и появится списокс вариантами.
-                                datalist(id="Specialnost")
-                                    option МИЭ
-                                    option СиХНП
-                                    option СКД
-                                    option НХТ о/о
-                                    option ИИ
-                                    option АИ
-                            .form-group
-                                label Приоритет о выборе специальности / вида (от 1 до 3)
-                                input(type="number", min="1", max="3", name="prioritet", value="1", required).form-control
+                                p Специальности
+                                table
+                                    tr
+                                        td Приоритет
+                                        td Специальность
+                                        td
+                                    tr.trmy
+                                        td.tdnum 1
+                                        td
+                                            input(type="text", name="specialnost_1", list="Specialnost", required).form-control.input-my
+                                            datalist(id="Specialnost")
+                                                option МИЭ
+                                                option СиХНП
+                                                option СКД
+                                                option НХТ о/о
+                                                option ИИ
+                                                option АИ
+                                    tr.trmy#disabletr
+                                        td.tdnum 2
+                                        td
+                                            input(type="text", name="specialnost_2", list="Specialnost", required, disabled).form-control.input-my
+                                            datalist(id="Specialnost")
+                                                option МИЭ
+                                                option СиХНП
+                                                option СКД
+                                                option НХТ о/о
+                                                option ИИ
+                                                option АИ
+                                    tr.trmy#disabletr
+                                        td.tdnum 3
+                                        td
+                                            input(type="text", name="specialnost_3", list="Specialnost", required, disabled).form-control.input-my
+                                            datalist(id="Specialnost")
+                                                option МИЭ
+                                                option СиХНП
+                                                option СКД
+                                                option НХТ о/о
+                                                option ИИ
+                                                option АИ
+
+                                    tr
+                                        td
+                                        td
+                                            .add-my#visible(onclick="add()") +
+                                            .del-my#invisible(onclick="del()") -
+                                .form-text.text-muted Дважды нажмите на поле, и появится список с вариантами.
                             .form-group
                                 label № личного дела
                                 input(type="text", name="nomer_lichnoe_delo", readonly, value=id+"/18", required).form-control 
@@ -337,9 +370,9 @@ block body_
                                 input(type="text", name="prioritet_vid_orig_atestata", required).form-control
             .card-footer
                 if opt == "add"
-                    button(type="submit").btn.btn-primary
+                    button(type="submit").btn.btn-primary.submit-my
                         |Добавить
-                    button(type="reset").btn.btn-warning
+                    button(type="reset").btn.btn-warning.clear-my
                         |Очистить поля
                 else if opt == "redact"
                     button(type="submit").btn.btn-primary.submit-my
