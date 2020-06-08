@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import Applicant from "../database/entity/Applicant";
-import Request_Applicant from "../database/entity/Request_Applicant";
+import RequestApplicant from "../database/entity/RequestApplicant";
 import Admission from "../database/entity/Admission";
 import Specialty from "../database/entity/Specialty"
 
@@ -102,7 +102,7 @@ export const store = async (req: Request, res: Response) => {
 	data.vstup_ispitanie_1 = req.body.vstup_ispitanie_1;
 	data.avg_ball_obrazovanie_2 = req.body.avg_ball_obrazovanie_2;
 	data.reshenie_komissi = req.body.reshenie_komissi;
-	let request_Applicant = new Request_Applicant();
+	let request_Applicant = new RequestApplicant();
 	request_Applicant.priority = req.body.prioritet;
 	request_Applicant.id_aplicant = data;
 	request_Applicant.name_spec = req.body.specialnost;
@@ -111,7 +111,7 @@ export const store = async (req: Request, res: Response) => {
 	admission.date = new Date(Date.now());
 	admission.number = req.body.nomer_i_data_prikaza_o_zachislenie;
 	Admission.save(admission)
-	Request_Applicant.save(request_Applicant)
+	RequestApplicant.save(request_Applicant)
 	let result = await data.save();
 
 	if (result) {

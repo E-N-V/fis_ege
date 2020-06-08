@@ -1,7 +1,7 @@
 import { Entity, BaseEntity, PrimaryGeneratedColumn, Column } from "typeorm"
 
 @Entity()
-export default class SocCategory extends BaseEntity{
+export default class Specialty extends BaseEntity{
     @PrimaryGeneratedColumn()
     id!: number
 

@@ -1,8 +1,8 @@
 import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, OneToOne } from "typeorm";
 import Applicant from "./Applicant";
 
-Entity();
-export default class Request_Applicant extends BaseEntity {
+@Entity()
+export default class RequestApplicant extends BaseEntity {
 	@PrimaryGeneratedColumn()
 	id!: number;
 
