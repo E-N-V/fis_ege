@@ -230,6 +230,11 @@ label{
     justify-content: center;
     align-items: center;
     width: 40px;
+    cursor: pointer;
+}
+
+.del-my:hover,.add-my:hover{
+    background-color: rgb(89, 106, 255);
 }
 
 .add-my{
