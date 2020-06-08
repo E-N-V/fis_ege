@@ -11,3 +11,71 @@ function blockSwap(num:any) {
     }    
     buttons[num].id = "activeButton";
 }
+
+function add() {
+    let k:any = 0
+    const trmy:any = document.getElementsByClassName('trmy')
+    for (let i = 0; i < trmy.length; i++) {
+        if(trmy[i].id == 'disabletr'){
+            k = i
+            break;
+        }
+    }
+    trmy[k].id = 'activetr'
+    const inpmy:any = trmy[k].getElementsByClassName('input-my')[0]
+    inpmy.disabled = false
+    const del:any = document.getElementsByClassName('del-my')[0]
+    const add:any = document.getElementsByClassName('add-my')[0]
+    const delz:any = document.getElementsByClassName('del-zat')[0]
+    const addz:any = document.getElementsByClassName('add-zat')[0]
+    k = 0
+    for (let i = 0; i < trmy.length; i++) {
+        if(trmy[i].id == 'activetr'){
+            k++
+        }
+    }
+    if (k > 0) {
+        del.id = 'visible'
+        delz.id = 'invisible'
+    }
+
+    if (k > 1) {
+        add.id = 'invisible'
+        addz.id = 'visible'
+    }
+}
+
+function del() {
+    let k:any = 0
+    const trmy:any = document.getElementsByClassName('trmy')
+    for (let i = 0; i < trmy.length; i++) {
+        if(trmy[i].id == 'disabletr'){
+            break;
+        }else{
+            k = i
+        }
+    }
+    trmy[k].id = 'disabletr'
+    const inpmy:any = trmy[k].getElementsByClassName('input-my')[0]
+    inpmy.disabled = true
+    const del:any = document.getElementsByClassName('del-my')[0]
+    const add:any = document.getElementsByClassName('add-my')[0]
+    const delz:any = document.getElementsByClassName('del-zat')[0]
+    const addz:any = document.getElementsByClassName('add-zat')[0]
+    k = 0
+    for (let i = 0; i < trmy.length; i++) {
+        if(trmy[i].id == 'activetr'){
+            k++
+        }
+    }
+    if (k < 1) {
+        del.id = 'invisible'
+        delz.id = 'visible'
+    }
+
+    if (k < 2) {
+        add.id = 'visible'
+        addz.id = 'invisible'
+    }
+}
+

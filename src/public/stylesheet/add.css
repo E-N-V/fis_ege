@@ -36,6 +36,10 @@
     border: none;
 }
 
+label{
+    font-weight: bold;
+}
+
 .card-header{
     background-color: white;
     border: none;
@@ -43,6 +47,7 @@
 }
 
 .card-header label{
+    font-weight: normal;
     margin-left: 20px;
     font-size: 30px;
     float: left;
@@ -208,4 +213,73 @@
     .form-group-of-groups{
         width: 100%;
     }
+}
+
+/**/
+
+.tdnum{
+    text-align: right;
+}
+
+.del-my,.add-my{
+    background-color: rgb(89, 175, 255);
+    color: white;
+    font-size: 20px;
+    padding: 5px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    cursor: pointer;
+}
+
+.del-my:hover,.add-my:hover{
+    background-color: rgb(89, 106, 255);
+}
+
+.add-my{
+    margin-right: 10px;
+}
+
+.del-my{
+
+}
+
+.add-zat, .del-zat{
+    background-color: lightgray;
+    color: rgb(95, 95, 95);
+    font-size: 20px;
+    padding: 5px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+}
+
+td{
+    padding-right: 10px;
+}
+
+.secondtr,.thirdtr{
+    display: none;
+}
+
+#activetr{
+    display: table-row;
+}
+
+#disabletr{
+    display: none;
+}
+
+#visible{
+    display: table-cell !important;
+}
+
+#invisible{
+    display: none !important;
+}
+
+.tdbut{
+   padding-top: 10px; 
 }
