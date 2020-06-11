@@ -1,4 +1,4 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, OneToOne } from "typeorm";
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from "typeorm";
 import Applicant from "./Applicant";
 
 @Entity()
@@ -7,6 +7,7 @@ export default class RequestApplicant extends BaseEntity {
 	id!: number;
 
 	@OneToOne((type) => Applicant)
+	@JoinColumn()
 	id_aplicant!: Applicant;
 
 	@Column()

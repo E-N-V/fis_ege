@@ -66,9 +66,6 @@ export default class Applicant extends BaseEntity {
 	orig_doc_obraz!: string;
 
 	@Column()
-	copy_doc_obraz!: string;
-
-	@Column()
 	vstup_ispitanie_1!: string;
 
 	@Column()
