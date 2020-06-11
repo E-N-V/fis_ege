@@ -123,6 +123,7 @@ function calcSwap(num:any) {
 function calcStart(){
     const calcinp:any = document.getElementsByClassName("inp-calc")
     const calcres:any = document.getElementsByClassName("inp-result")[0]
+    const calcdet:any = document.getElementsByClassName("calc-result")[0]
     let x:number = 0
     let y:number = 0
 
@@ -133,7 +134,10 @@ function calcStart(){
         }  
     }
     calcres.setAttribute("value", x/y)
+    calcdet.innerText = "Введено оценок: " + y
 }
+
+
 
 function calcInpCreate(){
     const inpcon:any = document.getElementsByClassName("inp-container")
