@@ -2,30 +2,193 @@ extends ../public/index
 
 block head_
     title Страница поиска
-
+    link(rel="stylesheet", href="stylesheet/search.css")
+    script(src="scripts/search.js")
 block body_
     h2 Поиск
     form
         .search-area(action="", method="post")
             input.search-text(type="text", name="" placeholder="поиск...")
             input.search-button(type="submit", value="")
-        .filter-area
-            h3 Фильтр
-            ul.filters
-                li 
-                    input(type="radio", name="filter" value="option_1" id="opt1")
-                    label(for="opt1") вариант 1
-                li
-                    input(type="radio", name="filter" value="option_2" id="opt2")
-                    label(for="opt2") вариант 2
-        .criteria-aria
-            h3 Критерии
-            ul.criteria
-                li Название критерия
-                    li Опция критерия: 
-                        input(type="number", name="criteria_1")
-                        input(type="checkbox", name="criteria_1")
-                    li Опция критерия: 
-                        input(type="number", name="criteria_2")
-                        input(type="checkbox", name="criteria_2")
-                        
+        .opt-container
+            .filter-area
+                h3 Категории фильтров
+
+                .form-button-my(onclick="blockSwappp(0)" id="activeButton")
+                    .ico-block-my#button1
+                    span Личная информация
+                .form-button-my(onclick="blockSwappp(1)")
+                    .ico-block-my#button2
+                    span Контакты
+                .form-button-my(onclick="blockSwappp(2)")
+                    .ico-block-my#button3
+                    span Результаты
+                
+            .criteria-aria
+                h3 Фильтры
+                
+                .criteria-group#activeBlock
+                    ul
+                        li Дата заявления
+                        li От: 
+                            input(type="date", name="criteria-value_1")
+                            input(type="checkbox", name="criteria-status_1")
+                        li До: 
+                            input(type="date", name="criteria_2-value")
+                            input(type="checkbox", name="criteria-status_2")
+                    ul
+                        li Дата заявленияФорма получения образования
+                        li Очная: 
+                            input(type="checkbox", name="criteria-status_1")
+                        li Заочная : 
+                            input(type="checkbox", name="criteria-status_2")
+                    ul
+                        li Специальности
+                            li архитектура
+                                input(type="checkbox", name="criteria-status_3")
+                            li строительство и эксплуатация зданий и сооружений
+                                input(type="checkbox", name="criteria-status_3")
+                            li водоснабжение и водоотведение
+                                input(type="checkbox", name="criteria-status_3")
+                            li программирование в компьютерных системах
+                                input(type="checkbox", name="criteria-status_3")
+                            li техническое обслуживание и ремонт систем винтеляции и земельно имущественные отношения
+                                input(type="checkbox", name="criteria-status_3")
+                            li ТЕХНИЧЕСКАЯ ЭКСПЛУАТАЦИЯ ПОДЪЕМНО-ТРАНСПОРТНЫХ, СТРОИТЕЛЬНЫХ, ДОРОЖНЫХ МАШИН И ОБОРУДОВАНИЯ
+                                input(type="checkbox", name="criteria-status_3")
+                            li ДИЗАЙН
+                                input(type="checkbox", name="criteria-status_3")
+                            li ПРОИЗВОДСТВО НЕМЕТАЛЛИЧЕСКИХ СТРОИТЕЛЬНЫХ ИЗДЕЛИЙ И КОНСТРУКЦИЙ
+                                input(type="checkbox", name="criteria-status_3")
+                            li МИЭ
+                                input(type="checkbox", name="criteria-status_3")
+
+                    ul
+                        li Основа обучения
+                        li бюджет
+                            input(type="checkbox", name="criteria-status_2")
+                        li внебюджет
+                            input(type="checkbox", name="criteria-status_2")
+                    
+                    ul
+                        li Нуждаемость в общежитии
+                        li да
+                            input(type="checkbox", name="criteria-status_2")
+                        li нет
+                            input(type="checkbox", name="criteria-status_2")
+
+                    ul
+                        li Пол
+                        li М
+                            input(type="checkbox", name="criteria-status_2")
+                        li Ж
+                            input(type="checkbox", name="criteria-status_2")
+                    
+                    ul
+                        li Дата рождения
+                        li От:
+                            input(type="date", name="criteria_2-value")
+                            input(type="checkbox", name="criteria-status_2")
+                        li До:
+                            input(type="date", name="criteria_2-value")
+                            input(type="checkbox", name="criteria-status_2")
+
+                    ul
+                        li Гражданство
+                        li РФ
+                            input(type="checkbox", name="criteria-status_2")
+                        li ИГ
+                            input(type="checkbox", name="criteria-status_2")
+
+                    ul
+                        li Область
+                        li 
+                            input(type="text", name="criteria_2-value")
+
+                .criteria-group
+
+                    ul
+                        li Паспортные данные (серия, номер, кем и когда выдан)
+                        li
+                            input(type="text", name="criteria_2-value")
+                
+
+                    ul
+                        li Социальные категории (сирота, опекаемый, инвалид, ОВЗ)
+                        li ничего
+                            input(type="checkbox", name="criteria-status_2")
+                        li сирота
+                            input(type="checkbox", name="criteria-status_2")
+                        li опекаемый
+                            input(type="checkbox", name="criteria-status_2")
+                        li инвалид
+                            input(type="checkbox", name="criteria-status_2")
+                        li ОВЗ
+                            input(type="checkbox", name="criteria-status_2")
+
+                    ul
+                        li СПО впервые / не впервые
+                        li
+                            input(type="text", name="criteria_2-value")
+
+                    ul
+                        li Уровень образования
+                        li
+                            input(type="text", name="criteria_2-value")
+
+                    ul
+                        li Год окончания учеб. завед.
+                        li От:
+                            input(type="date", name="criteria_2-value")
+                            input(type="checkbox", name="criteria-status_2")
+                        li До:
+                            input(type="date", name="criteria_2-value")
+                            input(type="checkbox", name="criteria-status_2")
+                    ul
+                        li Особые успехи в учении
+                        li
+                            input(type="text", name="criteria_2-value")
+                            
+                    ul
+                        li Оригинал документа об образовании
+                        li
+                            input(type="text", name="criteria_2-value")
+                    
+                    ul
+                        li Копия документа об образовании
+                        li
+                            input(type="text", name="criteria_2-value")
+                .criteria-group
+                    ul
+                        li Вступительное испытание (балл) (1)
+                        li выше: 
+                            input(type="number", name="criteria-value_1")
+                            input(type="checkbox", name="criteria-status_1")
+                        li ниже: 
+                            input(type="number", name="criteria_2-value")
+                            input(type="checkbox", name="criteria-status_2")
+
+                    ul
+                        li Средний балл документа об образовании (2)
+                        li выше: 
+                            input(type="number", name="criteria-value_1")
+                            input(type="checkbox", name="criteria-status_1")
+                        li ниже: 
+                            input(type="number", name="criteria_2-value")
+                            input(type="checkbox", name="criteria-status_2")
+
+                    ul
+                        li Решение приемной комиссии
+                        li
+                            input(type="text", name="criteria_2-value")
+
+                    ul
+                        li № и дата приказа о зачислении
+                        li
+                            input(type="text", name="criteria_2-value")
+                    
+                    ul
+                        li Приоритет, вид, оригинал аттестата
+                        li
+                            input(type="text", name="criteria_2-value")
+
