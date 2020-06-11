@@ -1,0 +1,12 @@
+extends ../public/index
+
+block header_
+    title Результат поиска
+
+block main_
+    table
+        tr
+            td № Аббитуриента
+        each item in data
+            tr
+                td=item.id
