@@ -15,9 +15,6 @@ export default class Applicant extends BaseEntity {
 	forma_poluch_obraz!: string;
 
 	@Column()
-	specialnost!: string;
-
-	@Column()
 	nomer_lichnoe_delo!: string;
 
 	@Column()

@@ -80,7 +80,6 @@ export const store = async (req: Request, res: Response) => {
 	data.date_zayv = req.body.date_zayv;
 	data.fio = req.body.fio;
 	data.forma_poluch_obraz = req.body.forma_poluch_obraz;
-	data.specialnost = req.body.specialnost;
 	data.nomer_lichnoe_delo = req.body.nomer_lichnoe_delo;
 	data.nomer_ekz_lista = req.body.nomer_ekz_lista;
 	data.osnova_obych = req.body.osnova_obych;
@@ -103,9 +102,10 @@ export const store = async (req: Request, res: Response) => {
 	data.avg_ball_obrazovanie_2 = req.body.avg_ball_obrazovanie_2;
 	data.reshenie_komissi = req.body.reshenie_komissi;
 	let request_Applicant = new RequestApplicant();
-	request_Applicant.priority = req.body.prioritet;
 	request_Applicant.id_aplicant = data;
-	request_Applicant.name_spec = req.body.specialnost;
+	request_Applicant.name_spec_1 = req.body.specialnost_1;
+	request_Applicant.name_spec_2 = req.body.specialnost_2? req.body.specialnost_2 : "";
+	request_Applicant.name_spec_3 = req.body.specialnost_3? req.body.specialnost_3 : "";
 	let admission = new Admission();
 	admission.id_applicant = data;
 	admission.date = new Date(Date.now());
@@ -136,7 +136,6 @@ export const update = async (req: Request, res: Response) => {
 	data.date_zayv = req.body.date_zayv;
 	data.fio = req.body.fio;
 	data.forma_poluch_obraz = req.body.forma_poluch_obraz;
-	data.specialnost = req.body.specialnost;
 	data.nomer_lichnoe_delo = req.body.nomer_lichnoe_delo;
 	data.nomer_ekz_lista = req.body.nomer_ekz_lista;
 	data.osnova_obych = req.body.osnova_obych;

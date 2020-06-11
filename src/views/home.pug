@@ -128,43 +128,39 @@ block body_
                     td.c26 Средний балл документа об образовании (2)
                     td.c27#spotted Решение приемной комиссии
                     td.c28 № и дата приказа о зачислении
-                    td.c29 Приоритет, вид, оригинал аттестата
             tbody
-                if data
-                    each item in data
+                if applicants && requestApplicants && admissions
+                    -for (var i = 0; i < applicants.length; i++)
                         tr
                             td.c0
-                                a(href="/applicants/"+item.id)
+                                a(href="/applicants/"+applicants[i].id)
                                     button Редактировать
-                            td.c1#spotted=item.id
-                            td.c2#spotted=item.date_zayv
-                            td.c3#spotted=item.fio
-                            td.c4#spotted=item.forma_poluch_obraz
-                            td.c5#spotted=item.specialnost
-                            td.c6=item.prioritet
-                            td.c7=item.nomer_lichnoe_delo
-                            td.c8=item.nomer_ekz_lista
-                            td.c9=item.osnova_obych
-                            td.c10=item.obshaga
-                            td.c11=item.sex
-                            td.c12=item.birthday
-                            td.c13=item.grazhdanstvo
-                            td.c14=item.addres_mesto_zitelstva
-                            td.c15=item.oblast
-                            td.c16=item.pasport
-                            td.c17=item.tel
-                            td.c18=item.soc_category
-                            td.c19=item.SPO_vpervie_nevpervie
-                            td.c20=item.lvl_obraz
-                            td.c21=item.god_okonchania
-                            td.c22=item.osobie_yspexi_v_echebe
-                            td.c23=item.orig_doc_obraz
-                            td.c24=item.copy_doc_obraz
-                            td.c25=item.vstup_ispitanie_1
-                            td.c26=item.avg_ball_obrazovanie_2
-                            td.c27#spotted=item.reshenie_komissi
-                            td.c28=item.nomer_i_data_prikaza_o_zachislenie
-                            td.c29=item.prioritet_vid_orig_atestata
+                            td.c1#spotted=applicants[i].id
+                            td.c2#spotted=applicants[i].date_zayv
+                            td.c3#spotted=applicants[i].fio
+                            td.c4#spotted=applicants[i].forma_poluch_obraz
+                            td.c5#spotted=requestApplicants[i].name_spec_1 + " | " + requestApplicants[i].name_spec_2 + " | " + requestApplicants[i].name_spec_3
+                            td.c7=applicants[i].nomer_lichnoe_delo
+                            td.c8=applicants[i].nomer_ekz_lista
+                            td.c9=applicants[i].osnova_obych
+                            td.c10=applicants[i].obshaga
+                            td.c11=applicants[i].sex
+                            td.c12=applicants[i].birthday
+                            td.c13=applicants[i].grazhdanstvo
+                            td.c14=applicants[i].addres_mesto_zitelstva
+                            td.c15=applicants[i].oblast
+                            td.c16=applicants[i].pasport
+                            td.c17=applicants[i].tel
+                            td.c18=applicants[i].soc_category
+                            td.c19=applicants[i].SPO_vpervie_nevpervie
+                            td.c20=applicants[i].lvl_obraz
+                            td.c21=applicants[i].god_okonchania
+                            td.c22=applicants[i].osobie_yspexi_v_echebe
+                            td.c23=applicants[i].orig_doc_obraz
+                            td.c24=applicants[i].copy_doc_obraz
+                            td.c25=applicants[i].vstup_ispitanie_1
+                            td.c26=applicants[i].avg_ball_obrazovanie_2
+                            td.c27#spotted=applicants[i].reshenie_komissi
                 else
                     tr
                         td.c1 -

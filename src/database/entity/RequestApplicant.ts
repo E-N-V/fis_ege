@@ -10,8 +10,11 @@ export default class RequestApplicant extends BaseEntity {
 	id_aplicant!: Applicant;
 
 	@Column()
-	name_spec!: number;
+	name_spec_1!: string;
 
-	@Column()
-	priority!: number;
+	@Column({ nullable: true })
+	name_spec_2!: string;
+
+	@Column({ nullable: true })
+	name_spec_3!: string;
 }

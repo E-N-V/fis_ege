@@ -233,35 +233,22 @@ block body_
                                         td
                                             input(type="text", name="specialnost_1", list="Specialnost", required).form-control.input-my
                                             datalist(id="Specialnost")
-                                                option МИЭ
-                                                option СиХНП
-                                                option СКД
-                                                option НХТ о/о
-                                                option ИИ
-                                                option АИ
+                                                each val in spec
+                                                    option=val.name
                                     tr.trmy#disabletr
                                         td.tdnum 2
                                         td
                                             input(type="text", name="specialnost_2", list="Specialnost", required, disabled).form-control.input-my
                                             datalist(id="Specialnost")
-                                                option МИЭ
-                                                option СиХНП
-                                                option СКД
-                                                option НХТ о/о
-                                                option ИИ
-                                                option АИ
+                                                each val in spec
+                                                    option=val.name
                                     tr.trmy#disabletr
                                         td.tdnum 3
                                         td
                                             input(type="text", name="specialnost_3", list="Specialnost", required, disabled).form-control.input-my
                                             datalist(id="Specialnost")
-                                                option МИЭ
-                                                option СиХНП
-                                                option СКД
-                                                option НХТ о/о
-                                                option ИИ
-                                                option АИ
-
+                                                each val in spec
+                                                    option=val.name
                                     tr
                                         td
                                         td.tdbut
