@@ -358,9 +358,31 @@ block body_
                             .form-group
                                 label Вступительное испытание (балл) (1)
                                 input(type="text", name="vstup_ispitanie_1", required).form-control
+                            
                             .form-group
                                 label Средний балл документа об образовании (2)
-                                input(type="text", name="avg_ball_obrazovanie_2", required).form-control
+
+                                .calc-container
+                                    .buts-container
+                                        .write-but-my#calcActive(onclick="calcSwap(0)") Написать
+                                        .calc-but-my(onclick="calcSwap(1)") Вычислить
+                                        .calc-control
+                                            .calc-plus.calc-md#soladsnake(onclick="calcInpCreate()") +
+                                            .calc-minus.calc-md#soladsnake(onclick="calcInpDestroy()") -
+                                        .calc-control
+                                            .calc-done.calc-md#soladsnake(onclick="calcStart()") Посчитать
+                                        p.calc-detail.calc-md#soladsnake Средний балл:
+                                            input.inp-result(type="text", name="avg_ball_obrazovanie_2", disabled, readonly, value="###")
+                                        p.calc-result.calc-md#soladsnake Введено оценок:
+                                        
+                                    .inp-container
+                                        input.write-md(type="number", name="avg_ball_obrazovanie_2", required).inp-write
+
+                                        input.calc-md.inp-calc(type="number")#soladsnake
+                                        input.calc-md.inp-calc(type="number")#soladsnake
+                                        input.calc-md.inp-calc(type="number")#soladsnake
+                                        input.calc-md.inp-calc(type="number")#soladsnake
+
                             .form-group
                                 label Решение приемной комиссии
                                 input(type="text", name="reshenie_komissi", required).form-control

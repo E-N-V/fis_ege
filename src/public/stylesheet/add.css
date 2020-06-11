@@ -140,10 +140,6 @@ label{
     color: white;
 }
 
-#activeBlock{
-    display: block;
-}
-
 .form-control{
     height: initial;
 }
@@ -283,3 +279,149 @@ td{
 .tdbut{
    padding-top: 10px; 
 }
+
+.calc-container{
+    display: flex;
+}
+
+.calc-container .buts-container{
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    max-width: calc(60% - 10px);
+}
+
+.calc-container .buts-container .write-but-my, .calc-container .buts-container .calc-but-my{
+    background-color: rgb(89, 175, 255);
+    display: flex;
+    padding-right: 10px;
+    color: white;
+    align-items: center;
+    width: 155px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.calc-container .buts-container .write-but-my:hover, .calc-container .buts-container .calc-but-my:hover{
+    background-color: rgb(89, 106, 255);
+}
+
+.calc-container .buts-container .write-but-my:focus, .calc-container .buts-container .calc-but-my:focus{
+    outline: 2px solid rgb(55, 53, 184, 0.8);
+}
+
+.calc-container .buts-container .write-but-my:before, .calc-container .buts-container .calc-but-my:before{
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-image: url("/images/fgback.png");
+    background-color: rgba(0, 0, 0, .6);
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: 45% 50%;
+    margin-right: 10px;
+}
+
+.calc-container .buts-container .calc-but-my{
+
+}
+
+.calc-container .buts-container .calc-control{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.calc-container .buts-container .calc-control .calc-plus,.calc-container .buts-container .calc-control .calc-minus,.calc-container .buts-container .calc-control .calc-done{
+    display: block;
+    color: white;
+    background-color: rgb(89, 175, 255);
+    padding: 10px;
+    cursor: pointer;
+}
+
+.calc-container .buts-container .calc-control .calc-plus:hover,.calc-container .buts-container .calc-control .calc-minus:hover,.calc-container .buts-container .calc-control .calc-done:hover{
+    background-color: rgb(89, 106, 255);
+}
+
+.calc-container .buts-container .calc-control .calc-plus:focus,.calc-container .buts-container .calc-control .calc-minus:focus,.calc-container .buts-container .calc-control .calc-done:focus{
+    outline: 2px solid rgb(55, 53, 184, 0.8);
+}
+
+#calcActive, #calcActive:hover{
+    background-color: rgb(55, 53, 184);
+}
+
+.calc-container .buts-container .calc-control .calc-plus, .calc-container .buts-container .calc-control .calc-minus{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 43.5px;
+    height: 43.5px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.calc-container .buts-container .calc-control .calc-plus{
+    margin-right: 10px;
+}
+.calc-container .buts-container .calc-control .calc-minus{
+
+}
+
+.calc-container .buts-container .calc-control .calc-done{
+
+}
+
+.calc-container .buts-container .calc-detail{
+
+}
+
+.calc-container .buts-container .calc-result{
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.calc-container .inp-container{
+    max-width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.inp-result,.inp-result:focus,.inp-result:hover{
+    display: inline-block;
+    font-size: 15px;
+    background-color: white;
+    border: none;
+    border-radius: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    width: 40px;
+}
+
+.calc-container .inp-container .inp-write{
+
+}
+
+.calc-container .inp-container .inp-calc{
+    margin-bottom: 10px;
+}
+
+#soladsnake{
+    display: none;
+}
+
+#activeBlock{
+    display: block !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+  }
