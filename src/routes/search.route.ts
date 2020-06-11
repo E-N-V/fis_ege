@@ -1,8 +1,8 @@
 import { Router } from "express";
 const route = Router();
 
-import { SerachGET } from "../controllers/Search.controller";
+import { SearchGET } from "../controllers/Search.controller";
 
-route.get("/search", SerachGET);
+route.get("/search", SearchGET);
 
 export default route;
