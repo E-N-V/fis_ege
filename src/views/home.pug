@@ -127,7 +127,6 @@ block body_
                     td.c25 Вступительное испытание (балл) (1)
                     td.c26 Средний балл документа об образовании (2)
                     td.c27#spotted Решение приемной комиссии
-                    td.c28 № и дата приказа о зачислении
             tbody
                 if applicants && requestApplicants && admissions
                     -for (var i = 0; i < applicants.length; i++)
@@ -139,7 +138,8 @@ block body_
                             td.c2#spotted=applicants[i].date_zayv
                             td.c3#spotted=applicants[i].fio
                             td.c4#spotted=applicants[i].forma_poluch_obraz
-                            td.c5#spotted=requestApplicants[i].name_spec_1 + " | " + requestApplicants[i].name_spec_2 + " | " + requestApplicants[i].name_spec_3
+                            td.c5#spotted
+                                |#{requestApplicants[i].name_spec_1} | #{requestApplicants[i].name_spec_2} | #{requestApplicants[i].name_spec_3}
                             td.c7=applicants[i].nomer_lichnoe_delo
                             td.c8=applicants[i].nomer_ekz_lista
                             td.c9=applicants[i].osnova_obych
@@ -163,6 +163,7 @@ block body_
                             td.c27#spotted=applicants[i].reshenie_komissi
                 else
                     tr
+                        td.c0 -
                         td.c1 -
                         td.c2 -
                         td.c3 -
@@ -190,5 +191,3 @@ block body_
                         td.c25 -
                         td.c26 -
                         td.c27 -
-                        td.c28 -
-                        td.c29 -

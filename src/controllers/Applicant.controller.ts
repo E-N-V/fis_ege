@@ -3,6 +3,7 @@ import Applicant from "../database/entity/Applicant";
 import RequestApplicant from "../database/entity/RequestApplicant";
 import Admission from "../database/entity/Admission";
 import Specialty from "../database/entity/Specialty"
+import Region from "../database/entity/Region";
 
 // TODO: Защитить методы контролллера от неавторизованных пользователей
 
@@ -15,7 +16,8 @@ import Specialty from "../database/entity/Specialty"
 export const index = async (req: Request, res: Response) => {
 	let id = (await Applicant.count()) + 1;
 	let specialnosti = await Specialty.find()
-	return res.status(200).render("add", { id, spec: specialnosti, usr: req.cookies.usr, opt: "add", url_: "/applicants" });
+	let oblasti = await Region.find()
+	return res.status(200).render("add", { id, oblasti, spec: specialnosti, usr: req.cookies.usr, opt: "add", url_: "/applicants" });
 };
 
 /**
@@ -97,22 +99,21 @@ export const store = async (req: Request, res: Response) => {
 	data.god_okonchania = req.body.god_okonchania;
 	data.osobie_yspexi_v_echebe = req.body.osobie_yspexi_v_echebe;
 	data.orig_doc_obraz = req.body.orig_doc_obraz;
-	data.copy_doc_obraz = req.body.copy_doc_obraz;
 	data.vstup_ispitanie_1 = req.body.vstup_ispitanie_1;
 	data.avg_ball_obrazovanie_2 = req.body.avg_ball_obrazovanie_2;
 	data.reshenie_komissi = req.body.reshenie_komissi;
 	let request_Applicant = new RequestApplicant();
 	request_Applicant.id_aplicant = data;
 	request_Applicant.name_spec_1 = req.body.specialnost_1;
-	request_Applicant.name_spec_2 = req.body.specialnost_2? req.body.specialnost_2 : "";
-	request_Applicant.name_spec_3 = req.body.specialnost_3? req.body.specialnost_3 : "";
+	request_Applicant.name_spec_2 = req.body.specialnost_2? req.body.specialnost_2 : "не выбрано";
+	request_Applicant.name_spec_3 = req.body.specialnost_3? req.body.specialnost_3 : "не выбрано";
 	let admission = new Admission();
 	admission.id_applicant = data;
 	admission.date = new Date(Date.now());
 	admission.number = req.body.nomer_i_data_prikaza_o_zachislenie;
+	let result = await data.save();
 	Admission.save(admission)
 	RequestApplicant.save(request_Applicant)
-	let result = await data.save();
 
 	if (result) {
 		return res.status(200).redirect("/");
@@ -153,7 +154,6 @@ export const update = async (req: Request, res: Response) => {
 	data.god_okonchania = req.body.god_okonchania;
 	data.osobie_yspexi_v_echebe = req.body.osobie_yspexi_v_echebe;
 	data.orig_doc_obraz = req.body.orig_doc_obraz;
-	data.copy_doc_obraz = req.body.copy_doc_obraz;
 	data.vstup_ispitanie_1 = req.body.vstup_ispitanie_1;
 	data.avg_ball_obrazovanie_2 = req.body.avg_ball_obrazovanie_2;
 	data.reshenie_komissi = req.body.reshenie_komissi;
