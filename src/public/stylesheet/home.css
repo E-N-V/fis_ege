@@ -84,7 +84,7 @@ li:first-child{
     font-weight: bold;
 }
 
-.btn{
+.btn, .srch{
     display: flex;
     align-items: center;
     border: none !important;
@@ -95,7 +95,15 @@ li:first-child{
     margin-right: 20px;
 }
 
-.btn::before{
+.srch{
+    float: right;
+    background-color: rgb(55, 53, 184);
+    padding-right: 0px;
+    padding-left: 10px;
+    color: white;
+    margin-right: 0;
+}
+.btn::before,.srch::after{
     content: '';
     width: 70px;
     height: 70px;
@@ -105,6 +113,12 @@ li:first-child{
     background-position: 40% 50%;
     background-repeat: no-repeat;
     background-size: 80%;
+}
+
+.srch::after{
+    background-image: url("/images/search.png");
+    margin-right: 0px;
+    margin-left: 10px;
 }
 
 .btn:focus{
@@ -180,6 +194,27 @@ li:first-child{
 
 @media (max-width:500px){
     
+    .srch::before{
+        content: '';
+        width: 70px;
+        height: 70px;
+        background-color: rgba(0, 0, 0, 0.6);
+        margin-right: 30px;
+        background-image: url("/images/userp.png");
+        background-position: 40% 50%;
+        background-repeat: no-repeat;
+        background-size: 80%;
+    }
+
+    .srch::after{
+        content: none;
+    }
+
+    .srch{
+        padding-left: 0;
+        width: 100%;
+    }
+
     .form-blocks{
         width: 90%;
         margin-left: 5%;
@@ -222,6 +257,7 @@ li:first-child{
     margin-bottom: 20px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .search-area{
