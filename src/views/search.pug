@@ -4,7 +4,28 @@ block head_
     title Страница поиска
 
 block body_
-    .panel.panel-primary
-        .panel-heading Heading
-        .panel-body
-            p Some text
+    h2 Поиск
+    form
+        .search-area(action="", method="post")
+            input.search-text(type="text", name="" placeholder="поиск...")
+            input.search-button(type="submit", value="")
+        .filter-area
+            h3 Фильтр
+            ul.filters
+                li 
+                    input(type="radio", name="filter" value="option_1" id="opt1")
+                    label(for="opt1") вариант 1
+                li
+                    input(type="radio", name="filter" value="option_2" id="opt2")
+                    label(for="opt2") вариант 2
+        .criteria-aria
+            h3 Критерии
+            ul.criteria
+                li Название критерия
+                    li Опция критерия: 
+                        input(type="number", name="criteria_1")
+                        input(type="checkbox", name="criteria_1")
+                    li Опция критерия: 
+                        input(type="number", name="criteria_2")
+                        input(type="checkbox", name="criteria_2")
+                        
