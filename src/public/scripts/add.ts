@@ -79,3 +79,79 @@ function del() {
     }
 }
 
+function calcSwap(num:any) {
+    const calcinp:any = document.getElementsByClassName("inp-result")[0]
+    const writeinp:any = document.getElementsByClassName("inp-write")[0]
+    const calcmd:any = document.getElementsByClassName("calc-md")
+    const writemd:any = document.getElementsByClassName("write-md")
+    const butcalc:any = document.getElementsByClassName("calc-but-my")[0]
+    const butwrite:any = document.getElementsByClassName("write-but-my")[0]
+    if (num == 1) {
+
+        for (let i = 0; i < writemd.length; i++) {
+            writemd[i].id = "soladsnake";
+        }
+
+        for (let i = 0; i < calcmd.length; i++) {
+            calcmd[i].id = "";
+        }
+        
+        butwrite.id = ""
+        butcalc.id = "calcActive"
+
+        writeinp.disabled = true
+        calcinp.disabled = false
+
+    }else if (num == 0) {
+        for (let i = 0; i < writemd.length; i++) {
+            writemd[i].id = "";
+        }
+
+        for (let i = 0; i < calcmd.length; i++) {
+            calcmd[i].id = "soladsnake";
+        }
+
+        butwrite.id = "calcActive"
+        butcalc.id = ""
+
+        writeinp.disabled = false
+        calcinp.disabled = true
+
+    }
+}
+
+function calcStart(){
+    const calcinp:any = document.getElementsByClassName("inp-calc")
+    const calcres:any = document.getElementsByClassName("inp-result")[0]
+    const calcdet:any = document.getElementsByClassName("calc-result")[0]
+    let x:number = 0
+    let y:number = 0
+
+    for (let i = 0; i < calcinp.length; i++) {
+        if (calcinp[i].value != "") {
+            y++
+            x = x + parseFloat(calcinp[i].value);  
+        }  
+    }
+    calcres.setAttribute("value", x/y)
+    calcdet.innerText = "Введено оценок: " + y
+}
+
+
+
+function calcInpCreate(){
+    const inpcon:any = document.getElementsByClassName("inp-container")
+    const calcinp:any = document.getElementsByClassName("inp-calc")
+    let calc:any = document.createElement("input")
+    calc.setAttribute("class", "calc-md inp-calc")
+    calc.setAttribute("type", "number")
+    inpcon[0].appendChild(calc)
+}
+
+function calcInpDestroy(){
+    const calcinp:any = document.getElementsByClassName("inp-calc")
+    if (calcinp.length > 1) {
+
+        calcinp[calcinp.length - 1].remove()
+    }
+}
