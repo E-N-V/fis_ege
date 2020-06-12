@@ -6,7 +6,7 @@ export default class RequestApplicant extends BaseEntity {
 	@PrimaryGeneratedColumn()
 	id!: number;
 
-	@OneToOne((type) => Applicant)
+	@OneToOne((type) => Applicant, (id_applicant) => id_applicant.request)
 	@JoinColumn()
 	id_aplicant!: Applicant;
 

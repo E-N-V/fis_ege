@@ -1,4 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToOne } from "typeorm";
+import Admission from "./Admission";
+import RequestApplicant from "./RequestApplicant";
 
 @Entity()
 export default class Applicant extends BaseEntity {
@@ -73,4 +75,10 @@ export default class Applicant extends BaseEntity {
 
 	@Column()
 	reshenie_komissi!: string;
+
+	@OneToOne((type) => Admission, (admission) => admission.id_applicant)
+	admission!: Admission;
+
+	@OneToOne((type) => RequestApplicant, (request) => request.id_aplicant)
+	request!: RequestApplicant;
 }

@@ -2,15 +2,15 @@ extends ../public/index
 
 block head_
     title Страница поиска
-    link(rel="stylesheet", href="stylesheet/search.css")
-    script(src="scripts/search.js")
+    link(rel="stylesheet", href="http://localhost:3000/stylesheet/search.css")
+    script(src="http://localhost:3000/scripts/search.js")
 block body_
     h2 Поиск
-    form
-        .search-area(action="", method="post")
-            input.search-text(type="text", name="" placeholder="поиск по ФИО...")
-            input.search-button(type="submit", value="")
-    form
+    form(action="/search/applicant", method="post")
+        .search-area
+            input.search-text(type="text", name="applicant" placeholder="поиск по ФИО...")
+            button.search-button(type="submit")
+    form(action="/search", method="post")
         .opt-container
             .filter-area
                 h3.nakedsnake Категории 
@@ -35,89 +35,89 @@ block body_
                             input.jschk(type="checkbox", name="criteria-status_1" id="chk1") 
                             label(for="chk1" onclick="refreshInputs()") 
                             p От: 
-                            input.jsinp(type="date", name="criteria-value_1")
+                            input.jsinp(type="date", name="data_zayav_ot")
                         li
                             input.jschk(type="checkbox", name="criteria-status_2" id="chk2") 
                             label(for="chk2" onclick="refreshInputs()") 
                             p До: 
-                            input.jsinp(type="date", name="criteria_2-value")
+                            input.jsinp(type="date", name="data_zayav_do")
                     ul
                         li Форма получения образования
                         li
-                            input(type="checkbox", name="criteria-status_3" id="chk3")
-                            label(for="chk3" onclick="refreshInputs()") 
+                            input(type="checkbox", name="forma_poluch_obraz", value="Очная", id="chk3")
+                            label(for="chk3") 
                             p Очная
                         li
-                            input(type="checkbox", name="criteria-status_4" id="chk4")
-                            label(for="chk4" onclick="refreshInputs()") 
+                            input(type="checkbox", name="forma_poluch_obraz", value="Заочная", id="chk4")
+                            label(for="chk4") 
                             p Заочная
                     ul
                         li Специальности
                             li 
-                                input(type="checkbox", name="criteria-status_5" id="chk5")
-                                label(for="chk5" onclick="refreshInputs()") 
+                                input(type="checkbox", name="spec", value="Архитектура", id="chk5")
+                                label(for="chk5") 
                                 p архитектура
                             li 
-                                input(type="checkbox", name="criteria-status_6" id="chk6")
-                                label(for="chk6" onclick="refreshInputs()") 
+                                input(type="checkbox", name="spec", value="Строительство и эксплуатация зданий и сооружений", id="chk6")
+                                label(for="chk6") 
                                 p строительство и эксплуатация зданий и сооружений
                             li 
-                                input(type="checkbox", name="criteria-status_7" id="chk7")
-                                label(for="chk7" onclick="refreshInputs()") 
+                                input(type="checkbox", name="spec", value="водоснабжение и водоотведение", id="chk7")
+                                label(for="chk7") 
                                 p водоснабжение и водоотведение
                             li 
-                                input(type="checkbox", name="criteria-status_8" id="chk8")
-                                label(for="chk8" onclick="refreshInputs()") 
+                                input(type="checkbox", name="spec", value="программирование в компьютерных системах", id="chk8")
+                                label(for="chk8") 
                                 p программирование в компьютерных системах
                             li
-                                input(type="checkbox", name="criteria-status_9" id="chk9")
-                                label(for="chk9" onclick="refreshInputs()") 
+                                input(type="checkbox", name="spec", value="техническое обслуживание и ремонт систем винтеляции и земельно имущественные отношения", id="chk9")
+                                label(for="chk9") 
                                 p техническое обслуживание и ремонт систем винтеляции и земельно имущественные отношения
                             li 
-                                input(type="checkbox", name="criteria-status_10" id="chk10")
-                                label(for="chk10" onclick="refreshInputs()") 
+                                input(type="checkbox", name="spec", value="ТЕХНИЧЕСКАЯ ЭКСПЛУАТАЦИЯ ПОДЪЕМНО-ТРАНСПОРТНЫХ, СТРОИТЕЛЬНЫХ, ДОРОЖНЫХ МАШИН И ОБОРУДОВАНИЯ", id="chk10")
+                                label(for="chk10") 
                                 p ТЕХНИЧЕСКАЯ ЭКСПЛУАТАЦИЯ ПОДЪЕМНО-ТРАНСПОРТНЫХ, СТРОИТЕЛЬНЫХ, ДОРОЖНЫХ МАШИН И ОБОРУДОВАНИЯ
                             li
-                                input(type="checkbox", name="criteria-status_11" id="chk11")
-                                label(for="chk11" onclick="refreshInputs()") 
+                                input(type="checkbox", name="spec", value="ДИЗАЙН", id="chk11")
+                                label(for="chk11") 
                                 p ДИЗАЙН
                             li 
-                                input(type="checkbox", name="criteria-status_12" id="chk12")
-                                label(for="chk12" onclick="refreshInputs()") 
+                                input(type="checkbox", name="spec", value="ПРОИЗВОДСТВО НЕМЕТАЛЛИЧЕСКИХ СТРОИТЕЛЬНЫХ ИЗДЕЛИЙ И КОНСТРУКЦИЙ", id="chk12")
+                                label(for="chk12") 
                                 p ПРОИЗВОДСТВО НЕМЕТАЛЛИЧЕСКИХ СТРОИТЕЛЬНЫХ ИЗДЕЛИЙ И КОНСТРУКЦИЙ
                             li
-                                input(type="checkbox", name="criteria-status_13" id="chk13")
-                                label(for="chk13" onclick="refreshInputs()") 
+                                input(type="checkbox", name="spec", value="МИЭ", id="chk13")
+                                label(for="chk13") 
                                 p МИЭ
                     ul
                         li Основа обучения
                         li 
-                            input(type="checkbox", name="criteria-status_2" id="chk13")
-                            label(for="chk13" onclick="refreshInputs()") 
+                            input(type="checkbox", name="osnova_obych", value="бюджет", id="chk13")
+                            label(for="chk13") 
                             p бюджет
                         li
-                            input(type="checkbox", name="criteria-status_2" id="chk43")
-                            label(for="chk43" onclick="refreshInputs()") 
+                            input(type="checkbox", name="osnova_obych", value="внебюджет", id="chk43")
+                            label(for="chk43") 
                             p внебюджет
                     ul
                         li Нуждаемость в общежитии
                         li
-                            input(type="checkbox", name="criteria-status_2" id="chk44")
-                            label(for="chk44" onclick="refreshInputs()") 
+                            input(type="checkbox", name="obshaga", value="Да", id="chk44")
+                            label(for="chk44") 
                             p да
                         li
-                            input(type="checkbox", name="criteria-status_2" id="chk45")
-                            label(for="chk45" onclick="refreshInputs()") 
+                            input(type="checkbox", name="obshaga", value="Нет", id="chk45")
+                            label(for="chk45") 
                             p нет
                     ul
                         li Пол
                         li 
-                            input(type="checkbox", name="criteria-status_2" id="chk14")
-                            label(for="chk14" onclick="refreshInputs()") 
+                            input(type="checkbox", name="sex", value="М", id="chk14")
+                            label(for="chk14") 
                             p М
                         li 
-                            input(type="checkbox", name="criteria-status_2" id="chk15")
-                            label(for="chk15" onclick="refreshInputs()") 
+                            input(type="checkbox", name="sex", value="Ж", id="chk15")
+                            label(for="chk15") 
                             p Ж
                     ul
                         li Дата рождения
@@ -125,109 +125,108 @@ block body_
                             input.jschk(type="checkbox", name="criteria-status_2" id="chk16")
                             label(for="chk16" onclick="refreshInputs()") 
                             p От:
-                            input.jsinp(type="date", name="criteria_2-value")
+                            input.jsinp(type="date", name="birthday_ot")
                         li 
                             input.jschk(type="checkbox", name="criteria-status_2" id="chk17")
                             label(for="chk17" onclick="refreshInputs()") 
                             p До:
-                            input.jsinp(type="date", name="criteria_2-value")
+                            input.jsinp(type="date", name="birthday_do")
                     ul
                         li Гражданство
                         li 
-                            input(type="checkbox", name="criteria-status_2" id="chk18")
-                            label(for="chk18" onclick="refreshInputs()") 
+                            input(type="checkbox", name="grazhdanstvo", value="РФ", id="chk18")
+                            label(for="chk18") 
                             p РФ
                         li
-                            input(type="checkbox", name="criteria-status_2" id="chk19")
-                            label(for="chk19" onclick="refreshInputs()") 
+                            input(type="checkbox", name="grazhdanstvo", value="ИГ", id="chk19")
+                            label(for="chk19") 
                             p ИГ
                     ul
                         li Область
                         li 
                             input.jschk(type="checkbox", name="criteria-status_2" id="chk20")
-                            label(for="chk20" onclick="refreshInputs()")
-                            input.jsinp(type="text", name="criteria_2-value")
+                            label(for="chk20")
+                            input.jsinp(type="text", list="OblastList", name="criteria_2-value")
+                            datalist(id="OblastList")
+                                each item in oblasti
+                                    option=item.name
                 .criteria-group
                     ul
                         li Паспортные данные (серия, номер, кем и когда выдан)
                         li
                             input.jschk(type="checkbox", name="criteria-status_2" id="chk21")
-                            label(for="chk21" onclick="refreshInputs()")
-                            input.jsinp(type="text", name="criteria_2-value")
+                            label(for="chk21")
+                            input.jsinp(type="text", name="passport")
                     ul
                         li Социальные категории (сирота, опекаемый, инвалид, ОВЗ)
                         li 
-                            input(type="checkbox", name="criteria-status_2" id="chk22")
-                            label(for="chk22" onclick="refreshInputs()") 
+                            input(type="checkbox", name="soc_category", value="ничего", id="chk22")
+                            label(for="chk22") 
                             p ничего
                         li 
-                            input(type="checkbox", name="criteria-status_2" id="chk23")
-                            label(for="chk23" onclick="refreshInputs()") 
+                            input(type="checkbox", name="soc_category", value="сирота", id="chk23")
+                            label(for="chk23") 
                             p сирота
                         li 
-                            input(type="checkbox", name="criteria-status_2" id="chk24")
-                            label(for="chk24" onclick="refreshInputs()") 
+                            input(type="checkbox", name="soc_category", value="опекаемый", id="chk24")
+                            label(for="chk24") 
                             p опекаемый
                         li 
-                            input(type="checkbox", name="criteria-status_2" id="chk24")
-                            label(for="chk24" onclick="refreshInputs()") 
+                            input(type="checkbox", name="soc_category", value="инвалид", id="chk24")
+                            label(for="chk24") 
                             p инвалид
                         li 
-                            input(type="checkbox", name="criteria-status_2" id="chk25")
-                            label(for="chk25" onclick="refreshInputs()") 
+                            input(type="checkbox", name="soc_category", value="ОВЗ", id="chk25")
+                            label(for="chk25") 
                             p ОВЗ
                     ul
                         li СПО впервые / не впервые
                         li
-                            input(type="checkbox", name="criteria-status_2" id="chk26")
-                            label(for="chk26" onclick="refreshInputs()") 
+                            input(type="checkbox", name="SPO_vpervie_nevpervie", value="впервые", id="chk26")
+                            label(for="chk26") 
                             p впервые
                         li
-                            input(type="checkbox", name="criteria-status_2" id="chk40")
-                            label(for="chk40" onclick="refreshInputs()") 
+                            input(type="checkbox", name="SPO_vpervie_nevpervie", value="не впервые", id="chk40")
+                            label(for="chk40") 
                             p не впервые
                     ul
                         li Уровень образования
                         li
-                            input(type="checkbox", name="criteria-status_2" id="chk27")
-                            label(for="chk27" onclick="refreshInputs()")
+                            input(type="checkbox", name="lvl_obraz", value="9", id="chk27")
+                            label(for="chk27")
+                            p 9 класс
                         li
-                            input(type="checkbox", name="criteria-status_2" id="chk41")
-                            label(for="chk41" onclick="refreshInputs()")
+                            input(type="checkbox", name="lvl_obraz", value="11", id="chk41")
+                            label(for="chk41")
+                            p 11 класс
                     ul
                         li Год окончания учеб. завед.
                         li
                             input.jschk(type="checkbox", name="criteria-status_2" id="chk28")
                             label(for="chk28" onclick="refreshInputs()") 
                             p От
-                            input.jsinp(type="date", name="criteria_2-value")
+                            input.jsinp(type="date", name="god_okonchania_ot")
                         li
                             input.jschk(type="checkbox", name="criteria-status_2" id="chk29")
                             label(for="chk29" onclick="refreshInputs()") 
                             p До
-                            input.jsinp(type="date", name="criteria_2-value")
+                            input.jsinp(type="date", name="god_okonchania_do")
                     ul
                         li Особые успехи в учении
                         li
                             input.jschk(type="checkbox", name="criteria-status_2" id="chk30")
-                            label(for="chk30" onclick="refreshInputs()")
-                            input.jsinp(type="text", name="criteria_2-value")
+                            label(for="chk30")
+                            input.jsinp(type="text", name="osobie_yspexi_v_echebe")
                     ul
                         li Оригинал документа об образовании
                         li
-                            input(type="checkbox", name="criteria-status_2" id="chk31")
-                            label(for="chk31" onclick="refreshInputs()") 
+                            input(type="checkbox", name="orig_doc_obraz", value="да", id="chk31")
+                            label(for="chk31") 
                             p да
                         li
-                            input(type="checkbox", name="criteria-status_2" id="chk42")
-                            label(for="chk42" onclick="refreshInputs()") 
+                            input(type="checkbox", name="orig_doc_obraz", value="нет", id="chk42")
+                            label(for="chk42") 
                             p нет
-                    ul
-                        li Копия документа об образовании
-                        li
-                            input.jschk(type="checkbox", name="criteria-status_2" id="chk32")
-                            label(for="chk32" onclick="refreshInputs()")
-                            input.jsinp(type="text", name="criteria_2-value")
                 .criteria-group
                     ul
                         li Вступительное испытание (балл) (1)
@@ -235,41 +234,40 @@ block body_
                             input.jschk(type="checkbox", name="criteria-status_1" id="chk33")
                             label(for="chk33" onclick="refreshInputs()") 
                             p выше:
-                            input.jsinp(type="number", name="criteria-value_1")
+                            input.jsinp(type="number", name="vstup_ispitanie_1_ot")
                         li 
                             input.jschk(type="checkbox", name="criteria-status_2" id="chk34")
                             label(for="chk34" onclick="refreshInputs()") 
                             p ниже: 
-                            input.jsinp(type="number", name="criteria_2-value")
+                            input.jsinp(type="number", name="vstup_ispitanie_1_do")
                     ul
                         li Средний балл документа об образовании (2)
                         li 
                             input.jschk(type="checkbox", name="criteria-status_1" id="chk35")
                             label(for="chk35" onclick="refreshInputs()") 
                             p выше: 
-                            input.jsinp(type="number", name="criteria-value_1")
+                            input.jsinp(type="number", name="avg_ball_obrazovanie_2_ot")
                         li 
                             input.jschk(type="checkbox", name="criteria-status_2" id="chk36")
                             label(for="chk36" onclick="refreshInputs()") 
                             p ниже: 
-                            input.jsinp(type="number", name="criteria_2-value")
+                            input.jsinp(type="number", name="avg_ball_obrazovanie_2_do")
                     ul
                         li Решение приемной комиссии
                         li
                             input.jschk(type="checkbox", name="criteria-status_2" id="chk37")
-                            label(for="chk37" onclick="refreshInputs()")
-                            input.jsinp(type="text", name="criteria_2-value")
+                            label(for="chk37")
+                            input.jsinp(type="text", name="reshenie_komissi")
                     ul
                         li № и дата приказа о зачислении
                         li
                             input.jschk(type="checkbox", name="criteria-status_2" id="chk38")
-                            label(for="chk38" onclick="refreshInputs()")
-                            input.jsinp(type="text", name="criteria_2-value")
+                            label(for="chk38")
+                            input.jsinp(type="text", name="nomer_i_data_prikaza_o_zachislenie")
                     ul
                         li Приоритет, вид, оригинал аттестата
                         li
                             input.jschk(type="checkbox", name="criteria-status_2" id="chk39")
-                            label(for="chk39" onclick="refreshInputs()")
-                            input.jsinp(type="text", name="criteria_2-value")
-    script.
-        easyInputs()
+                            label(for="chk39")
+                            input.jsinp(type="text", name="prioritet_vid_orig_atestata")
+
