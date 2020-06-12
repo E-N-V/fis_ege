@@ -10,6 +10,7 @@ block body_
         .search-area(action="", method="post")
             input.search-text(type="text", name="" placeholder="поиск по ФИО...")
             input.search-button(type="submit", value="")
+    form
         .opt-container
             .filter-area
                 h3.nakedsnake Категории 
@@ -24,10 +25,9 @@ block body_
                 .form-button-my(onclick="blockSwappp(2)")
                     .ico-block-my#button3
                     span Результаты
-                
             .criteria-aria
                 h3 Фильтры
-                
+                    button.search-button-second
                 .criteria-group#activeBlock
                     ul
                         li Дата заявления
@@ -89,7 +89,6 @@ block body_
                                 input(type="checkbox", name="criteria-status_13" id="chk13")
                                 label(for="chk13") 
                                 p МИЭ
-
                     ul
                         li Основа обучения
                         li 
@@ -100,7 +99,6 @@ block body_
                             input(type="checkbox", name="criteria-status_2" id="chk13")
                             label(for="chk13") 
                             p внебюджет
-                    
                     ul
                         li Нуждаемость в общежитии
                         li
@@ -111,7 +109,6 @@ block body_
                             input(type="checkbox", name="criteria-status_2" id="chk13")
                             label(for="chk13") 
                             p нет
-
                     ul
                         li Пол
                         li 
@@ -122,7 +119,6 @@ block body_
                             input(type="checkbox", name="criteria-status_2" id="chk15")
                             label(for="chk15") 
                             p Ж
-                    
                     ul
                         li Дата рождения
                         li 
@@ -135,7 +131,6 @@ block body_
                             label(for="chk17") 
                             p До:
                             input(type="date", name="criteria_2-value")
-
                     ul
                         li Гражданство
                         li 
@@ -146,24 +141,19 @@ block body_
                             input(type="checkbox", name="criteria-status_2" id="chk19")
                             label(for="chk19") 
                             p ИГ
-
                     ul
                         li Область
                         li 
                             input(type="checkbox", name="criteria-status_2" id="chk20")
                             label(for="chk20")
                             input(type="text", name="criteria_2-value")
-
                 .criteria-group
-
                     ul
                         li Паспортные данные (серия, номер, кем и когда выдан)
                         li
                             input(type="checkbox", name="criteria-status_2" id="chk21")
                             label(for="chk21")
                             input(type="text", name="criteria_2-value")
-                
-
                     ul
                         li Социальные категории (сирота, опекаемый, инвалид, ОВЗ)
                         li 
@@ -186,7 +176,6 @@ block body_
                             input(type="checkbox", name="criteria-status_2" id="chk25")
                             label(for="chk25") 
                             p ОВЗ
-
                     ul
                         li СПО впервые / не впервые
                         li
@@ -197,7 +186,6 @@ block body_
                             input(type="checkbox", name="criteria-status_2" id="chk40")
                             label(for="chk40") 
                             p не впервые
-
                     ul
                         li Уровень образования
                         li
@@ -206,7 +194,6 @@ block body_
                         li
                             input(type="checkbox", name="criteria-status_2" id="chk41")
                             label(for="chk41")
-
                     ul
                         li Год окончания учеб. завед.
                         li
@@ -225,7 +212,6 @@ block body_
                             input(type="checkbox", name="criteria-status_2" id="chk30")
                             label(for="chk30")
                             input(type="text", name="criteria_2-value")
-                            
                     ul
                         li Оригинал документа об образовании
                         li
@@ -236,7 +222,6 @@ block body_
                             input(type="checkbox", name="criteria-status_2" id="chk42")
                             label(for="chk42") 
                             p нет
-                    
                     ul
                         li Копия документа об образовании
                         li
@@ -256,7 +241,6 @@ block body_
                             label(for="chk34") 
                             p ниже: 
                             input(type="number", name="criteria_2-value")
-
                     ul
                         li Средний балл документа об образовании (2)
                         li 
@@ -269,21 +253,18 @@ block body_
                             label(for="chk36") 
                             p ниже: 
                             input(type="number", name="criteria_2-value")
-
                     ul
                         li Решение приемной комиссии
                         li
                             input(type="checkbox", name="criteria-status_2" id="chk37")
                             label(for="chk37")
                             input(type="text", name="criteria_2-value")
-
                     ul
                         li № и дата приказа о зачислении
                         li
                             input(type="checkbox", name="criteria-status_2" id="chk38")
                             label(for="chk38")
                             input(type="text", name="criteria_2-value")
-                    
                     ul
                         li Приоритет, вид, оригинал аттестата
                         li

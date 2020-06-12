@@ -6,6 +6,7 @@
     background-color: rgb(55, 53, 184);
     flex-grow: 1;
     height: 70px;
+    margin-bottom: 20px;
 }
 
 .search-area .search-text{
@@ -268,4 +269,19 @@ p{
 
 h3{
     width: 100%;
+}
+
+.search-button-second{
+    border-radius: 0;
+    border: none;
+    outline: none;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(33, 32, 104);
+    background-image: url("/images/search.png");
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    float: right;
+    transform: translate(0px, -4px);
 }
