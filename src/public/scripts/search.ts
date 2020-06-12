@@ -38,7 +38,9 @@ function refreshInputs(num:any) {
     }
     if (jsinp[num].disabled == true ) {
         jsinp[num].disabled = false 
+        jsinp[num].required = true
     } else {
-        jsinp[num].disabled = true 
+        jsinp[num].disabled = true
+        jsinp[num].required = false 
     }
 }
