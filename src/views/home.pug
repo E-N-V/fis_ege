@@ -1,8 +1,8 @@
 extends ../public/index
 
 block head_
-    link(rel="stylesheet", href="stylesheet/home.css")
-    script(src="scripts/home.js")
+    link(rel="stylesheet", href="http://localhost:3000/stylesheet/home.css")
+    script(src="http://localhost:3000/scripts/home.js")
     style.
         td{
             padding: 5px;
@@ -128,7 +128,7 @@ block body_
                     td.c26 Средний балл документа об образовании (2)
                     td.c27#spotted Решение приемной комиссии
             tbody
-                if applicants && requestApplicants && admissions
+                if applicants
                     -for (var i = 0; i < applicants.length; i++)
                         tr
                             td.c0
@@ -139,7 +139,7 @@ block body_
                             td.c3#spotted=applicants[i].fio
                             td.c4#spotted=applicants[i].forma_poluch_obraz
                             td.c5#spotted
-                                |#{requestApplicants[i].name_spec_1} | #{requestApplicants[i].name_spec_2} | #{requestApplicants[i].name_spec_3}
+                                |#{applicants[i].request.name_spec_1} | #{applicants[i].request.name_spec_2} | #{applicants[i].request.name_spec_3}
                             td.c7=applicants[i].nomer_lichnoe_delo
                             td.c8=applicants[i].nomer_ekz_lista
                             td.c9=applicants[i].osnova_obych

@@ -8,7 +8,7 @@ import loggerMiddleware from "../middleware/logger";
 import cookieParser from "cookie-parser";
 import checkAuthMiddleware from "../middleware/checkAuth"
 
-const arrMiddlewares: any = [bodyParser.json(), bodyParser.urlencoded({ extended: true }), cookieParser(), loggerMiddleware, checkAuthMiddleware];
+const arrMiddlewares: any = [bodyParser.json(), bodyParser.urlencoded({ extended: true }), cookieParser(), loggerMiddleware, /* checkAuthMiddleware */];
 
 /**
  * Import routes
