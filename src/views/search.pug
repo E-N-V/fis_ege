@@ -12,7 +12,8 @@ block body_
             input.search-button(type="submit", value="")
         .opt-container
             .filter-area
-                h3 Категории фильтров
+                h3.nakedsnake Категории 
+                    span.venomsnake фильтров
 
                 .form-button-my(onclick="blockSwappp(0)" id="activeButton")
                     .ico-block-my#button1
@@ -30,79 +31,127 @@ block body_
                 .criteria-group#activeBlock
                     ul
                         li Дата заявления
-                        li От: 
+                        li
+                            input(type="checkbox", name="criteria-status_1" id="chk1") 
+                            label(for="chk1") 
+                            p От: 
                             input(type="date", name="criteria-value_1")
-                            input(type="checkbox", name="criteria-status_1")
-                        li До: 
+                        li
+                            input(type="checkbox", name="criteria-status_2" id="chk2") 
+                            label(for="chk2") 
+                            p До: 
                             input(type="date", name="criteria_2-value")
-                            input(type="checkbox", name="criteria-status_2")
                     ul
                         li Форма получения образования
-                        li Очная: 
-                            input(type="checkbox", name="criteria-status_1")
-                        li Заочная : 
-                            input(type="checkbox", name="criteria-status_2")
+                        li
+                            input(type="checkbox", name="criteria-status_3" id="chk3")
+                            label(for="chk3") 
+                            p Очная
+                        li
+                            input(type="checkbox", name="criteria-status_4" id="chk4")
+                            label(for="chk4") 
+                            p Заочная
                     ul
                         li Специальности
-                            li архитектура
-                                input(type="checkbox", name="criteria-status_3")
-                            li строительство и эксплуатация зданий и сооружений
-                                input(type="checkbox", name="criteria-status_3")
-                            li водоснабжение и водоотведение
-                                input(type="checkbox", name="criteria-status_3")
-                            li программирование в компьютерных системах
-                                input(type="checkbox", name="criteria-status_3")
-                            li техническое обслуживание и ремонт систем винтеляции и земельно имущественные отношения
-                                input(type="checkbox", name="criteria-status_3")
-                            li ТЕХНИЧЕСКАЯ ЭКСПЛУАТАЦИЯ ПОДЪЕМНО-ТРАНСПОРТНЫХ, СТРОИТЕЛЬНЫХ, ДОРОЖНЫХ МАШИН И ОБОРУДОВАНИЯ
-                                input(type="checkbox", name="criteria-status_3")
-                            li ДИЗАЙН
-                                input(type="checkbox", name="criteria-status_3")
-                            li ПРОИЗВОДСТВО НЕМЕТАЛЛИЧЕСКИХ СТРОИТЕЛЬНЫХ ИЗДЕЛИЙ И КОНСТРУКЦИЙ
-                                input(type="checkbox", name="criteria-status_3")
-                            li МИЭ
-                                input(type="checkbox", name="criteria-status_3")
+                            li 
+                                input(type="checkbox", name="criteria-status_5" id="chk5")
+                                label(for="chk5") 
+                                p архитектура
+                            li 
+                                input(type="checkbox", name="criteria-status_6" id="chk6")
+                                label(for="chk6") 
+                                p строительство и эксплуатация зданий и сооружений
+                            li 
+                                input(type="checkbox", name="criteria-status_7" id="chk7")
+                                label(for="chk7") 
+                                p водоснабжение и водоотведение
+                            li 
+                                input(type="checkbox", name="criteria-status_8" id="chk8")
+                                label(for="chk8") 
+                                p программирование в компьютерных системах
+                            li
+                                input(type="checkbox", name="criteria-status_9" id="chk9")
+                                label(for="chk9") 
+                                p техническое обслуживание и ремонт систем винтеляции и земельно имущественные отношения
+                            li 
+                                input(type="checkbox", name="criteria-status_10" id="chk10")
+                                label(for="chk10") 
+                                p ТЕХНИЧЕСКАЯ ЭКСПЛУАТАЦИЯ ПОДЪЕМНО-ТРАНСПОРТНЫХ, СТРОИТЕЛЬНЫХ, ДОРОЖНЫХ МАШИН И ОБОРУДОВАНИЯ
+                            li
+                                input(type="checkbox", name="criteria-status_11" id="chk11")
+                                label(for="chk11") 
+                                p ДИЗАЙН
+                            li 
+                                input(type="checkbox", name="criteria-status_12" id="chk12")
+                                label(for="chk12") 
+                                p ПРОИЗВОДСТВО НЕМЕТАЛЛИЧЕСКИХ СТРОИТЕЛЬНЫХ ИЗДЕЛИЙ И КОНСТРУКЦИЙ
+                            li
+                                input(type="checkbox", name="criteria-status_13" id="chk13")
+                                label(for="chk13") 
+                                p МИЭ
 
                     ul
                         li Основа обучения
-                        li бюджет
-                            input(type="checkbox", name="criteria-status_2")
-                        li внебюджет
-                            input(type="checkbox", name="criteria-status_2")
+                        li 
+                            input(type="checkbox", name="criteria-status_2" id="chk13")
+                            label(for="chk13") 
+                            p бюджет
+                        li
+                            input(type="checkbox", name="criteria-status_2" id="chk13")
+                            label(for="chk13") 
+                            p внебюджет
                     
                     ul
                         li Нуждаемость в общежитии
-                        li да
-                            input(type="checkbox", name="criteria-status_2")
-                        li нет
-                            input(type="checkbox", name="criteria-status_2")
+                        li
+                            input(type="checkbox", name="criteria-status_2" id="chk13")
+                            label(for="chk13") 
+                            p да
+                        li
+                            input(type="checkbox", name="criteria-status_2" id="chk13")
+                            label(for="chk13") 
+                            p нет
 
                     ul
                         li Пол
-                        li М
-                            input(type="checkbox", name="criteria-status_2")
-                        li Ж
-                            input(type="checkbox", name="criteria-status_2")
+                        li 
+                            input(type="checkbox", name="criteria-status_2" id="chk14")
+                            label(for="chk14") 
+                            p М
+                        li 
+                            input(type="checkbox", name="criteria-status_2" id="chk15")
+                            label(for="chk15") 
+                            p Ж
                     
                     ul
                         li Дата рождения
-                        li От:
+                        li 
+                            input(type="checkbox", name="criteria-status_2" id="chk16")
+                            label(for="chk16") 
+                            p От:
                             input(type="date", name="criteria_2-value")
-                            input(type="checkbox", name="criteria-status_2")
-                        li До:
+                        li 
+                            input(type="checkbox", name="criteria-status_2" id="chk17")
+                            label(for="chk17") 
+                            p До:
                             input(type="date", name="criteria_2-value")
-                            input(type="checkbox", name="criteria-status_2")
 
                     ul
                         li Гражданство
-                        li РФ
-                            input(type="checkbox", name="criteria-status_2")
-                        li ИГ
-                            input(type="checkbox", name="criteria-status_2")
+                        li 
+                            input(type="checkbox", name="criteria-status_2" id="chk18")
+                            label(for="chk18") 
+                            p РФ
+                        li
+                            input(type="checkbox", name="criteria-status_2" id="chk19")
+                            label(for="chk19") 
+                            p ИГ
 
                     ul
                         li Область
                         li 
+                            input(type="checkbox", name="criteria-status_2" id="chk20")
+                            label(for="chk20")
                             input(type="text", name="criteria_2-value")
 
                 .criteria-group
@@ -110,85 +159,135 @@ block body_
                     ul
                         li Паспортные данные (серия, номер, кем и когда выдан)
                         li
+                            input(type="checkbox", name="criteria-status_2" id="chk21")
+                            label(for="chk21")
                             input(type="text", name="criteria_2-value")
                 
 
                     ul
                         li Социальные категории (сирота, опекаемый, инвалид, ОВЗ)
-                        li ничего
-                            input(type="checkbox", name="criteria-status_2")
-                        li сирота
-                            input(type="checkbox", name="criteria-status_2")
-                        li опекаемый
-                            input(type="checkbox", name="criteria-status_2")
-                        li инвалид
-                            input(type="checkbox", name="criteria-status_2")
-                        li ОВЗ
-                            input(type="checkbox", name="criteria-status_2")
+                        li 
+                            input(type="checkbox", name="criteria-status_2" id="chk22")
+                            label(for="chk22") 
+                            p ничего
+                        li 
+                            input(type="checkbox", name="criteria-status_2" id="chk23")
+                            label(for="chk23") 
+                            p сирота
+                        li 
+                            input(type="checkbox", name="criteria-status_2" id="chk24")
+                            label(for="chk24") 
+                            p опекаемый
+                        li 
+                            input(type="checkbox", name="criteria-status_2" id="chk24")
+                            label(for="chk24") 
+                            p инвалид
+                        li 
+                            input(type="checkbox", name="criteria-status_2" id="chk25")
+                            label(for="chk25") 
+                            p ОВЗ
 
                     ul
                         li СПО впервые / не впервые
                         li
-                            input(type="text", name="criteria_2-value")
+                            input(type="checkbox", name="criteria-status_2" id="chk26")
+                            label(for="chk26") 
+                            p впервые
+                        li
+                            input(type="checkbox", name="criteria-status_2" id="chk40")
+                            label(for="chk40") 
+                            p не впервые
 
                     ul
                         li Уровень образования
                         li
-                            input(type="text", name="criteria_2-value")
+                            input(type="checkbox", name="criteria-status_2" id="chk27")
+                            label(for="chk27")
+                        li
+                            input(type="checkbox", name="criteria-status_2" id="chk41")
+                            label(for="chk41")
 
                     ul
                         li Год окончания учеб. завед.
-                        li От:
+                        li
+                            input(type="checkbox", name="criteria-status_2" id="chk28")
+                            label(for="chk28") 
+                            p От
                             input(type="date", name="criteria_2-value")
-                            input(type="checkbox", name="criteria-status_2")
-                        li До:
+                        li
+                            input(type="checkbox", name="criteria-status_2" id="chk29")
+                            label(for="chk29") 
+                            p До
                             input(type="date", name="criteria_2-value")
-                            input(type="checkbox", name="criteria-status_2")
                     ul
                         li Особые успехи в учении
                         li
+                            input(type="checkbox", name="criteria-status_2" id="chk30")
+                            label(for="chk30")
                             input(type="text", name="criteria_2-value")
                             
                     ul
                         li Оригинал документа об образовании
                         li
-                            input(type="text", name="criteria_2-value")
+                            input(type="checkbox", name="criteria-status_2" id="chk31")
+                            label(for="chk31") 
+                            p да
+                        li
+                            input(type="checkbox", name="criteria-status_2" id="chk42")
+                            label(for="chk42") 
+                            p нет
                     
                     ul
                         li Копия документа об образовании
                         li
+                            input(type="checkbox", name="criteria-status_2" id="chk32")
+                            label(for="chk32")
                             input(type="text", name="criteria_2-value")
                 .criteria-group
                     ul
                         li Вступительное испытание (балл) (1)
-                        li выше: 
+                        li  
+                            input(type="checkbox", name="criteria-status_1" id="chk33")
+                            label(for="chk33") 
+                            p выше:
                             input(type="number", name="criteria-value_1")
-                            input(type="checkbox", name="criteria-status_1")
-                        li ниже: 
+                        li 
+                            input(type="checkbox", name="criteria-status_2" id="chk34")
+                            label(for="chk34") 
+                            p ниже: 
                             input(type="number", name="criteria_2-value")
-                            input(type="checkbox", name="criteria-status_2")
 
                     ul
                         li Средний балл документа об образовании (2)
-                        li выше: 
+                        li 
+                            input(type="checkbox", name="criteria-status_1" id="chk35")
+                            label(for="chk35") 
+                            p выше: 
                             input(type="number", name="criteria-value_1")
-                            input(type="checkbox", name="criteria-status_1")
-                        li ниже: 
+                        li 
+                            input(type="checkbox", name="criteria-status_2" id="chk36")
+                            label(for="chk36") 
+                            p ниже: 
                             input(type="number", name="criteria_2-value")
-                            input(type="checkbox", name="criteria-status_2")
 
                     ul
                         li Решение приемной комиссии
                         li
+                            input(type="checkbox", name="criteria-status_2" id="chk37")
+                            label(for="chk37")
                             input(type="text", name="criteria_2-value")
 
                     ul
                         li № и дата приказа о зачислении
                         li
+                            input(type="checkbox", name="criteria-status_2" id="chk38")
+                            label(for="chk38")
                             input(type="text", name="criteria_2-value")
                     
                     ul
                         li Приоритет, вид, оригинал аттестата
                         li
+                            input(type="checkbox", name="criteria-status_2" id="chk39")
+                            label(for="chk39")
                             input(type="text", name="criteria_2-value")
 

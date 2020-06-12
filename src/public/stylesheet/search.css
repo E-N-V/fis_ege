@@ -68,27 +68,6 @@
     padding: 0;
 }
 
-.filter-area ul li input{
-    display: none;
-}
-
-.filter-area ul li label,input:checked + label{
-    background-color: white;
-    width: 100%;
-    padding: 5px;
-    border-top: 2px solid black;
-    margin-bottom: 0 !important;
-}
-
-.filter-area ul li label:hover{
-    background-color: rgb(89, 175, 255);
-}
-
-input:checked + label,input:checked + label:hover{
-    background-color: rgb(33, 32, 104) !important;
-    color: white !important;
-}
-
 .criteria-aria{
     flex-grow: 1;
 }
@@ -118,12 +97,8 @@ input:checked + label,input:checked + label:hover{
 
 .criteria-aria ul li input[type=number]{
     margin-left: 5px;
-}
-
-.criteria-aria ul li input[type=checkbox]{
-    margin-left: 10px;
-    width: 30px;
-    height: 30px;
+    max-width: 40%;
+    flex-shrink: 1;
 }
 
 input::-webkit-outer-spin-button,
@@ -160,6 +135,7 @@ input[type=number] {
     background-size: 60%;
     background-repeat: no-repeat;
     background-position: 50%;
+    margin-right: 10px;
 }
 
 #button1{
@@ -188,6 +164,7 @@ h3{
     background-color: rgb(55, 53, 184);
     padding: 10px;
     margin-bottom: 20px;
+    height: 53px;
 }
 
 #activeBlock{
@@ -200,4 +177,95 @@ h3{
 
 .criteria-group{
     display: none;
+}
+
+input[type=checkbox]{
+    display: none;
+}
+
+input[type=checkbox] + label, input[type=checkbox]:checked + label{
+    width: 90px;
+    background-color: lightgray;
+    display: flex;
+    color: rgb(75, 75, 75);
+    margin: 0;
+    padding: 0;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+input[type=checkbox]:checked + label{
+    background-color: rgb(0, 199, 0);
+    color: white;
+}
+
+input[type=checkbox] + label::before, input[type=checkbox]:checked + label::before{
+    content: '';
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, .6);
+    flex-shrink: 0;
+    background-image: url("/images/off.png");
+    background-position: 50%;
+    background-size: 80%;
+    background-repeat: no-repeat;
+}
+
+input[type=checkbox]:checked + label::before{
+    background-image: url("/images/on.png");
+}
+
+input[type=checkbox] + label::after, input[type=checkbox]:checked + label::after{
+    content: 'ВЫКЛ';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    flex-grow: 1;
+}
+
+input[type=checkbox]:checked + label::after{
+    content: 'ВКЛ';
+}
+
+@media (max-width:910px){
+    .form-button-my span{
+        display: none;
+    }
+    .form-button-my{
+        width: 70px;
+    }
+    .form-button-my .ico-block-my{
+        margin-right: 0;
+    }
+
+    .venomsnake{
+        display: none;
+    }
+}
+
+p{
+    margin: 0;
+    padding: 0;
+}
+
+.criteria-aria input[type=text], input[type=date]{
+    margin-left: 5px;
+    max-width: 50%;
+    flex-shrink: 1;
+}
+
+@media (max-width:590px){
+    .opt-container{
+        flex-direction: column;
+    }
+
+    .filter-area{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+h3{
+    width: 100%;
 }
