@@ -17,7 +17,7 @@ export const index = async (req: Request, res: Response) => {
 	let id = (await Applicant.count()) + 1;
 	let specialnosti = await Specialty.find()
 	let oblasti = await Region.find()
-	return res.status(200).render("add", { id, oblasti, spec: specialnosti, usr: req.cookies.usr, opt: "add", url_: "/applicants" });
+	return res.status(200).render("applicant", { id, oblasti, spec: specialnosti, usr: req.cookies.usr, opt: "add", url_: "/applicants" });
 };
 
 /**
@@ -28,12 +28,14 @@ export const index = async (req: Request, res: Response) => {
  */
 export const show = async (req: Request, res: Response) => {
 	let id = req.params["applicantId"];
-	let data = await Applicant.findOne(id);
+	let applicant = await Applicant.findOne(id, {relations: ["admission", "request"]});
+	let spec = await Specialty.find()
+	let oblasti = await Region.find()
 
-	if (data) {
+	if (applicant) {
 		return res
 			.status(200)
-			.render("add", { id, data, usr: req.cookies.usr, opt: "redact", url_: req.url + "/update" });
+			.render("applicant", { applicant, spec, oblasti, usr: req.cookies.usr, opt: "redact", url_: req.url + "/update" });
 	} else {
 		return res.status(404).send("Запись не найдена");
 	}
