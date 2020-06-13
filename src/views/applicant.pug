@@ -18,10 +18,10 @@ block body_
     form(action=url_, method="post")
         .card
             .card-header
+            if applicant
                 .form-group
                     label(for="id") № аббитуриента
                     input(type="text", name="id", id="id", readonly, value=applicant.id).form-control
-            if applicant
                 .card-body.row
                     .form-buttons
                         .form-button-my(onclick="blockSwap(0)" id="activeButton")
@@ -315,6 +315,9 @@ block body_
                                 label № и дата приказа о зачислении
                                 input(type="text", name="nomer_i_data_prikaza_o_zachislenie", value=applicant.admission.nomer_i_data_prikaza_o_zachislenie, required).form-control
             else
+                .form-group
+                    label(for="id") № аббитуриента
+                    input(type="text", name="id", id="id", readonly, value=id).form-control
                 .card-body.row
                     .form-buttons
                         .form-button-my(onclick="blockSwap(0)" id="activeButton")
