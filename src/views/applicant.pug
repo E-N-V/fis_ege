@@ -20,7 +20,7 @@ block body_
             .card-header
             if applicant
                 .form-group
-                    label(for="id") № аббитуриента
+                    label.zatychka(for="id") № аббитуриента
                     input(type="text", name="id", id="id", readonly, value=applicant.id).form-control
                 .card-body.row
                     .form-buttons
@@ -46,18 +46,22 @@ block body_
                                 if applicant.forma_poluch_obraz == "Очная"
                                     .form-control
                                         |Очная
-                                        input(type="radio", name="forma_poluch_obraz", value="Очная", checked, required)
+                                        input#rad1(type="radio", name="forma_poluch_obraz", value="Очная", checked, required)
+                                        label(for="rad1")
                                         br
                                         |Заочная 
-                                        input(type="radio", name="forma_poluch_obraz", value="Заочная", required)
+                                        input#rad2(type="radio", name="forma_poluch_obraz", value="Заочная", required)
+                                        label(for="rad2")
                                         br
                                 else
                                     .form-control
                                         |Очная
-                                        input(type="radio", name="forma_poluch_obraz", value="Очная", required)
+                                        input#rad3(type="radio", name="forma_poluch_obraz", value="Очная", required)
+                                        label(for="rad3")
                                         br
                                         |Заочная 
-                                        input(type="radio", name="forma_poluch_obraz", value="Заочная", checked, required)
+                                        input#rad4(type="radio", name="forma_poluch_obraz", value="Заочная", checked, required)
+                                        label(for="rad4")
                                         br
                             .form-group
                                 label Специальности
@@ -100,54 +104,66 @@ block body_
                                 if applicant.osnova_obych == "бюджет"
                                     .form-control
                                         |бюджет 
-                                        input(type="radio", name="osnova_obych", value="бюджет", checked, required)
+                                        input#rad5(type="radio", name="osnova_obych", value="бюджет", checked, required)
+                                        label(for="rad5")
                                         br
                                         |внебюджет 
-                                        input(type="radio", name="osnova_obych", value="внебюджет", required)
+                                        input#rad6(type="radio", name="osnova_obych", value="внебюджет", required)
+                                        label(for="rad6")
                                         br
                                 else
                                     .form-control
                                         |бюджет 
-                                        input(type="radio", name="osnova_obych", value="бюджет", required)
+                                        input#rad7(type="radio", name="osnova_obych", value="бюджет", required)
+                                        label(for="rad7")
                                         br
                                         |внебюджет 
-                                        input(type="radio", name="osnova_obych", value="внебюджет", checked, required)
+                                        input#rad8(type="radio", name="osnova_obych", value="внебюджет", checked, required)
+                                        label(for="rad8")
                                         br
                             .form-group
                                 label Нуждаемость в общежитии
                                 if applicant.obshaga == "Да"
                                     .form-control
                                         |Да 
-                                        input(type="radio", name="obshaga", value="Да", checked, required)
+                                        input#rad9(type="radio", name="obshaga", value="Да", checked, required)
+                                        label(for="rad9")
                                         br
                                         |Нет
-                                        input(type="radio", name="obshaga", value="Нет", required)
+                                        input#rad10(type="radio", name="obshaga", value="Нет", required)
+                                        label(for="rad10")
                                         br
                                 else
                                     .form-control
                                         |Да 
-                                        input(type="radio", name="obshaga", value="Да", required)
+                                        input#rad11(type="radio", name="obshaga", value="Да", required)
+                                        label(for="rad11")
                                         br
                                         |Нет
-                                        input(type="radio", name="obshaga", value="Нет", checked, required)
+                                        input#rad12(type="radio", name="obshaga", value="Нет", checked, required)
+                                        label(for="rad12")
                                         br
                             .form-group
                                 label Пол
                                 if applicant.sex == "М"
                                     .form-control
                                         |М 
-                                        input(type="radio", name="sex", value="М", checked, required)
+                                        input#rad13(type="radio", name="sex", value="М", checked, required)
+                                        label(for="rad13")
                                         br
                                         |Ж 
-                                        input(type="radio", name="sex", value="Ж", required)
+                                        input#rad14(type="radio", name="sex", value="Ж", required)
+                                        label(for="rad14")
                                         br
                                 else
                                     .form-control
                                         |М 
-                                        input(type="radio", name="sex", value="М", required)
+                                        input#rad15(type="radio", name="sex", value="М", required)
+                                        label(for="rad15")
                                         br
                                         |Ж 
-                                        input(type="radio", name="sex", value="Ж", checked, required)
+                                        input#rad16(type="radio", name="sex", value="Ж", checked, required)
+                                        label(for="rad16")
                                         br
                             .form-group
                                 label Дата рождения
@@ -157,18 +173,22 @@ block body_
                                 if applicant.grazhdanstvo == "РФ"
                                     .form-control
                                         |РФ 
-                                        input(type="radio", name="grazhdanstvo", value="РФ", checked, required)
+                                        input#rad17(type="radio", name="grazhdanstvo", value="РФ", checked, required)
+                                        label(for="rad17")
                                         br
                                         |ИГ 
-                                        input(type="radio", name="grazhdanstvo", value="ИГ", required)
+                                        input#rad19(type="radio", name="grazhdanstvo", value="ИГ", required)
+                                        label(for="rad19")
                                         br
                                 else
                                     .form-control
                                         |РФ 
-                                        input(type="radio", name="grazhdanstvo", value="РФ", required)
+                                        input#rad20(type="radio", name="grazhdanstvo", value="РФ", required)
+                                        label(for="rad20")
                                         br
                                         |ИГ 
-                                        input(type="radio", name="grazhdanstvo", value="ИГ", checked, required)
+                                        input#rad21(type="radio", name="grazhdanstvo", value="ИГ", checked, required)
+                                        label(for="rad21")
                                         br
                             .form-group
                                 label Адрес местожительства (прописка)
@@ -191,69 +211,87 @@ block body_
                                 .form-control
                                     |ничего 
                                     if applicant.soc_category == "ничего"
-                                        input(type="radio", name="soc_category", value="ничего", checked, required)
+                                        input#rad22(type="radio", name="soc_category", value="ничего", checked, required)
+                                        label(for="rad22")
                                     else
-                                        input(type="radio", name="soc_category", value="ничего", required)
+                                        input#rad23(type="radio", name="soc_category", value="ничего", required)
+                                        label(for="rad23")
                                     br
                                     |сирота 
                                     if applicant.soc_category == "сирота"
-                                        input(type="radio", name="soc_category", value="сирота", checked, required)
+                                        input#rad24(type="radio", name="soc_category", value="сирота", checked, required)
+                                        label(for="rad24")
                                     else
-                                        input(type="radio", name="soc_category", value="сирота", required)
+                                        input#rad25(type="radio", name="soc_category", value="сирота", required)
+                                        label(for="rad25")
                                     br
                                     |опекаемый 
                                     if applicant.soc_category == "опекаемый"
-                                        input(type="radio", name="soc_category", value="опекаемый", checked, required)
+                                        input#rad26(type="radio", name="soc_category", value="опекаемый", checked, required)
+                                        label(for="rad26")
                                     else
-                                        input(type="radio", name="soc_category", value="опекаемый", required)
+                                        input#rad27(type="radio", name="soc_category", value="опекаемый", required)
+                                        label(for="rad27")
                                     br
                                     |инвалид 
                                     if applicant.soc_category == "инвалид"
-                                        input(type="radio", name="soc_category", value="инвалид", checked, required)
+                                        input#rad28(type="radio", name="soc_category", value="инвалид", checked, required)
+                                        label(for="rad28")
                                     else
-                                        input(type="radio", name="soc_category", value="инвалид", required)
+                                        input#rad29(type="radio", name="soc_category", value="инвалид", required)
+                                        label(for="rad29")
                                     br
                                     |ОВЗ 
                                     if applicant.soc_category == "ОВЗ"
-                                        input(type="radio", name="soc_category", value="ОВЗ", checked, required)
+                                        input#rad30(type="radio", name="soc_category", value="ОВЗ", checked, required)
+                                        label(for="rad30")
                                     else
-                                        input(type="radio", name="soc_category", value="ОВЗ", required)
+                                        input#rad31(type="radio", name="soc_category", value="ОВЗ", required)
+                                        label(for="rad31")
                                     br
                             .form-group
                                 label СПО впервые / не впервые
                                 if applicant.SPO_vpervie_nevpervie == "впервые"
                                     .form-control
                                         |впервые 
-                                        input(type="radio", name="SPO_vpervie_nevpervie", value="впервые", checked, required)
+                                        input#rad32(type="radio", name="SPO_vpervie_nevpervie", value="впервые", checked, required)
+                                        label(for="rad32")
                                         br
                                         |не впервые 
-                                        input(type="radio", name="SPO_vpervie_nevpervie", value="не впервые", required)
+                                        input#rad33(type="radio", name="SPO_vpervie_nevpervie", value="не впервые", required)
+                                        label(for="rad33")
                                         br
                                 else
                                     .form-control
                                         |впервые 
-                                        input(type="radio", name="SPO_vpervie_nevpervie", value="впервые", required)
+                                        input#rad34(type="radio", name="SPO_vpervie_nevpervie", value="впервые", required)
+                                        label(for="rad34")
                                         br
                                         |не впервые 
-                                        input(type="radio", name="SPO_vpervie_nevpervie", value="не впервые", checked, required)
+                                        input#rad35(type="radio", name="SPO_vpervie_nevpervie", value="не впервые", checked, required)
+                                        label(for="rad35")
                                         br
                             .form-group
                                 label Уровень образования
                                 if applicant.lvl_obraz == "9"
                                     .form-control
                                         |9 класс 
-                                        input(type="radio", name="lvl_obraz", value="9", checked, required)
+                                        input#rad36(type="radio", name="lvl_obraz", value="9", checked, required)
+                                        label(for="rad36")
                                         br
                                         |11 класс 
-                                        input(type="radio", name="lvl_obraz", value="11", required)
+                                        input#rad37(type="radio", name="lvl_obraz", value="11", required)
+                                        label(for="rad37")
                                         br
                                 else
                                     .form-control
                                         |9 класс 
-                                        input(type="radio", name="lvl_obraz", value="9", required)
+                                        input#rad38(type="radio", name="lvl_obraz", value="9", required)
+                                        label(for="rad38")
                                         br
                                         |11 класс 
-                                        input(type="radio", name="lvl_obraz", value="11", checked, required)
+                                        input#rad39(type="radio", name="lvl_obraz", value="11", checked, required)
+                                        label(for="rad39")
                                         br
                             .form-group
                                 label Год окончания учеб. завед.
@@ -266,18 +304,22 @@ block body_
                                 if applicant.orig_doc_obraz == "Да"
                                     .form-control
                                         |Да 
-                                        input(type="radio", name="orig_doc_obraz", value="Да", checked, required)
+                                        input#rad40(type="radio", name="orig_doc_obraz", value="Да", checked, required)
+                                        label(for="rad40")
                                         br
                                         |Нет 
-                                        input(type="radio", name="orig_doc_obraz", value="Нет", required)
+                                        input#rad41(type="radio", name="orig_doc_obraz", value="Нет", required)
+                                        label(for="rad41")
                                         br
                                 else
                                     .form-control
                                         |Да 
-                                        input(type="radio", name="orig_doc_obraz", value="Да", required)
+                                        input#rad42(type="radio", name="orig_doc_obraz", value="Да", required)
+                                        label(for="rad42")
                                         br
                                         |Нет 
-                                        input(type="radio", name="orig_doc_obraz", value="Нет", checked, required)
+                                        input#rad43(type="radio", name="orig_doc_obraz", value="Нет", checked, required)
+                                        label(for="rad43")
                                         br
                         .form-group.form-group-of-groups
                             .form-group
@@ -316,7 +358,7 @@ block body_
                                 input(type="text", name="nomer_i_data_prikaza_o_zachislenie", value=applicant.admission.nomer_i_data_prikaza_o_zachislenie, required).form-control
             else
                 .form-group
-                    label(for="id") № аббитуриента
+                    label(for="id").zatychka № аббитуриента
                     input(type="text", name="id", id="id", readonly, value=id).form-control
                 .card-body.row
                     .form-buttons
@@ -341,10 +383,12 @@ block body_
                                 label Форма получения образования
                                 .form-control
                                     |Очная
-                                    input(type="radio", name="forma_poluch_obraz", value="Очная", required)
+                                    input#rad44(type="radio", name="forma_poluch_obraz", value="Очная", required)
+                                    label(for="rad44")
                                     br
                                     |Заочная 
-                                    input(type="radio", name="forma_poluch_obraz", value="Заочная", required)
+                                    input#rad45(type="radio", name="forma_poluch_obraz", value="Заочная", required)
+                                    label(for="rad45")
                                     br
                             .form-group
                                 label Специальности
@@ -386,28 +430,34 @@ block body_
                                 label Основа обучения
                                 .form-control
                                     |бюджет 
-                                    input(type="radio", name="osnova_obych", value="бюджет", required)
+                                    input#rad46(type="radio", name="osnova_obych", value="бюджет", required)
+                                    label(for="rad46")
                                     br
                                     |внебюджет 
-                                    input(type="radio", name="osnova_obych", value="внебюджет", required)
+                                    input#rad47(type="radio", name="osnova_obych", value="внебюджет", required)
+                                    label(for="rad47")
                                     br
                             .form-group
                                 label Нуждаемость в общежитии
                                 .form-control
                                     |Да 
-                                    input(type="radio", name="obshaga", value="Да", required)
+                                    input#rad48(type="radio", name="obshaga", value="Да", required)
+                                    label(for="rad48")
                                     br
                                     |Нет
-                                    input(type="radio", name="obshaga", value="Нет", required)
+                                    input#rad49(type="radio", name="obshaga", value="Нет", required)
+                                    label(for="rad49")
                                     br
                             .form-group
                                 label Пол
                                 .form-control
                                     |М 
-                                    input(type="radio", name="sex", value="М", required)
+                                    input#rad50(type="radio", name="sex", value="М", required)
+                                    label(for="rad50")
                                     br
                                     |Ж 
-                                    input(type="radio", name="sex", value="Ж", required)
+                                    input#rad51(type="radio", name="sex", value="Ж", required)
+                                    label(for="rad51")
                                     br
                             .form-group
                                 label Дата рождения
@@ -416,10 +466,12 @@ block body_
                                 label Гражданство
                                 .form-control
                                     |РФ 
-                                    input(type="radio", name="grazhdanstvo", value="РФ", required)
+                                    input#rad52(type="radio", name="grazhdanstvo", value="РФ", required)
+                                    label(for="rad52")
                                     br
                                     |ИГ 
-                                    input(type="radio", name="grazhdanstvo", value="ИГ", required)
+                                    input#rad53(type="radio", name="grazhdanstvo", value="ИГ", required)
+                                    label(for="rad53")
                                     br
                             .form-group
                                 label Адрес местожительства (прописка)
@@ -441,37 +493,46 @@ block body_
                                 label Социальные категории (сирота, опекаемый, инвалид, ОВЗ)
                                 .form-control
                                     |ничего 
-                                    input(type="radio", name="soc_category", value="ничего", required)
+                                    input#rad54(type="radio", name="soc_category", value="ничего", required)
+                                    label(for="rad54")
                                     br
                                     |сирота 
-                                    input(type="radio", name="soc_category", value="сирота", required)
+                                    input#rad55(type="radio", name="soc_category", value="сирота", required)
+                                    label(for="rad55")
                                     br
                                     |опекаемый 
-                                    input(type="radio", name="soc_category", value="опекаемый", required)
+                                    input#rad56(type="radio", name="soc_category", value="опекаемый", required)
+                                    label(for="rad56")
                                     br
                                     |инвалид 
-                                    input(type="radio", name="soc_category", value="инвалид", required)
+                                    input#rad57(type="radio", name="soc_category", value="инвалид", required)
+                                    label(for="rad57")
                                     br
                                     |ОВЗ 
-                                    input(type="radio", name="soc_category", value="ОВЗ", required)
+                                    input#rad58(type="radio", name="soc_category", value="ОВЗ", required)
+                                    label(for="rad58")
                                     br
                             .form-group
                                 label СПО впервые / не впервые
                                 .form-control
                                     |впервые 
-                                    input(type="radio", name="SPO_vpervie_nevpervie", value="впервые", required)
+                                    input#rad59(type="radio", name="SPO_vpervie_nevpervie", value="впервые", required)
+                                    label(for="rad59")
                                     br
                                     |не впервые 
-                                    input(type="radio", name="SPO_vpervie_nevpervie", value="не впервые", required)
+                                    input#rad60(type="radio", name="SPO_vpervie_nevpervie", value="не впервые", required)
+                                    label(for="rad60")
                                     br
                             .form-group
                                 label Уровень образования
                                 .form-control
                                     |9 класс 
-                                    input(type="radio", name="lvl_obraz", value="9", required)
+                                    input#rad61(type="radio", name="lvl_obraz", value="9", required)
+                                    label(for="rad61")
                                     br
                                     |11 класс 
-                                    input(type="radio", name="lvl_obraz", value="11", required)
+                                    input#rad62(type="radio", name="lvl_obraz", value="11", required)
+                                    label(for="rad62")
                                     br
                             .form-group
                                 label Год окончания учеб. завед.
@@ -483,10 +544,12 @@ block body_
                                 label Оригинал документа об образовании
                                 .form-control
                                     |Да 
-                                    input(type="radio", name="orig_doc_obraz", value="Да", required)
+                                    input#rad63(type="radio", name="orig_doc_obraz", value="Да", required)
+                                    label(for="rad63")
                                     br
                                     |Нет 
-                                    input(type="radio", name="orig_doc_obraz", value="Нет", required)
+                                    input#rad64(type="radio", name="orig_doc_obraz", value="Нет", required)
+                                    label(for="rad64")
                                     br
                         .form-group.form-group-of-groups
                             .form-group
@@ -508,6 +571,11 @@ block body_
                                         p.calc-detail.calc-md#soladsnake Средний балл:
                                             input.inp-result(type="text", name="avg_ball_obrazovanie_2", disabled, readonly, value="###")
                                         p.calc-result.calc-md#soladsnake Введено оценок: ###
+
+                                        .assholecalc-control
+                                            .assholecalc-done.assholecalc-md#soladsnake(onclick="calcAssStart()") Посчитать
+                                        p.assholecalc-detail.assholecalc-md#soladsnake Средний балл:
+                                            input.assholeinp-result(type="text", name="avg_ball_obrazovanie_2", disabled, readonly, value="###")
                                         
                                     .inp-container
                                         input.write-md(type="number", name="avg_ball_obrazovanie_2", required).inp-write
@@ -516,6 +584,17 @@ block body_
                                         input.calc-md.inp-calc(type="number")#soladsnake
                                         input.calc-md.inp-calc(type="number")#soladsnake
                                         input.calc-md.inp-calc(type="number")#soladsnake
+
+                                        ul.assholecalc-md#soladsnake
+                                            li Колво двоек 
+                                                input.inp-ass(type="number")
+                                            li Колво троек
+                                                input.inp-ass(type="number")
+                                            li Колво четвёрок
+                                                input.inp-ass(type="number")
+                                            li Колво пятёрок
+                                                input.inp-ass(type="number")
+
 
                             .form-group
                                 label Решение приемной комиссии

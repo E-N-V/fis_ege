@@ -46,18 +46,18 @@ label{
     border-radius: 0;
 }
 
-.card-header label{
+.zatychka{
     font-weight: normal;
     margin-left: 20px;
     font-size: 30px;
     float: left;
 }
 
-.card-header label::after{
+.zatychka::after{
     content: ':';
 }
 
-.card-header input{
+.zatychka + input{
     font-size: 30px;
     float: left;
     width: 70px;
@@ -69,7 +69,7 @@ label{
     margin-left: 5px;
 }
 
-.card-header input:focus{
+.zatychka + input:focus{
     outline: none;
     border: none;
 }
@@ -425,3 +425,40 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
   }
+
+.form-blocks input[type=radio]{
+display: none;
+}
+
+.form-blocks input[type=radio] + label,.form-blocks input[type=radio]:checked + label{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin: 0;
+    padding: 0;
+    height: 14px;
+    width: 14px;
+    border-radius: 100%;
+    background-color: lightgray;
+    transform: translate(2px, 0);
+}
+
+.form-blocks input[type=radio]:checked + label{
+    background-color: rgb(89, 175, 255);
+}
+
+.form-blocks input[type=radio] + label::after,.form-blocks input[type=radio]:checked + label::after{
+    content: '';
+    position: absolute;
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    border: 1px solid rgb(146, 146, 146);
+}
+
+.form-blocks input[type=radio]:checked + label::after{
+    border: 1px solid white;
+    box-shadow: 0 0 4px white;
+}
