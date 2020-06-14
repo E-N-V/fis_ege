@@ -52,7 +52,7 @@ block body_
                             label(for="chk4") 
                             p Заочная
                     ul
-                        li Специальности
+                        li(disabled) Специальности(временно не работают.)
                             li 
                                 input(type="checkbox", name="spec", value="Архитектура", id="chk5")
                                 label(for="chk5") 
@@ -234,24 +234,24 @@ block body_
                             input.jschk(type="checkbox", name="criteria-status_1" id="chk33")
                             label(for="chk33" onclick="refreshInputs()") 
                             p выше:
-                            input.jsinp(type="number", name="vstup_ispitanie_1_ot")
+                            input.jsinp(type="number", name="vstup_ispitanie_1_ot", min=0, max=5)
                         li 
                             input.jschk(type="checkbox", name="criteria-status_2" id="chk34")
                             label(for="chk34" onclick="refreshInputs()") 
                             p ниже: 
-                            input.jsinp(type="number", name="vstup_ispitanie_1_do")
+                            input.jsinp(type="number", name="vstup_ispitanie_1_do", min=0, max=5)
                     ul
                         li Средний балл документа об образовании (2)
                         li 
                             input.jschk(type="checkbox", name="criteria-status_1" id="chk35")
                             label(for="chk35" onclick="refreshInputs()") 
                             p выше: 
-                            input.jsinp(type="number", name="avg_ball_obrazovanie_2_ot")
+                            input.jsinp(type="number", name="avg_ball_obrazovanie_2_ot", min=0, max=5)
                         li 
                             input.jschk(type="checkbox", name="criteria-status_2" id="chk36")
                             label(for="chk36" onclick="refreshInputs()") 
                             p ниже: 
-                            input.jsinp(type="number", name="avg_ball_obrazovanie_2_do")
+                            input.jsinp(type="number", name="avg_ball_obrazovanie_2_do", min=0, max=5)
                     ul
                         li Решение приемной комиссии
                         li
@@ -259,16 +259,11 @@ block body_
                             label(for="chk37")
                             input.jsinp(type="text", name="reshenie_komissi")
                     ul
-                        li № и дата приказа о зачислении
+                        li Дата приказа о зачислении
                         li
                             input.jschk(type="checkbox", name="criteria-status_2" id="chk38")
                             label(for="chk38")
-                            input.jsinp(type="text", name="nomer_i_data_prikaza_o_zachislenie")
-                    ul
-                        li Приоритет, вид, оригинал аттестата
-                        li
-                            input.jschk(type="checkbox", name="criteria-status_2" id="chk39")
-                            label(for="chk39")
-                            input.jsinp(type="text", name="prioritet_vid_orig_atestata")
+                            input.jsinp(type="date", name="nomer_i_data_prikaza_o_zachislenie", disabled)
+                            p Не работает.
     script.
         easyInputs()

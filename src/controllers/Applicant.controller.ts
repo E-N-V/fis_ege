@@ -113,9 +113,9 @@ export const store = async (req: Request, res: Response) => {
 	admission.id_applicant = data;
 	admission.date = new Date(Date.now());
 	admission.number = req.body.nomer_i_data_prikaza_o_zachislenie;
-	let result = await data.save();
 	Admission.save(admission)
 	RequestApplicant.save(request_Applicant)
+	let result = await data.save();
 
 	if (result) {
 		return res.status(200).redirect("/");
