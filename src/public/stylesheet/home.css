@@ -95,6 +95,7 @@ li:first-child{
     margin-right: 20px;
 }
 
+
 .srch{
     float: right;
     background-color: rgb(55, 53, 184);
@@ -330,4 +331,33 @@ thead{
 
 tbody{
     
+}
+
+.Export{
+
+}
+
+.Export{
+    display: flex;
+    align-items: center;
+    border: none !important;
+    outline: none !important;
+    border-radius: 0;
+    padding: 0;
+    padding-right: 10px;
+    margin-left: 5%;
+    margin-top: 20px;
+    background-color: rgb(255, 174, 0);
+}
+
+.Export::before{
+    content: '';
+    width: 70px;
+    height: 70px;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-right: 10px;
+    background-image: url("/images/userp.png");
+    background-position: 40% 50%;
+    background-repeat: no-repeat;
+    background-size: 80%;
 }
