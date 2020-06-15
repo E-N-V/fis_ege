@@ -15,7 +15,9 @@ block body_
         a.abut(href="/applicants")
             button.btn.btn-success
                 |Добавить аббитуриента
-        //-TODO:неймингов нет но вы держитесь
+        if export_
+            a(href="/search/export")
+                button.Export Экспорт
         a.abut(href="/search")
             button.srch
                 |Поиск
@@ -191,4 +193,3 @@ block body_
                         td.c25 -
                         td.c26 -
                         td.c27 -
-    button.Export Экспорт

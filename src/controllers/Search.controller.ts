@@ -35,7 +35,7 @@ export const SearchPOST = async (req: Request, res: Response): Promise<any> => {
 				? isArray(req.body.osnova_obych)
 					? In(req.body.osnova_obych)
 					: req.body.osnova_obych
-				: In(["бюджет", "внебюджет"]),
+				: In(["бюджет", "комерция"]),
 			obshaga: req.body.obshaga
 				? isArray(req.body.obshaga)
 					? In(req.body.obshaga)
@@ -106,7 +106,7 @@ export const SearchPOST = async (req: Request, res: Response): Promise<any> => {
 	});
 	//return res.json(applicants)
 	MemorySearch.set(req.cookies.usr, applicants);
-	return res.status(200).render("home", { applicants });
+	return res.status(200).render("home", { applicants, export_: true });
 };
 
 export const SearchApplicantPOST = async (req: Request, res: Response): Promise<any> => {
@@ -114,17 +114,14 @@ export const SearchApplicantPOST = async (req: Request, res: Response): Promise<
 		where: { fio: Like(`%${req.body.applicant}%`) },
 		relations: ["admission", "request"],
 	});
-	return res.render("home", { applicants });
+	return res.render("home", { applicants, export_: true });
 };
 
 export const SearchExportGET = async (req: Request, res: Response): Promise<any> => {
-	let nameFile = `Приемная коммисия ${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`
-	let isGeneratedFile = await parse_excel(
-		nameFile,
-		MemorySearch.get(req.cookies.usr)
-	);
+	let nameFile = `Приемная коммисия ${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`;
+	let isGeneratedFile = await parse_excel(nameFile, MemorySearch.get(req.cookies.usr));
 	if (isGeneratedFile) {
-		let file = join(__dirname, "..", "database", "excel", nameFile + ".xlsx")
+		let file = join(__dirname, "..", "database", "excel", nameFile + ".xlsx");
 		res.download(file);
 	}
 };
