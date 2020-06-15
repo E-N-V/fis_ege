@@ -563,16 +563,17 @@ block body_
                                     .buts-container
                                         .write-but-my#calcActive(onclick="calcSwap(0)") Написать
                                         .calc-but-my(onclick="calcSwap(1)") Вычислить
-                                        .calc-control
-                                            .calc-plus.calc-md#soladsnake(onclick="calcInpCreate()") +
-                                            .calc-minus.calc-md#soladsnake(onclick="calcInpDestroy()") -
-                                        .calc-control
-                                            .calc-done.calc-md#soladsnake(onclick="calcStart()") Посчитать
+                                        .ass-but-my(onclick="calcSwap(2)") Посчитать
+                                        .calc-control.calc-md#soladsnake
+                                            .calc-plus(onclick="calcInpCreate()") +
+                                            .calc-minus(onclick="calcInpDestroy()") -
+                                        .calc-control.calc-md#soladsnake
+                                            .calc-done(onclick="calcStart()") Посчитать
                                         p.calc-detail.calc-md#soladsnake Средний балл:
                                             input.inp-result(type="text", name="avg_ball_obrazovanie_2", disabled, readonly, value="###")
                                         p.calc-result.calc-md#soladsnake Введено оценок: ###
 
-                                        .assholecalc-control
+                                        .calc-control
                                             .assholecalc-done.assholecalc-md#soladsnake(onclick="calcAssStart()") Посчитать
                                         p.assholecalc-detail.assholecalc-md#soladsnake Средний балл:
                                             input.assholeinp-result(type="text", name="avg_ball_obrazovanie_2", disabled, readonly, value="###")
@@ -587,12 +588,16 @@ block body_
 
                                         ul.assholecalc-md#soladsnake
                                             li Колво двоек 
+                                                br
                                                 input.inp-ass(type="number")
                                             li Колво троек
+                                                br
                                                 input.inp-ass(type="number")
                                             li Колво четвёрок
+                                                br
                                                 input.inp-ass(type="number")
                                             li Колво пятёрок
+                                                br
                                                 input.inp-ass(type="number")
 
 

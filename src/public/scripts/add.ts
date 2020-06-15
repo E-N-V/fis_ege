@@ -82,10 +82,13 @@ function del() {
 function calcSwap(num:any) {
     const calcinp:any = document.getElementsByClassName("inp-result")[0]
     const writeinp:any = document.getElementsByClassName("inp-write")[0]
+    const assinp:any = document.getElementsByClassName("assholeinp-result")[0]
     const calcmd:any = document.getElementsByClassName("calc-md")
     const writemd:any = document.getElementsByClassName("write-md")
+    const assmd:any = document.getElementsByClassName("assholecalc-md")
     const butcalc:any = document.getElementsByClassName("calc-but-my")[0]
     const butwrite:any = document.getElementsByClassName("write-but-my")[0]
+    const butass:any = document.getElementsByClassName("ass-but-my")[0]
     if (num == 1) {
 
         for (let i = 0; i < writemd.length; i++) {
@@ -95,12 +98,20 @@ function calcSwap(num:any) {
         for (let i = 0; i < calcmd.length; i++) {
             calcmd[i].id = "";
         }
+
+        for (let i = 0; i < assmd.length; i++) {
+            assmd[i].id = "soladsnake";
+        }
+
+
         
         butwrite.id = ""
         butcalc.id = "calcActive"
+        butass.id = ""
 
         writeinp.disabled = true
         calcinp.disabled = false
+        assinp.disabled = true
 
     }else if (num == 0) {
         for (let i = 0; i < writemd.length; i++) {
@@ -111,11 +122,38 @@ function calcSwap(num:any) {
             calcmd[i].id = "soladsnake";
         }
 
+        for (let i = 0; i < assmd.length; i++) {
+            assmd[i].id = "soladsnake";
+        }
+
         butwrite.id = "calcActive"
         butcalc.id = ""
+        butass.id = ""
 
         writeinp.disabled = false
         calcinp.disabled = true
+        assinp.disabled = true
+
+    }else if (num == 2) {
+        for (let i = 0; i < writemd.length; i++) {
+            writemd[i].id = "soladsnake";
+        }
+
+        for (let i = 0; i < calcmd.length; i++) {
+            calcmd[i].id = "soladsnake";
+        }
+
+        for (let i = 0; i < assmd.length; i++) {
+            assmd[i].id = "";
+        }
+
+        butwrite.id = ""
+        butcalc.id = ""
+        butass.id = "calcActive"
+
+        writeinp.disabled = true
+        calcinp.disabled = true
+        assinp.disabled = false
 
     }
 }
@@ -135,6 +173,20 @@ function calcStart(){
     }
     calcres.setAttribute("value", x/y)
     calcdet.innerText = "Введено оценок: " + y
+}
+
+function calcAssStart(){
+    const calcinp:any = document.getElementsByClassName("inp-ass")
+    const calcres:any = document.getElementsByClassName("assholeinp-result")[0]
+    let i:number = 0
+    let l:number = 0
+
+    i = i + (parseFloat(calcinp[0].value) * 2)
+    i = i + (parseFloat(calcinp[1].value) * 3)
+    i = i + (parseFloat(calcinp[2].value) * 4)
+    i = i + (parseFloat(calcinp[3].value) * 5)
+    l = l + parseFloat(calcinp[0].value) + parseFloat(calcinp[1].value) + parseFloat(calcinp[2].value) + parseFloat(calcinp[3].value)
+    calcres.value = i/l
 }
 
 
