@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import Applicant from "../database/entity/Applicant";
 import RequestApplicant from "../database/entity/RequestApplicant";
 import Admission from "../database/entity/Admission";
-import Specialty from "../database/entity/Specialty"
+import Specialty from "../database/entity/Specialty";
 import Region from "../database/entity/Region";
 
 // TODO: Защитить методы контролллера от неавторизованных пользователей
@@ -14,10 +14,18 @@ import Region from "../database/entity/Region";
  * @param res
  */
 export const index = async (req: Request, res: Response) => {
-	let id = (await Applicant.count()) + 1;
-	let specialnosti = await Specialty.find()
-	let oblasti = await Region.find()
-	return res.status(200).render("applicant", { id, oblasti, spec: specialnosti, usr: req.cookies.usr, opt: "add", url_: "/applicants" });
+	let id: Applicant | number | undefined = await Applicant.findOne({ select: ["id"], order: { id: -1 } });
+	id = id? id.id + 1 : 1;
+	let specialnosti = await Specialty.find();
+	let oblasti = await Region.find();
+	return res.status(200).render("applicant", {
+		id,
+		oblasti,
+		spec: specialnosti,
+		usr: req.cookies.usr,
+		opt: "add",
+		url_: "/applicants",
+	});
 };
 
 /**
@@ -28,14 +36,19 @@ export const index = async (req: Request, res: Response) => {
  */
 export const show = async (req: Request, res: Response) => {
 	let id = req.params["applicantId"];
-	let applicant = await Applicant.findOne(id, {relations: ["admission", "request"]});
-	let spec = await Specialty.find()
-	let oblasti = await Region.find()
+	let applicant = await Applicant.findOne(id, { relations: ["admission", "request"] });
+	let spec = await Specialty.find();
+	let oblasti = await Region.find();
 
 	if (applicant) {
-		return res
-			.status(200)
-			.render("applicant", { applicant, spec, oblasti, usr: req.cookies.usr, opt: "redact", url_: req.url + "/update" });
+		return res.status(200).render("applicant", {
+			applicant,
+			spec,
+			oblasti,
+			usr: req.cookies.usr,
+			opt: "redact",
+			url_: req.url + "/update",
+		});
 	} else {
 		return res.status(404).send("Запись не найдена");
 	}
@@ -104,21 +117,23 @@ export const store = async (req: Request, res: Response) => {
 	data.vstup_ispitanie_1 = req.body.vstup_ispitanie_1;
 	data.avg_ball_obrazovanie_2 = req.body.avg_ball_obrazovanie_2;
 	data.reshenie_komissi = req.body.reshenie_komissi;
+	let result = await data.save();
 	let request_Applicant = new RequestApplicant();
 	request_Applicant.id_aplicant = data;
 	request_Applicant.name_spec_1 = req.body.specialnost_1;
-	request_Applicant.name_spec_2 = req.body.specialnost_2? req.body.specialnost_2 : "не выбрано";
-	request_Applicant.name_spec_3 = req.body.specialnost_3? req.body.specialnost_3 : "не выбрано";
+	request_Applicant.name_spec_2 = req.body.specialnost_2 ? req.body.specialnost_2 : "не выбрано";
+	request_Applicant.name_spec_3 = req.body.specialnost_3 ? req.body.specialnost_3 : "не выбрано";
+	RequestApplicant.save(request_Applicant);
 	let admission = new Admission();
 	admission.id_applicant = data;
 	admission.date = new Date(Date.now());
 	admission.number = req.body.nomer_i_data_prikaza_o_zachislenie;
-	Admission.save(admission)
-	RequestApplicant.save(request_Applicant)
-	let result = await data.save();
+	Admission.save(admission);
 
 	if (result) {
-		return res.status(200).redirect("/");
+		setTimeout(() => {
+			return res.status(200).redirect("/");
+		}, 2000);
 	} else {
 		return res.status(500).json({ err: "Ошибка создания аббитуриента" }).redirect("/applicants");
 	}
@@ -159,10 +174,21 @@ export const update = async (req: Request, res: Response) => {
 	data.vstup_ispitanie_1 = req.body.vstup_ispitanie_1;
 	data.avg_ball_obrazovanie_2 = req.body.avg_ball_obrazovanie_2;
 	data.reshenie_komissi = req.body.reshenie_komissi;
+	let request_Applicant = new RequestApplicant();
+	request_Applicant.id_aplicant = data;
+	request_Applicant.name_spec_1 = req.body.specialnost_1;
+	request_Applicant.name_spec_2 = req.body.specialnost_2 ? req.body.specialnost_2 : "не выбрано";
+	request_Applicant.name_spec_3 = req.body.specialnost_3 ? req.body.specialnost_3 : "не выбрано";
+	let admission = new Admission();
+	admission.id_applicant = data;
+	admission.date = new Date(Date.now());
+	admission.number = req.body.nomer_i_data_prikaza_o_zachislenie;
 	let result = await data.save();
+	Admission.save(admission);
+	RequestApplicant.save(request_Applicant);
 
 	if (result) {
-		return res.status(200).send(data);
+		return res.status(200).redirect("/");
 	} else {
 		return res.status(500).send("Ошибка обновления аббитуриента");
 	}
