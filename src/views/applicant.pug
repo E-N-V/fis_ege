@@ -77,21 +77,49 @@ block body_
                                             datalist(id="Specialnost")
                                                 each val in spec
                                                     option=val.name
-                                    tr.trmy#disabletr
-                                        td.tdnum 2
-                                        td
-                                            input(type="text", name="specialnost_2", list="Specialnost", value=applicant.request.name_spec_2, required, disabled).form-control.input-my
-                                    tr.trmy#disabletr
-                                        td.tdnum 3
-                                        td
-                                            input(type="text", name="specialnost_3", list="Specialnost", value=applicant.request.name_spec_3, required, disabled).form-control.input-my
+                                    if applicant.request.name_spec_2 != "ничего"
+                                        tr.trmy
+                                            td.tdnum 2
+                                            td
+                                                input(type="text", name="specialnost_2", list="Specialnost", value=applicant.request.name_spec_2, required).form-control.input-my
+                                    else
+                                        tr.trmy#disabletr
+                                            td.tdnum 2
+                                            td
+                                                input(type="text", name="specialnost_2", list="Specialnost", required, disabled).form-control.input-my
+                                    if applicant.request.name_spec_3 != "ничего"
+                                        tr.trmy
+                                            td.tdnum 3
+                                            td
+                                                input(type="text", name="specialnost_3", list="Specialnost", value=applicant.request.name_spec_3, required).form-control.input-my
+                                    else
+                                        tr.trmy#disabletr
+                                            td.tdnum 3
+                                            td
+                                                input(type="text", name="specialnost_3", list="Specialnost", required, disabled).form-control.input-my
+                                    
                                     tr
-                                        td
-                                        td.tdbut
-                                            .add-my#visible(onclick="add()") +
-                                            .add-zat#invisible +
-                                            .del-my#invisible(onclick="del()") -
-                                            .del-zat#visible -
+                                        if applicant.request.name_spec_3 != "ничего"
+                                            td
+                                            td.tdbut
+                                                .add-my#invisible(onclick="add()") +
+                                                .add-zat#visible +
+                                                .del-my#visible(onclick="del()") -
+                                                .del-zat#invisible -
+                                        else if applicant.request.name_spec_2 != "ничего"
+                                            td
+                                            td.tdbut
+                                                .add-my#visible(onclick="add()") +
+                                                .add-zat#invisible +
+                                                .del-my#visible(onclick="del()") -
+                                                .del-zat#invisible -
+                                        else
+                                            td
+                                            td.tdbut
+                                                .add-my#visible(onclick="add()") +
+                                                .add-zat#invisible +
+                                                .del-my#invisible(onclick="del()") -
+                                                .del-zat#visible -
                                 .form-text.text-muted Дважды нажмите на поле, и появится список с вариантами.
                             .form-group
                                 label № личного дела

@@ -5,8 +5,6 @@ import Admission from "../database/entity/Admission";
 import Specialty from "../database/entity/Specialty";
 import Region from "../database/entity/Region";
 
-// TODO: Защитить методы контролллера от неавторизованных пользователей
-
 /**
  * Получить страницу всех аббитуриентов
  *
@@ -15,7 +13,7 @@ import Region from "../database/entity/Region";
  */
 export const index = async (req: Request, res: Response) => {
 	let id: Applicant | number | undefined = await Applicant.findOne({ select: ["id"], order: { id: -1 } });
-	id = id? id.id + 1 : 1;
+	id = id ? id.id + 1 : 1;
 	let specialnosti = await Specialty.find();
 	let oblasti = await Region.find();
 	return res.status(200).render("applicant", {
@@ -202,9 +200,21 @@ export const update = async (req: Request, res: Response) => {
  */
 export const destroy = async (req: Request, res: Response) => {
 	let id = req.params["applicantId"];
-	let data = await Applicant.findOne(id);
-
-	let result = await data?.remove();
+	let applicant = await Applicant.findOne(id);
+	if (!applicant) return res.status(500).send("Не найден такой абитуриент.");
+	let admission = await Admission.findOne({
+		where: {
+			id_applicant: applicant,
+		},
+	});
+	let requestApplicant = await RequestApplicant.findOne({
+		where: {
+			id_aplicant: applicant,
+		},
+	});
+	await requestApplicant?.remove()
+	await admission?.remove()
+	let result = await applicant.remove();
 
 	if (result) {
 		return res.status(200).redirect("/");
