@@ -1,0 +1,22 @@
+span{
+    margin-top: 10px;
+    display: inline-table;
+    width: 70px;
+    margin-left: 40px;
+}
+
+input[type=text]{
+}
+
+input[type=password]{
+}
+
+button{
+    margin-left: 110px;
+    display: block;
+    border: none;
+    padding: 10px 20px;
+    background-color: rgb(89, 175, 255);
+    color: white;
+    margin-top: 20px;
+}

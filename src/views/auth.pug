@@ -1,0 +1,17 @@
+extends ../public/index
+
+block head_
+    title Авторизация
+    link(rel="stylesheet", href="stylesheet/auth.css")
+
+block body_
+    h2 Авторизация
+    form(action="/auth", method="post")
+        input(type="hidden", name="token", value=value)
+        span логин:
+        input(type="text", name="username")
+        br
+        span пароль:
+        input(type="password", name="password")
+        br
+        button(type="submit") Войти

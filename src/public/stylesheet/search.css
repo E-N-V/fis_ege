@@ -1,0 +1,287 @@
+.search-area{
+    margin-left: 5%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    background-color: rgb(55, 53, 184);
+    flex-grow: 1;
+    height: 70px;
+    margin-bottom: 20px;
+}
+
+.search-area .search-text{
+    width: calc(100% - 80px);
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+
+.search-area .search-text:focus{
+    border-radius: 0;
+    border: none;
+    outline: none;
+}
+
+.search-area .search-button{
+    border-radius: 0;
+    border: none;
+    outline: none;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(33, 32, 104);
+    background-image: url("/images/search.png");
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.search-area .search-button:focus{
+    border-radius: 0;
+    border: none;
+    outline: none;
+}
+
+.opt-container{
+    border: 2px solid black;
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+}
+
+.opt-container ul{
+    list-style: none;
+}
+
+.filter-area{
+
+}
+
+.filter-area ul{
+    margin: 0;
+    padding: 0;
+}
+
+.filter-area ul li{
+    margin: 0;
+    padding: 0;
+}
+
+.criteria-aria{
+    flex-grow: 1;
+}
+
+.criteria-aria li{
+
+}
+
+.criteria-aria ul li:first-child{
+    font-weight: bold;
+}
+
+.criteria-aria ul{
+    margin: 0;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 0;
+}
+
+.criteria-aria ul li{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.criteria-aria ul li input[type=number]{
+    margin-left: 5px;
+    max-width: 40%;
+    flex-shrink: 1;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.form-button-my{
+    margin-left: 20px;
+    display: flex;
+    flex-wrap: 0;
+    align-items: center;
+    width: 300px;
+    margin-bottom: 20px;
+    background-color: rgb(89, 175, 255);
+    color: lightgray;
+    cursor: pointer;
+}
+
+.form-button-my:hover{
+    background-color: rgb(89, 106, 255);
+    color: white;
+}
+
+.form-button-my .ico-block-my{
+    height: 70px;
+    width: 70px;
+    background-color: rgba(0, 0, 0, .6);
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    margin-right: 10px;
+}
+
+#button1{
+    background-image: url("/images/user.png");
+}
+
+#button2{
+    background-image: url("/images/contacts.png");
+}
+
+#button3{
+    background-image: url("/images/tests.png");
+}
+
+.form-buttons .form-button-my span{
+    margin-left: 20px;
+}
+
+#activeButton{
+    background-color: rgb(55, 53, 184);
+    color: white;
+}
+
+h3{
+    color: white;
+    background-color: rgb(55, 53, 184);
+    padding: 10px;
+    margin-bottom: 20px;
+    height: 53px;
+}
+
+#activeBlock{
+    display: block !important;
+}
+
+.passiveBlock{
+    display: none;
+}
+
+.criteria-group{
+    display: none;
+}
+
+input[type=checkbox]{
+    display: none;
+}
+
+input[type=checkbox] + label, input[type=checkbox]:checked + label{
+    width: 90px;
+    background-color: lightgray;
+    display: flex;
+    color: rgb(75, 75, 75);
+    margin: 0;
+    padding: 0;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+input[type=checkbox]:checked + label{
+    background-color: rgb(0, 199, 0);
+    color: white;
+}
+
+input[type=checkbox] + label::before, input[type=checkbox]:checked + label::before{
+    content: '';
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, .6);
+    flex-shrink: 0;
+    background-image: url("/images/off.png");
+    background-position: 50%;
+    background-size: 80%;
+    background-repeat: no-repeat;
+}
+
+input[type=checkbox]:checked + label::before{
+    background-image: url("/images/on.png");
+}
+
+input[type=checkbox] + label::after, input[type=checkbox]:checked + label::after{
+    content: 'ВЫКЛ';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    flex-grow: 1;
+}
+
+input[type=checkbox]:checked + label::after{
+    content: 'ВКЛ';
+}
+
+@media (max-width:910px){
+    .form-button-my span{
+        display: none;
+    }
+    .form-button-my{
+        width: 70px;
+    }
+    .form-button-my .ico-block-my{
+        margin-right: 0;
+    }
+
+    .venomsnake{
+        display: none;
+    }
+}
+
+p{
+    margin: 0;
+    padding: 0;
+}
+
+.criteria-aria input[type=text], input[type=date]{
+    margin-left: 5px;
+    max-width: 50%;
+    flex-shrink: 1;
+}
+
+@media (max-width:590px){
+    .opt-container{
+        flex-direction: column;
+    }
+
+    .filter-area{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+h3{
+    width: 100%;
+}
+
+.search-button-second{
+    border-radius: 0;
+    border: none;
+    outline: none;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(33, 32, 104);
+    background-image: url("/images/search.png");
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    float: right;
+    transform: translate(0px, -4px);
+}

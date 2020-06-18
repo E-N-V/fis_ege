@@ -7,16 +7,52 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "tsc && cp src/views dist -r && cp src/public dist -r && cd dist && node bin/server.js"
+    "start": "tsc && cp src/database dist -r && cp src/views dist -r && cp src/public dist -r && cd dist && node bin/server.js",
+    "test": "jest"
   },
   "dependencies": {
     "@types/cookie-parser": "^1.4.2",
+    "@types/dotenv": "^8.2.0",
+    "@types/jest": "^25.2.3",
+    "@types/supertest": "^2.0.9",
+    "@types/uuid": "^8.0.0",
     "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-validator": "^6.5.0",
+    "jest": "^26.0.1",
+    "mysql": "^2.18.1",
     "pug": "^2.0.4",
-    "typeorm": "^0.2.25"
+    "ts-jest": "^26.0.0",
+    "typeorm": "^0.2.25",
+    "typescript": "^3.9.3",
+    "uuid": "^8.1.0",
+    "xlsx": "^0.16.1"
   },
   "devDependencies": {
-    "@types/node": "^14.0.5"
+    "@types/node": "^14.0.6",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "modulePaths": [
+      "<rootDir>"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "**/__tests__/*.+(ts|tsx|js)"
+    ],
+    "preset": "ts-jest"
   }
 }

@@ -1,0 +1,471 @@
+.card{
+    border: none;
+}
+
+.btn-danger,.clear-my,.submit-my{
+    margin-top: 20px;
+    margin-left: 25px;
+    margin-right: 25px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    padding-right: 10px;
+}
+
+.btn-danger:hover{
+    background-color: #ff0019;
+}
+
+.btn-danger::before,.clear-my::before,.submit-my::after{
+    content: '';
+    display: block;
+    width: 70px;
+    height: 70px;
+    background-image: url("/images/fgback.png");
+    background-color: rgba(0, 0, 0, .6);
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: 45% 50%;
+    margin-right: 10px;
+}
+
+.card-footer{
+    background-color: white;
+    border: none;
+}
+
+label{
+    font-weight: bold;
+}
+
+.card-header{
+    background-color: white;
+    border: none;
+    border-radius: 0;
+}
+
+.zatychka{
+    font-weight: normal;
+    margin-left: 20px;
+    font-size: 30px;
+    float: left;
+}
+
+.zatychka::after{
+    content: ':';
+}
+
+.zatychka + input{
+    font-size: 30px;
+    float: left;
+    width: 70px;
+    height: initial;
+    background-color: white !important;
+    border: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 5px;
+}
+
+.zatychka + input:focus{
+    outline: none;
+    border: none;
+}
+
+.card-body{
+    padding: 20px;
+    display: flex;
+    margin-left: 0;
+}
+
+.form-buttons{
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.form-buttons .form-button-my{
+    display: flex;
+    flex-wrap: 0;
+    align-items: center;
+    width: 300px;
+    margin-bottom: 20px;
+    background-color: rgb(89, 175, 255);
+    color: lightgray;
+    cursor: pointer;
+}
+
+.form-buttons .form-button-my:hover{
+    background-color: rgb(89, 106, 255);
+    color: white;
+}
+
+.form-buttons .form-button-my .ico-block-my{
+    height: 70px;
+    width: 70px;
+    background-color: rgba(0, 0, 0, .6);
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+#button1{
+    background-image: url("/images/user.png");
+}
+
+#button2{
+    background-image: url("/images/contacts.png");
+}
+
+#button3{
+    background-image: url("/images/tests.png");
+}
+
+.form-buttons .form-button-my span{
+    margin-left: 20px;
+}
+
+.form-blocks{
+    max-width: calc(100% - 120px);
+    flex-grow: 1;
+}
+
+.form-blocks .form-group-of-groups{
+    display: none;
+}
+
+#activeButton{
+    background-color: rgb(55, 53, 184);
+    color: white;
+}
+
+.form-control{
+    height: initial;
+}
+
+@media (max-width:910px){
+    .form-buttons .form-button-my span{
+        display: none;
+    }
+    .form-buttons .form-button-my{
+        width: 70px;
+    }
+
+    .clear-my{
+        font-size: 0;
+        padding: 0;
+    }
+
+    .clear-my::before{
+        margin: 0;
+    }
+
+    .submit-my{
+        font-size: 0;
+        padding: 0 !important;
+    }
+
+    .submit-my::after{
+        margin: 0 !important;
+    }
+}
+
+.submit-my{
+    float: right;
+    padding-right: 0;
+    padding-left: 10px;
+}
+
+.submit-my::after{
+    background-image: url("/images/save.png");
+    float: right;
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+.clear-my{
+    float:left;
+}
+
+.clear-my::before{
+    background-image: url("/images/del.png");
+}
+
+@media (max-width:500px){
+    
+    .form-blocks{
+        width: 90%;
+        margin-left: 5%;
+        max-width: 100%;
+    }
+
+    .form-buttons{
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+
+    .form-group-of-groups{
+        width: 100%;
+    }
+}
+
+/**/
+
+.tdnum{
+    text-align: right;
+}
+
+.del-my,.add-my{
+    background-color: rgb(89, 175, 255);
+    color: white;
+    font-size: 20px;
+    padding: 5px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    cursor: pointer;
+}
+
+.del-my:hover,.add-my:hover{
+    background-color: rgb(89, 106, 255);
+}
+
+.add-my{
+    margin-right: 10px;
+}
+
+.del-my{
+
+}
+
+.add-zat, .del-zat{
+    background-color: lightgray;
+    color: rgb(95, 95, 95);
+    font-size: 20px;
+    padding: 5px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+}
+
+td{
+    padding-right: 10px;
+}
+
+.secondtr,.thirdtr{
+    display: none;
+}
+
+#activetr{
+    display: table-row;
+}
+
+#disabletr{
+    display: none;
+}
+
+#visible{
+    display: table-cell !important;
+}
+
+#invisible{
+    display: none !important;
+}
+
+.tdbut{
+   padding-top: 10px; 
+}
+
+.calc-container{
+    display: flex;
+}
+
+.calc-container .buts-container{
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    max-width: calc(60% - 10px);
+}
+
+.calc-container .buts-container .write-but-my, .calc-container .buts-container .calc-but-my, .calc-container .buts-container .ass-but-my{
+    background-color: rgb(89, 175, 255);
+    display: flex;
+    padding-right: 10px;
+    color: white;
+    align-items: center;
+    width: 155px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.calc-container .buts-container .write-but-my:hover, .calc-container .buts-container .calc-but-my:hover, .calc-container .buts-container .ass-but-my:hover{
+    background-color: rgb(89, 106, 255);
+}
+
+.calc-container .buts-container .write-but-my:focus, .calc-container .buts-container .calc-but-my:focus, .calc-container .buts-container .ass-but-my:focus{
+    outline: 2px solid rgb(55, 53, 184, 0.8);
+}
+
+.calc-container .buts-container .write-but-my:before, .calc-container .buts-container .calc-but-my:before, .calc-container .buts-container .ass-but-my:before{
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-image: url("/images/fgback.png");
+    background-color: rgba(0, 0, 0, .6);
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: 45% 50%;
+    margin-right: 10px;
+}
+
+.calc-container .buts-container .calc-but-my{
+
+}
+
+.calc-container .buts-container .calc-control{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.calc-container .buts-container .calc-control .calc-plus,.calc-container .buts-container .calc-control .calc-minus,.calc-container .buts-container .calc-control .calc-done,.calc-container .buts-container .calc-control .assholecalc-done,.assholecalc-done{
+    display: block;
+    color: white;
+    background-color: rgb(89, 175, 255);
+    padding: 10px;
+    cursor: pointer;
+}
+
+.calc-container .buts-container .calc-control .calc-plus:hover,.calc-container .buts-container .calc-control .calc-minus:hover,.calc-container .buts-container .calc-control .calc-done:hover,.calc-container .buts-container .calc-control .assholecalc-done:hover,.assholecalc-done:hover{
+    background-color: rgb(89, 106, 255);
+}
+
+.calc-container .buts-container .calc-control .calc-plus:focus,.calc-container .buts-container .calc-control .calc-minus:focus,.calc-container .buts-container .calc-control .calc-done:focus,.calc-container .buts-container .calc-control .assholecalc-done:focus,.assholecalc-done:focus{
+    outline: 2px solid rgb(55, 53, 184, 0.8);
+}
+
+#calcActive, #calcActive:hover{
+    background-color: rgb(55, 53, 184);
+}
+
+.calc-container .buts-container .calc-control .calc-plus, .calc-container .buts-container .calc-control .calc-minus{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 43.5px;
+    height: 43.5px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.calc-container .buts-container .calc-control .calc-plus{
+    margin-right: 10px;
+}
+.calc-container .buts-container .calc-control .calc-minus{
+
+}
+
+.calc-container .buts-container .calc-control .calc-done{
+
+}
+
+.calc-container .buts-container .calc-detail{
+
+}
+
+.calc-container .buts-container .calc-result{
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.calc-container .inp-container{
+    max-width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.inp-result,.inp-result:focus,.inp-result:hover,.assholeinp-result,.assholeinp-result:focus,.assholeinp-result:hover{
+    display: inline-block;
+    font-size: 15px;
+    background-color: white;
+    border: none;
+    border-radius: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    width: 40px;
+}
+
+.calc-container .inp-container .inp-write{
+
+}
+
+.inp-container ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.calc-container .inp-container .inp-calc{
+    margin-bottom: 10px;
+    max-width: 100%;
+}
+
+#soladsnake{
+    display: none;
+}
+
+#activeBlock{
+    display: block !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+.form-blocks input[type=radio]{
+display: none;
+}
+
+.form-blocks input[type=radio] + label,.form-blocks input[type=radio]:checked + label{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin: 0;
+    padding: 0;
+    height: 14px;
+    width: 14px;
+    border-radius: 100%;
+    background-color: lightgray;
+    transform: translate(2px, 0);
+}
+
+.form-blocks input[type=radio]:checked + label{
+    background-color: rgb(89, 175, 255);
+}
+
+.form-blocks input[type=radio] + label::after,.form-blocks input[type=radio]:checked + label::after{
+    content: '';
+    position: absolute;
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    border: 1px solid rgb(146, 146, 146);
+}
+
+.form-blocks input[type=radio]:checked + label::after{
+    border: 1px solid white;
+    box-shadow: 0 0 4px white;
+}

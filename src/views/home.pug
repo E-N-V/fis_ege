@@ -1,8 +1,195 @@
 extends ../public/index
 
 block head_
+    link(rel="stylesheet", href="http://localhost:3000/stylesheet/home.css")
+    script(src="http://localhost:3000/scripts/home.js")
+    style.
+        td{
+            padding: 5px;
+        }
     title Домашная страница
 
 block body_
-    center
-        p Hello world!
+    h2 Домашняя страница
+    .buttons-area
+        a.abut(href="/applicants")
+            button.btn.btn-success
+                |Добавить абитуриента
+        if export_
+            a(href="/search/export")
+                button.Export Экспорт в excel
+        a.abut(href="/search")
+            button.srch
+                |Поиск
+    .settings-but-my(onclick="filterOpen()") фильтры
+    .settings-my
+
+
+        .form-buttons
+            .form-button-my(onclick="blockSwapp(0)" id="activeButton")
+                .ico-block-my#button1
+                span Личная информация
+            .form-button-my(onclick="blockSwapp(1)")
+                .ico-block-my#button2
+                span Контакты
+            .form-button-my(onclick="blockSwapp(2)")
+                .ico-block-my#button3
+                span Результаты
+
+
+
+        ul.form-group-of-groups#activeBlock
+            li Личная информация
+            li Форма получения образования
+                input.catChk(type="checkbox", name="c4", onclick="updateTable(4)", checked)
+            li Специальность
+                input.catChk(type="checkbox", name="c5", onclick="updateTable(5)", checked)
+            li Приоритет о выборе специальности / вида (от 1 до 3)
+                input.catChk(type="checkbox", name="c6", onclick="updateTable(6)")
+            li № личного дела
+                input.catChk(type="checkbox", name="c7", onclick="updateTable(7)")
+            li № экз.листа
+                input.catChk(type="checkbox", name="c8", onclick="updateTable(8)")
+            li Основа обучения
+                input.catChk(type="checkbox", name="c9", onclick="updateTable(9)")
+            li Нуждаемость в общежитии
+                input.catChk(type="checkbox", name="c10", onclick="updateTable(10)")
+            li Пол
+                input.catChk(type="checkbox", name="c11", onclick="updateTable(11)")
+            li Дата рождения
+                input.catChk(type="checkbox", name="c12", onclick="updateTable(12)")
+            li Гражданство
+                input.catChk(type="checkbox", name="c13", onclick="updateTable(13)")
+            li Адрес местожительства (прописка)
+                input.catChk(type="checkbox", name="c14", onclick="updateTable(14)")
+            li Область, Район, Иногородние, Иностранцы
+                input.catChk(type="checkbox", name="c15", onclick="updateTable(15)")
+        ul.form-group-of-groups 
+            li Контакты
+            li Паспортные данные (серия, номер, кем и когда выдан)
+                input.catChk(type="checkbox", name="c16", onclick="updateTable(16)")
+            li Телефон
+                input.catChk(type="checkbox", name="c17", onclick="updateTable(17)")
+            li Социальные категории (сирота, опекаемый, инвалид, ОВЗ)
+                input.catChk(type="checkbox", name="c18", onclick="updateTable(18)")
+            li СПО впервые / не впервые
+                input.catChk(type="checkbox", name="c19", onclick="updateTable(19)")
+            li Уровень образования
+                input.catChk(type="checkbox", name="c20", onclick="updateTable(20)")
+            li Год окончания учеб. завед.
+                input.catChk(type="checkbox", name="c21", onclick="updateTable(21)")
+            li Особые успехи в учении
+                input.catChk(type="checkbox", name="c22", onclick="updateTable(22)")
+            li Оригинал документа об образовании
+                input.catChk(type="checkbox", name="c23", onclick="updateTable(23)")
+            li Копия документа об образовании
+                input.catChk(type="checkbox", name="c24", onclick="updateTable(24)")
+        ul.form-group-of-groups
+            li Результаты
+            li Вступительное испытание (балл) (1)
+                input.catChk(type="checkbox", name="c25", onclick="updateTable(25)")
+            li Средний балл документа об образовании (2)
+                input.catChk(type="checkbox", name="c26", onclick="updateTable(26)")
+            li Решение приемной комиссии
+                input.catChk(type="checkbox", name="c27", onclick="updateTable(27)", checked)
+            li № и дата приказа о зачислении
+                input.catChk(type="checkbox", name="c28", onclick="updateTable(28)")
+            li Приоритет, вид, оригинал аттестата
+                input.catChk(type="checkbox", name="c29", onclick="updateTable(29)")
+
+    .tCont        
+        table(border="2")
+            thead
+                tr.ftr
+                    td.c0.ftr Опции
+                    td.c1.ftr#spotted № абитуриента
+                    td.c2.ftr#spotted Дата заявления
+                    td.c3.ftr#spotted Ф.И.О.
+                    td.c4#spotted Форма получения образования
+                    td.c5#spotted Специальность
+                    td.c6 Приоритет о выборе специальности / вида (от 1 до 3)
+                    td.c7 № личного дела
+                    td.c8 № экз.листа
+                    td.c9 Основа обучения
+                    td.c10 Нуждаемость в общежитии
+                    td.c11 Пол
+                    td.c12 Дата рождения
+                    td.c13 Гражданство
+                    td.c14 Адрес местожительства (прописка)
+                    td.c15 Область, Район, Иногородние, Иностранцы
+                    td.c16 Паспортные данные (серия, номер, кем и когда выдан)
+                    td.c17 Телефон
+                    td.c18 Социальные категории (сирота, опекаемый, инвалид, ОВЗ)
+                    td.c19 СПО впервые / не впервые
+                    td.c20 Уровень образования
+                    td.c21 Год окончания учеб. завед.
+                    td.c22 Особые успехи в учении
+                    td.c23 Оригинал документа об образовании
+                    td.c24 Копия документа об образовании
+                    td.c25 Вступительное испытание (балл) (1)
+                    td.c26 Средний балл документа об образовании (2)
+                    td.c27#spotted Решение приемной комиссии
+            tbody
+                if applicants
+                    -for (var i = 0; i < applicants.length; i++)
+                        tr
+                            td.c0
+                                a(href="/applicants/"+applicants[i].id)
+                                    button Редактировать
+                            td.c1#spotted=applicants[i].id
+                            td.c2#spotted=applicants[i].date_zayv
+                            td.c3#spotted=applicants[i].fio
+                            td.c4#spotted=applicants[i].forma_poluch_obraz
+                            td.c5#spotted
+                                |#{applicants[i].request.name_spec_1} | #{applicants[i].request.name_spec_2} | #{applicants[i].request.name_spec_3}
+                            td.c7=applicants[i].nomer_lichnoe_delo
+                            td.c8=applicants[i].nomer_ekz_lista
+                            td.c9=applicants[i].osnova_obych
+                            td.c10=applicants[i].obshaga
+                            td.c11=applicants[i].sex
+                            td.c12=applicants[i].birthday
+                            td.c13=applicants[i].grazhdanstvo
+                            td.c14=applicants[i].addres_mesto_zitelstva
+                            td.c15=applicants[i].oblast
+                            td.c16=applicants[i].pasport
+                            td.c17=applicants[i].tel
+                            td.c18=applicants[i].soc_category
+                            td.c19=applicants[i].SPO_vpervie_nevpervie
+                            td.c20=applicants[i].lvl_obraz
+                            td.c21=applicants[i].god_okonchania
+                            td.c22=applicants[i].osobie_yspexi_v_echebe
+                            td.c23=applicants[i].orig_doc_obraz
+                            td.c24=applicants[i].copy_doc_obraz
+                            td.c25=applicants[i].vstup_ispitanie_1
+                            td.c26=applicants[i].avg_ball_obrazovanie_2
+                            td.c27#spotted=applicants[i].reshenie_komissi
+                else
+                    tr
+                        td.c0 -
+                        td.c1 -
+                        td.c2 -
+                        td.c3 -
+                        td.c4 -
+                        td.c5 -
+                        td.c6 -
+                        td.c7 -
+                        td.c8 -
+                        td.c9 -
+                        td.c10 -
+                        td.c11 -
+                        td.c12 -
+                        td.c13 -
+                        td.c14 -
+                        td.c15 -
+                        td.c16 -
+                        td.c17 -
+                        td.c18 -
+                        td.c19 -
+                        td.c20 -
+                        td.c21 -
+                        td.c22 -
+                        td.c23 -
+                        td.c24 -
+                        td.c25 -
+                        td.c26 -
+                        td.c27 -

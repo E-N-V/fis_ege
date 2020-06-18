@@ -1,0 +1,652 @@
+extends ../public/index
+
+block head_
+    title Добавить Абитуриента
+    link(rel="stylesheet", href="http://localhost:3000/stylesheet/add.css")
+    script(src="http://localhost:3000/scripts/add.js")
+
+    //input(type="text", name="arr", list="<идентификатор>", value=id).form-control
+    //datalist(id="<идентификатор>")
+    //    option Тест
+    //    option(value="Текст2")
+block body_
+    h2 Добавление абитуриента
+    a(href="/")
+        button.btn.btn-danger
+            |Назад. Введеные данные не сохранятся.
+    br
+    form(action=url_, method="post")
+        .card
+            .card-header
+            if applicant
+                .form-group
+                    label.zatychka(for="id") № абитуриента
+                    input(type="text", name="id", id="id", readonly, value=applicant.id).form-control
+                .card-body.row
+                    .form-buttons
+                        .form-button-my(onclick="blockSwap(0)" id="activeButton")
+                            .ico-block-my#button1
+                            span Личная информация
+                        .form-button-my(onclick="blockSwap(1)")
+                            .ico-block-my#button2
+                            span Контакты
+                        .form-button-my(onclick="blockSwap(2)")
+                            .ico-block-my#button3
+                            span Результаты
+                    .form-blocks
+                        .form-group.form-group-of-groups(id="activeBlock")
+                            .form-group
+                                label Дата заявления
+                                input(type="date", name="date_zayv", value=applicant.date_zayv, pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}", required).form-control
+                            .form-group
+                                label Ф.И.О.
+                                input(type="text", name="fio", placeholder="Иванов Иван Иванович", value=applicant.fio, required).form-control
+                            .form-group
+                                label Форма получения образования
+                                if applicant.forma_poluch_obraz == "Очная"
+                                    .form-control
+                                        |Очная
+                                        input#rad1(type="radio", name="forma_poluch_obraz", value="Очная", checked, required)
+                                        label(for="rad1")
+                                        br
+                                        |Заочная 
+                                        input#rad2(type="radio", name="forma_poluch_obraz", value="Заочная", required)
+                                        label(for="rad2")
+                                        br
+                                else
+                                    .form-control
+                                        |Очная
+                                        input#rad3(type="radio", name="forma_poluch_obraz", value="Очная", required)
+                                        label(for="rad3")
+                                        br
+                                        |Заочная 
+                                        input#rad4(type="radio", name="forma_poluch_obraz", value="Заочная", checked, required)
+                                        label(for="rad4")
+                                        br
+                            .form-group
+                                label Специальности
+                                table
+                                    tr
+                                        td Приоритет
+                                        td Специальность
+                                        td
+                                    tr.trmy
+                                        td.tdnum 1
+                                        td
+                                            input(type="text", name="specialnost_1", list="Specialnost", value=applicant.request.name_spec_1, required).form-control.input-my
+                                            datalist(id="Specialnost")
+                                                each val in spec
+                                                    option=val.name
+                                    if applicant.request.name_spec_2 != "ничего"
+                                        tr.trmy
+                                            td.tdnum 2
+                                            td
+                                                input(type="text", name="specialnost_2", list="Specialnost", value=applicant.request.name_spec_2, required).form-control.input-my
+                                    else
+                                        tr.trmy#disabletr
+                                            td.tdnum 2
+                                            td
+                                                input(type="text", name="specialnost_2", list="Specialnost", required, disabled).form-control.input-my
+                                    if applicant.request.name_spec_3 != "ничего"
+                                        tr.trmy
+                                            td.tdnum 3
+                                            td
+                                                input(type="text", name="specialnost_3", list="Specialnost", value=applicant.request.name_spec_3, required).form-control.input-my
+                                    else
+                                        tr.trmy#disabletr
+                                            td.tdnum 3
+                                            td
+                                                input(type="text", name="specialnost_3", list="Specialnost", required, disabled).form-control.input-my
+                                    
+                                    tr
+                                        if applicant.request.name_spec_3 != "ничего"
+                                            td
+                                            td.tdbut
+                                                .add-my#invisible(onclick="add()") +
+                                                .add-zat#visible +
+                                                .del-my#visible(onclick="del()") -
+                                                .del-zat#invisible -
+                                        else if applicant.request.name_spec_2 != "ничего"
+                                            td
+                                            td.tdbut
+                                                .add-my#visible(onclick="add()") +
+                                                .add-zat#invisible +
+                                                .del-my#visible(onclick="del()") -
+                                                .del-zat#invisible -
+                                        else
+                                            td
+                                            td.tdbut
+                                                .add-my#visible(onclick="add()") +
+                                                .add-zat#invisible +
+                                                .del-my#invisible(onclick="del()") -
+                                                .del-zat#visible -
+                                .form-text.text-muted Дважды нажмите на поле, и появится список с вариантами.
+                            .form-group
+                                label № личного дела
+                                input(type="text", name="nomer_lichnoe_delo", readonly, value=applicant.nomer_lichnoe_delo, required).form-control 
+                            .form-group
+                                label № экз.листа
+                                input(type="text", name="nomer_ekz_lista", value=applicant.nomer_ekz_lista, required).form-control
+                            .form-group
+                                label Основа обучения
+                                if applicant.osnova_obych == "бюджет"
+                                    .form-control
+                                        |бюджет 
+                                        input#rad5(type="radio", name="osnova_obych", value="бюджет", checked, required)
+                                        label(for="rad5")
+                                        br
+                                        |комерция 
+                                        input#rad6(type="radio", name="osnova_obych", value="комерция", required)
+                                        label(for="rad6")
+                                        br
+                                else
+                                    .form-control
+                                        |бюджет 
+                                        input#rad7(type="radio", name="osnova_obych", value="бюджет", required)
+                                        label(for="rad7")
+                                        br
+                                        |комерция 
+                                        input#rad8(type="radio", name="osnova_obych", value="комерция", checked, required)
+                                        label(for="rad8")
+                                        br
+                            .form-group
+                                label Нуждаемость в общежитии
+                                if applicant.obshaga == "Да"
+                                    .form-control
+                                        |Да 
+                                        input#rad9(type="radio", name="obshaga", value="Да", checked, required)
+                                        label(for="rad9")
+                                        br
+                                        |Нет
+                                        input#rad10(type="radio", name="obshaga", value="Нет", required)
+                                        label(for="rad10")
+                                        br
+                                else
+                                    .form-control
+                                        |Да 
+                                        input#rad11(type="radio", name="obshaga", value="Да", required)
+                                        label(for="rad11")
+                                        br
+                                        |Нет
+                                        input#rad12(type="radio", name="obshaga", value="Нет", checked, required)
+                                        label(for="rad12")
+                                        br
+                            .form-group
+                                label Пол
+                                if applicant.sex == "М"
+                                    .form-control
+                                        |М 
+                                        input#rad13(type="radio", name="sex", value="М", checked, required)
+                                        label(for="rad13")
+                                        br
+                                        |Ж 
+                                        input#rad14(type="radio", name="sex", value="Ж", required)
+                                        label(for="rad14")
+                                        br
+                                else
+                                    .form-control
+                                        |М 
+                                        input#rad15(type="radio", name="sex", value="М", required)
+                                        label(for="rad15")
+                                        br
+                                        |Ж 
+                                        input#rad16(type="radio", name="sex", value="Ж", checked, required)
+                                        label(for="rad16")
+                                        br
+                            .form-group
+                                label Дата рождения
+                                input(type="date", name="birthday", value=applicant.birthday, pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}", required).form-control
+                            .form-group
+                                label Гражданство
+                                if applicant.grazhdanstvo == "РФ"
+                                    .form-control
+                                        |РФ 
+                                        input#rad17(type="radio", name="grazhdanstvo", value="РФ", checked, required)
+                                        label(for="rad17")
+                                        br
+                                        |ИГ 
+                                        input#rad19(type="radio", name="grazhdanstvo", value="ИГ", required)
+                                        label(for="rad19")
+                                        br
+                                else
+                                    .form-control
+                                        |РФ 
+                                        input#rad20(type="radio", name="grazhdanstvo", value="РФ", required)
+                                        label(for="rad20")
+                                        br
+                                        |ИГ 
+                                        input#rad21(type="radio", name="grazhdanstvo", value="ИГ", checked, required)
+                                        label(for="rad21")
+                                        br
+                            .form-group
+                                label Адрес местожительства (прописка)
+                                input(type="text", name="addres_mesto_zitelstva", value=applicant.addres_mesto_zitelstva, required).form-control
+                            .form-group
+                                label Область
+                                input(type="text", name="oblast", list="OblastList", value=applicant.oblast, required).form-control
+                                datalist(id="OblastList")
+                                    each item in oblasti
+                                        option=item.name
+                        .form-group.form-group-of-groups
+                            .form-group
+                                label Паспортные данные (серия, номер, кем и когда выдан)
+                                input(type="text", name="passport", value=applicant.passport, required).form-control
+                            .form-group
+                                label Телефон
+                                input(type="text", name="tel", value=applicant.tel,  required).form-control
+                            .form-group
+                                label Социальные категории (сирота, опекаемый, инвалид, ОВЗ)
+                                .form-control
+                                    |ничего 
+                                    if applicant.soc_category == "ничего"
+                                        input#rad22(type="radio", name="soc_category", value="ничего", checked, required)
+                                        label(for="rad22")
+                                    else
+                                        input#rad23(type="radio", name="soc_category", value="ничего", required)
+                                        label(for="rad23")
+                                    br
+                                    |сирота 
+                                    if applicant.soc_category == "сирота"
+                                        input#rad24(type="radio", name="soc_category", value="сирота", checked, required)
+                                        label(for="rad24")
+                                    else
+                                        input#rad25(type="radio", name="soc_category", value="сирота", required)
+                                        label(for="rad25")
+                                    br
+                                    |опекаемый 
+                                    if applicant.soc_category == "опекаемый"
+                                        input#rad26(type="radio", name="soc_category", value="опекаемый", checked, required)
+                                        label(for="rad26")
+                                    else
+                                        input#rad27(type="radio", name="soc_category", value="опекаемый", required)
+                                        label(for="rad27")
+                                    br
+                                    |инвалид 
+                                    if applicant.soc_category == "инвалид"
+                                        input#rad28(type="radio", name="soc_category", value="инвалид", checked, required)
+                                        label(for="rad28")
+                                    else
+                                        input#rad29(type="radio", name="soc_category", value="инвалид", required)
+                                        label(for="rad29")
+                                    br
+                                    |ОВЗ 
+                                    if applicant.soc_category == "ОВЗ"
+                                        input#rad30(type="radio", name="soc_category", value="ОВЗ", checked, required)
+                                        label(for="rad30")
+                                    else
+                                        input#rad31(type="radio", name="soc_category", value="ОВЗ", required)
+                                        label(for="rad31")
+                                    br
+                            .form-group
+                                label СПО впервые / не впервые
+                                if applicant.SPO_vpervie_nevpervie == "впервые"
+                                    .form-control
+                                        |впервые 
+                                        input#rad32(type="radio", name="SPO_vpervie_nevpervie", value="впервые", checked, required)
+                                        label(for="rad32")
+                                        br
+                                        |не впервые 
+                                        input#rad33(type="radio", name="SPO_vpervie_nevpervie", value="не впервые", required)
+                                        label(for="rad33")
+                                        br
+                                else
+                                    .form-control
+                                        |впервые 
+                                        input#rad34(type="radio", name="SPO_vpervie_nevpervie", value="впервые", required)
+                                        label(for="rad34")
+                                        br
+                                        |не впервые 
+                                        input#rad35(type="radio", name="SPO_vpervie_nevpervie", value="не впервые", checked, required)
+                                        label(for="rad35")
+                                        br
+                            .form-group
+                                label Уровень образования
+                                if applicant.lvl_obraz == "9"
+                                    .form-control
+                                        |9 класс 
+                                        input#rad36(type="radio", name="lvl_obraz", value="9", checked, required)
+                                        label(for="rad36")
+                                        br
+                                        |11 класс 
+                                        input#rad37(type="radio", name="lvl_obraz", value="11", required)
+                                        label(for="rad37")
+                                        br
+                                else
+                                    .form-control
+                                        |9 класс 
+                                        input#rad38(type="radio", name="lvl_obraz", value="9", required)
+                                        label(for="rad38")
+                                        br
+                                        |11 класс 
+                                        input#rad39(type="radio", name="lvl_obraz", value="11", checked, required)
+                                        label(for="rad39")
+                                        br
+                            .form-group
+                                label Год окончания учеб. завед.
+                                input(type="date", name="god_okonchania", value=applicant.god_okonchania, required).form-control
+                            .form-group
+                                label Особые успехи в учении
+                                input(type="text", name="osobie_yspexi_v_echebe", value=applicant.osobie_yspexi_v_echebe, required).form-control
+                            .form-group
+                                label Оригинал документа об образовании
+                                if applicant.orig_doc_obraz == "Да"
+                                    .form-control
+                                        |Да 
+                                        input#rad40(type="radio", name="orig_doc_obraz", value="Да", checked, required)
+                                        label(for="rad40")
+                                        br
+                                        |Нет 
+                                        input#rad41(type="radio", name="orig_doc_obraz", value="Нет", required)
+                                        label(for="rad41")
+                                        br
+                                else
+                                    .form-control
+                                        |Да 
+                                        input#rad42(type="radio", name="orig_doc_obraz", value="Да", required)
+                                        label(for="rad42")
+                                        br
+                                        |Нет 
+                                        input#rad43(type="radio", name="orig_doc_obraz", value="Нет", checked, required)
+                                        label(for="rad43")
+                                        br
+                        .form-group.form-group-of-groups
+                            .form-group
+                                label Вступительное испытание (балл) (1)
+                                input(type="text", name="vstup_ispitanie_1", value=applicant.vstup_ispitanie_1, required).form-control
+                            
+                            .form-group
+                                label Средний балл документа об образовании (2)
+
+                                .calc-container
+                                    .buts-container
+                                        .write-but-my#calcActive(onclick="calcSwap(0)") Написать
+                                        .calc-but-my(onclick="calcSwap(1)") Вычислить
+                                        .calc-control
+                                            .calc-plus.calc-md#soladsnake(onclick="calcInpCreate()") +
+                                            .calc-minus.calc-md#soladsnake(onclick="calcInpDestroy()") -
+                                        .calc-control
+                                            .calc-done.calc-md#soladsnake(onclick="calcStart()") Посчитать
+                                        p.calc-detail.calc-md#soladsnake Средний балл:
+                                            input.inp-result(type="text", name="avg_ball_obrazovanie_2", disabled, readonly, value=applicant.avg_ball_obrazovanie_2)
+                                        p.calc-result.calc-md#soladsnake Введено оценок: ###
+                                        
+                                    .inp-container
+                                        input.write-md(type="number", name="avg_ball_obrazovanie_2", value=applicant.avg_ball_obrazovanie_2 required).inp-write
+
+                                        input.calc-md.inp-calc(type="number")#soladsnake
+                                        input.calc-md.inp-calc(type="number")#soladsnake
+                                        input.calc-md.inp-calc(type="number")#soladsnake
+                                        input.calc-md.inp-calc(type="number")#soladsnake
+
+                            .form-group
+                                label Решение приемной комиссии
+                                input(type="text", name="reshenie_komissi", value=applicant.reshenie_komissi, required).form-control
+                            .form-group
+                                label № и дата приказа о зачислении
+                                input(type="text", name="nomer_i_data_prikaza_o_zachislenie", value=applicant.admission.nomer_i_data_prikaza_o_zachislenie, required).form-control
+            else
+                .form-group
+                    label(for="id").zatychka № абитуриента
+                    input(type="text", name="id", id="id", readonly, value=id).form-control
+                .card-body.row
+                    .form-buttons
+                        .form-button-my(onclick="blockSwap(0)" id="activeButton")
+                            .ico-block-my#button1
+                            span Личная информация
+                        .form-button-my(onclick="blockSwap(1)")
+                            .ico-block-my#button2
+                            span Контакты
+                        .form-button-my(onclick="blockSwap(2)")
+                            .ico-block-my#button3
+                            span Результаты
+                    .form-blocks
+                        .form-group.form-group-of-groups(id="activeBlock")
+                            .form-group
+                                label Дата заявления
+                                input(type="date", name="date_zayv", value=time, pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}", required).form-control
+                            .form-group
+                                label Ф.И.О.
+                                input(type="text", name="fio", placeholder="Иванов Иван Иванович", required).form-control
+                            .form-group
+                                label Форма получения образования
+                                .form-control
+                                    |Очная
+                                    input#rad44(type="radio", name="forma_poluch_obraz", value="Очная", required)
+                                    label(for="rad44")
+                                    br
+                                    |Заочная 
+                                    input#rad45(type="radio", name="forma_poluch_obraz", value="Заочная", required)
+                                    label(for="rad45")
+                                    br
+                            .form-group
+                                label Специальности
+                                table
+                                    tr
+                                        td Приоритет
+                                        td Специальность
+                                        td
+                                    tr.trmy
+                                        td.tdnum 1
+                                        td
+                                            input(type="text", name="specialnost_1", list="Specialnost", required).form-control.input-my
+                                            datalist(id="Specialnost")
+                                                each val in spec
+                                                    option=val.name
+                                    tr.trmy#disabletr
+                                        td.tdnum 2
+                                        td
+                                            input(type="text", name="specialnost_2", list="Specialnost", required, disabled).form-control.input-my
+                                    tr.trmy#disabletr
+                                        td.tdnum 3
+                                        td
+                                            input(type="text", name="specialnost_3", list="Specialnost", required, disabled).form-control.input-my
+                                    tr
+                                        td
+                                        td.tdbut
+                                            .add-my#visible(onclick="add()") +
+                                            .add-zat#invisible +
+                                            .del-my#invisible(onclick="del()") -
+                                            .del-zat#visible -
+                                .form-text.text-muted Дважды нажмите на поле, и появится список с вариантами.
+                            .form-group
+                                label № личного дела
+                                input(type="text", name="nomer_lichnoe_delo", readonly, value=id+"/18", required).form-control 
+                            .form-group
+                                label № экз.листа
+                                input(type="text", name="nomer_ekz_lista", value=id+"/18-_", required).form-control
+                            .form-group
+                                label Основа обучения
+                                .form-control
+                                    |бюджет 
+                                    input#rad46(type="radio", name="osnova_obych", value="бюджет", required)
+                                    label(for="rad46")
+                                    br
+                                    |комерция 
+                                    input#rad47(type="radio", name="osnova_obych", value="комерция", required)
+                                    label(for="rad47")
+                                    br
+                            .form-group
+                                label Нуждаемость в общежитии
+                                .form-control
+                                    |Да 
+                                    input#rad48(type="radio", name="obshaga", value="Да", required)
+                                    label(for="rad48")
+                                    br
+                                    |Нет
+                                    input#rad49(type="radio", name="obshaga", value="Нет", required)
+                                    label(for="rad49")
+                                    br
+                            .form-group
+                                label Пол
+                                .form-control
+                                    |М 
+                                    input#rad50(type="radio", name="sex", value="М", required)
+                                    label(for="rad50")
+                                    br
+                                    |Ж 
+                                    input#rad51(type="radio", name="sex", value="Ж", required)
+                                    label(for="rad51")
+                                    br
+                            .form-group
+                                label Дата рождения
+                                input(type="date", name="birthday", pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}", required).form-control
+                            .form-group
+                                label Гражданство
+                                .form-control
+                                    |РФ 
+                                    input#rad52(type="radio", name="grazhdanstvo", value="РФ", required)
+                                    label(for="rad52")
+                                    br
+                                    |ИГ 
+                                    input#rad53(type="radio", name="grazhdanstvo", value="ИГ", required)
+                                    label(for="rad53")
+                                    br
+                            .form-group
+                                label Адрес местожительства (прописка)
+                                input(type="text", name="addres_mesto_zitelstva", required).form-control
+                            .form-group
+                                label Область
+                                input(type="text", name="oblast", list="OblastList", required).form-control
+                                datalist(id="OblastList")
+                                    each item in oblasti
+                                        option=item.name
+                        .form-group.form-group-of-groups
+                            .form-group
+                                label Паспортные данные (серия, номер, кем и когда выдан)
+                                input(type="text", name="passport", required).form-control
+                            .form-group
+                                label Телефон
+                                input(type="text", name="tel", required).form-control
+                            .form-group
+                                label Социальные категории (сирота, опекаемый, инвалид, ОВЗ)
+                                .form-control
+                                    |ничего 
+                                    input#rad54(type="radio", name="soc_category", value="ничего", required)
+                                    label(for="rad54")
+                                    br
+                                    |сирота 
+                                    input#rad55(type="radio", name="soc_category", value="сирота", required)
+                                    label(for="rad55")
+                                    br
+                                    |опекаемый 
+                                    input#rad56(type="radio", name="soc_category", value="опекаемый", required)
+                                    label(for="rad56")
+                                    br
+                                    |инвалид 
+                                    input#rad57(type="radio", name="soc_category", value="инвалид", required)
+                                    label(for="rad57")
+                                    br
+                                    |ОВЗ 
+                                    input#rad58(type="radio", name="soc_category", value="ОВЗ", required)
+                                    label(for="rad58")
+                                    br
+                            .form-group
+                                label СПО впервые / не впервые
+                                .form-control
+                                    |впервые 
+                                    input#rad59(type="radio", name="SPO_vpervie_nevpervie", value="впервые", required)
+                                    label(for="rad59")
+                                    br
+                                    |не впервые 
+                                    input#rad60(type="radio", name="SPO_vpervie_nevpervie", value="не впервые", required)
+                                    label(for="rad60")
+                                    br
+                            .form-group
+                                label Уровень образования
+                                .form-control
+                                    |9 класс 
+                                    input#rad61(type="radio", name="lvl_obraz", value="9", required)
+                                    label(for="rad61")
+                                    br
+                                    |11 класс 
+                                    input#rad62(type="radio", name="lvl_obraz", value="11", required)
+                                    label(for="rad62")
+                                    br
+                            .form-group
+                                label Год окончания учеб. завед.
+                                input(type="date", name="god_okonchania", required).form-control
+                            .form-group
+                                label Особые успехи в учении
+                                input(type="text", name="osobie_yspexi_v_echebe", required).form-control
+                            .form-group
+                                label Оригинал документа об образовании
+                                .form-control
+                                    |Да 
+                                    input#rad63(type="radio", name="orig_doc_obraz", value="Да", required)
+                                    label(for="rad63")
+                                    br
+                                    |Нет 
+                                    input#rad64(type="radio", name="orig_doc_obraz", value="Нет", required)
+                                    label(for="rad64")
+                                    br
+                        .form-group.form-group-of-groups
+                            .form-group
+                                label Вступительное испытание (балл) (1)
+                                input(type="text", name="vstup_ispitanie_1", required).form-control
+                            
+                            .form-group
+                                label Средний балл документа об образовании (2)
+
+                                .calc-container
+                                    .buts-container
+                                        .write-but-my#calcActive(onclick="calcSwap(0)") Написать
+                                        .calc-but-my(onclick="calcSwap(1)") Вычислить
+                                        .ass-but-my(onclick="calcSwap(2)") Посчитать
+                                        .calc-control.calc-md#soladsnake
+                                            .calc-plus(onclick="calcInpCreate()") +
+                                            .calc-minus(onclick="calcInpDestroy()") -
+                                        .calc-control.calc-md#soladsnake
+                                            .calc-done(onclick="calcStart()") Посчитать
+                                        p.calc-detail.calc-md#soladsnake Средний балл:
+                                            input.inp-result(type="text", name="avg_ball_obrazovanie_2", disabled, readonly, value="###")
+                                        p.calc-result.calc-md#soladsnake Введено оценок: ###
+
+                                        .calc-control
+                                            .assholecalc-done.assholecalc-md#soladsnake(onclick="calcAssStart()") Посчитать
+                                        p.assholecalc-detail.assholecalc-md#soladsnake Средний балл:
+                                            input.assholeinp-result(type="text", name="avg_ball_obrazovanie_2", disabled, readonly, value="###")
+                                        
+                                    .inp-container
+                                        input.write-md(type="number", name="avg_ball_obrazovanie_2", required).inp-write
+
+                                        input.calc-md.inp-calc(type="number")#soladsnake
+                                        input.calc-md.inp-calc(type="number")#soladsnake
+                                        input.calc-md.inp-calc(type="number")#soladsnake
+                                        input.calc-md.inp-calc(type="number")#soladsnake
+
+                                        ul.assholecalc-md#soladsnake
+                                            li Колво двоек 
+                                                br
+                                                input.inp-ass(type="number")
+                                            li Колво троек
+                                                br
+                                                input.inp-ass(type="number")
+                                            li Колво четвёрок
+                                                br
+                                                input.inp-ass(type="number")
+                                            li Колво пятёрок
+                                                br
+                                                input.inp-ass(type="number")
+
+
+                            .form-group
+                                label Решение приемной комиссии
+                                input(type="text", name="reshenie_komissi", required).form-control
+                            .form-group
+                                label № и дата приказа о зачислении
+                                input(type="text", name="nomer_i_data_prikaza_o_zachislenie", required).form-control
+            .card-footer
+                if opt == "add"
+                    button(type="submit").btn.btn-primary.submit-my
+                        |Добавить
+                    button(type="reset").btn.btn-warning.clear-my
+                        |Очистить поля
+                else if opt == "redact"
+                    button(type="submit").btn.btn-primary.submit-my
+                        |Обновить
+                    a(href="/applicants/"+applicant.id+"/destroy")
+                        button(type="button").btn.btn-danger.clear-my
+                            |Удалить
+                    a(href="/")
+                        button(type="button").btn.btn-warning.clear-my
+                            |Вернуться назад
