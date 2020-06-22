@@ -2,7 +2,7 @@ import { utils, writeFile } from "xlsx";
 import { join } from "path";
 import Applicant from "../database/entity/Applicant";
 
-export async function parse_excel(fileName: string, data: Applicant[] | undefined): Promise<boolean> {
+export async function parse_excel(fileName: string, data: Applicant[] | undefined, path?: string): Promise<boolean> {
 	if (!data) return false;
 	let wb = utils.book_new();
 	wb.SheetNames = ["Лист1"];
@@ -10,6 +10,8 @@ export async function parse_excel(fileName: string, data: Applicant[] | undefine
 		Лист1: {},
 	};
 	wb.Sheets["Лист1"] = utils.json_to_sheet(data);
-	writeFile(wb, join(__dirname, "..", "database", "excel", fileName + ".xlsx"));
+	if (path)
+		writeFile(wb, join(__dirname, "..", "database", "excel", path, fileName + ".xlsx"));
+	else writeFile(wb, join(__dirname, "..", "database", "excel", fileName + ".xlsx"));
 	return true;
 }
