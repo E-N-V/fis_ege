@@ -38,7 +38,7 @@ export default class app {
 	private async db_connect() {
 		await createConnection()
 			.then(() => {
-				console.log("Database connected.");
+				console.log("Database connected!");
 				new Seeder();
 			})
 			.catch((err) => {
@@ -49,7 +49,7 @@ export default class app {
 
 	public listen() {
 		this.app.listen(this.port, async () => {
-			console.log(`App listening on the port -> ${this.port} go it now`);
+			console.log(`App start now!`);
 		});
 	}
 }

@@ -1,9 +1,9 @@
 /**
  * Import Seeder's
  */
-import SeedSpeciality from "./seeder's/Speciallitys";
-import SeedUser from "./seeder's/Users";
-import SeedRegion from "./seeder's/Regions";
+import SeedSpeciality from "./seeds/Speciallitys";
+import SeedUser from "./seeds/Users";
+import SeedRegion from "./seeds/Regions";
 
 /**
  * Init Seeder
