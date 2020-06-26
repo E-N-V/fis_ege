@@ -2,7 +2,7 @@ import express, { Application } from "express";
 import { join } from "path";
 import Seeder from "./database/seed/Seeder";
 import { createConnection } from "typeorm";
-import { PROD } from "./config";
+import { SEED } from "./config";
 
 export default class app {
 	public app: Application;
@@ -40,7 +40,7 @@ export default class app {
 		await createConnection()
 			.then(() => {
 				console.log("Database connected!");
-				if (PROD) new Seeder();
+				if (SEED) new Seeder();
 			})
 			.catch((err) => {
 				console.error(err);
