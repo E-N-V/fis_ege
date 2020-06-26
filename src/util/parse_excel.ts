@@ -10,8 +10,7 @@ export async function parse_excel(fileName: string, data: Applicant[] | undefine
 		Лист1: {},
 	};
 	wb.Sheets["Лист1"] = utils.json_to_sheet(data);
-	if (path)
-		writeFile(wb, join(__dirname, "..", "database", "excel", path, fileName + ".xlsx"));
+	if (path) writeFile(wb, join(__dirname, "..", "..", "DB", path, fileName + ".xlsx"));
 	else writeFile(wb, join(__dirname, "..", "database", "excel", fileName + ".xlsx"));
 	return true;
 }

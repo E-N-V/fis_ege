@@ -91,6 +91,8 @@ export const create = async (req: Request, res: Response) => {
  * @param res
  */
 export const store = async (req: Request, res: Response) => {
+	let try_ = !!(await Applicant.findOne({ where: { fio: req.body.fio } }));
+	if (try_) return res.status(200).redirect("/");
 	let data = new Applicant();
 	data.date_zayv = req.body.date_zayv;
 	data.fio = req.body.fio;
@@ -212,8 +214,8 @@ export const destroy = async (req: Request, res: Response) => {
 			id_aplicant: applicant,
 		},
 	});
-	await requestApplicant?.remove()
-	await admission?.remove()
+	await requestApplicant?.remove();
+	await admission?.remove();
 	let result = await applicant.remove();
 
 	if (result) {
