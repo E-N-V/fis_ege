@@ -112,3 +112,4 @@ yarn.lock
 
 # DB config
 ormconfig.json
+DB
