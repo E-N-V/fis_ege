@@ -1,4 +1,5 @@
 import App from "../app";
+import { PORT } from "../config";
 
 /**
  * Import middleware
@@ -23,7 +24,6 @@ import HomeRouter from "../routes/home.route";
 import AuthRouter from "../routes/auth.route";
 import ApplicantRouter from "../routes/applicant.route";
 import SearchRouter from "../routes/search.route";
-import { join } from "path";
 import { parse_excel } from "../util/parse_excel";
 import Applicant from "../database/entity/Applicant";
 
@@ -33,7 +33,7 @@ const arrRoutes: any = [HomeRouter, AuthRouter, ApplicantRouter, SearchRouter];
  * Init Web-site
  */
 const app = new App({
-	port: Number(process.env.PORT) || 3000,
+	port: Number(PORT) || 3000,
 	routes: arrRoutes,
 	middleWares: arrMiddlewares,
 });
@@ -46,8 +46,8 @@ app.listen();
 /**
  * Script backup db
  */
-setInterval(async ()=>{
-	let applicant = await Applicant.find({relations: ["admission", "request"]})
+setInterval(async () => {
+	let applicant = await Applicant.find({ relations: ["admission", "request"] });
 	let nameFile = `Приемная коммисия ${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`;
 	await parse_excel(nameFile, applicant, "backup");
-}, 3600000)
+}, 3600000);
