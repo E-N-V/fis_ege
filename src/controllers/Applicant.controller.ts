@@ -151,6 +151,9 @@ export const store = async (req: Request, res: Response) => {
 export const update = async (req: Request, res: Response) => {
 	let data = await Applicant.findOne(Number(req.params["applicantId"]));
 	if (!data) return res.status(505).redirect("/");
+	let data_admission = await Admission.findOne(Number(req.params["applicantId"]));
+	let data_request = await RequestApplicant.findOne(Number(req.params["applicantId"]));
+	if (!data_admission || !data_request) return res.status(505).redirect("/");
 	data.date_zayv = req.body.date_zayv;
 	data.fio = req.body.fio;
 	data.forma_poluch_obraz = req.body.forma_poluch_obraz;
@@ -174,18 +177,16 @@ export const update = async (req: Request, res: Response) => {
 	data.vstup_ispitanie_1 = req.body.vstup_ispitanie_1;
 	data.avg_ball_obrazovanie_2 = req.body.avg_ball_obrazovanie_2;
 	data.reshenie_komissi = req.body.reshenie_komissi;
-	let request_Applicant = new RequestApplicant();
-	request_Applicant.id_aplicant = data;
-	request_Applicant.name_spec_1 = req.body.specialnost_1;
-	request_Applicant.name_spec_2 = req.body.specialnost_2 ? req.body.specialnost_2 : "не выбрано";
-	request_Applicant.name_spec_3 = req.body.specialnost_3 ? req.body.specialnost_3 : "не выбрано";
-	let admission = new Admission();
-	admission.id_applicant = data;
-	admission.date = new Date(Date.now());
-	admission.number = req.body.nomer_i_data_prikaza_o_zachislenie;
+	data_request.id_aplicant = data;
+	data_request.name_spec_1 = req.body.specialnost_1;
+	data_request.name_spec_2 = req.body.specialnost_2 ? req.body.specialnost_2 : "не выбрано";
+	data_request.name_spec_3 = req.body.specialnost_3 ? req.body.specialnost_3 : "не выбрано";
+	data_admission.id_applicant = data;
+	data_admission.date = new Date(Date.now());
+	data_admission.number = req.body.nomer_i_data_prikaza_o_zachislenie;
 	let result = await data.save();
-	Admission.save(admission);
-	RequestApplicant.save(request_Applicant);
+	Admission.save(data_admission);
+	RequestApplicant.save(data_request);
 
 	if (result) {
 		return res.status(200).redirect("/");
