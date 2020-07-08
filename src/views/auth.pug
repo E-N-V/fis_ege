@@ -5,6 +5,11 @@ block head_
     link(rel="stylesheet", href="stylesheet/auth.css")
 
 block body_
+    if err
+        card
+            card.header
+                | Ошибка
+            card.body=err
     h2 Авторизация
     form(action="/auth", method="post")
         input(type="hidden", name="token", value=value)

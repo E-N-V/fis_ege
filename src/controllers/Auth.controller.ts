@@ -8,26 +8,29 @@ export const AuthGET = async (req: Request, res: Response): Promise<void> => {
 };
 
 export const AuthPOST = async (req: Request, res: Response): Promise<void> => {
-	let usr = new User();
-	usr.login = req.body.username;
-	usr.password = req.body.password;
-	let userName = await User.findOne(usr);
-	if (!userName) return res.redirect("/auth");
-	userName.token = req.body.token;
-	userName.save();
-	return res
-		.cookie("token", req.body.token, { path: "/", httpOnly: true, secure: false })
-		.cookie("usr", `${userName.s_name} ${userName.f_name} ${userName.t_name}`, {
-			path: "/",
-			httpOnly: true,
-			expires: new Date(
-				new Date().getFullYear(),
-				new Date().getMonth(),
-				new Date().getDate(),
-				new Date().getHours() + 1,
-				new Date().getMinutes(),
-				new Date().getSeconds()
-			),
-		})
-		.redirect("/");
+	let usr = await User.findOne({
+		where: { login: req.body.username, password: req.body.password },
+	});
+	if (!usr) return res.redirect("/auth");
+	if (/(test_token|root)/im.test(usr.token)) {
+		usr.token = req.body.token;
+		usr.save();
+		return res
+			.cookie("token", req.body.token, { path: "/", httpOnly: true, secure: false })
+			.cookie("usr", `${usr.s_name} ${usr.f_name} ${usr.t_name}`, {
+				path: "/",
+				httpOnly: true,
+				expires: new Date(
+					new Date().getFullYear(),
+					new Date().getMonth(),
+					new Date().getDate(),
+					new Date().getHours() + 1,
+					new Date().getMinutes(),
+					new Date().getSeconds()
+				),
+			})
+			.redirect("/");
+	} else {
+		return res.render("auth", {err: "Пользователь уже авторизирован."});
+	}
 };

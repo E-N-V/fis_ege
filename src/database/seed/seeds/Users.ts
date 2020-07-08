@@ -38,6 +38,6 @@ export default async function SeedUsers() {
 	data.f_name = "Багия";
 	data.s_name = "Урманова";
 	data.t_name = "Фанавиевна";
-	data.token = "test_token";
+	data.token = "root";
 	await User.save(data);
 }

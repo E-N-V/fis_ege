@@ -151,9 +151,10 @@ export const store = async (req: Request, res: Response) => {
 export const update = async (req: Request, res: Response) => {
 	let data = await Applicant.findOne(Number(req.params["applicantId"]));
 	if (!data) return res.status(505).redirect("/");
-	let data_admission = await Admission.findOne(Number(req.params["applicantId"]));
-	let data_request = await RequestApplicant.findOne(Number(req.params["applicantId"]));
-	if (!data_admission || !data_request) return res.status(505).redirect("/");
+	let data_admission = await Admission.findOne({ where: { id_applicant: Number(req.params["applicantId"]) } });
+	let data_request = await RequestApplicant.findOne({ where: { id_applicant: Number(req.params["applicantId"]) } });
+	if (!data_request) data_request = new RequestApplicant();
+	if (!data_admission) data_admission = new Admission();
 	data.date_zayv = req.body.date_zayv;
 	data.fio = req.body.fio;
 	data.forma_poluch_obraz = req.body.forma_poluch_obraz;
