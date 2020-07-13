@@ -149,10 +149,16 @@ export const store = async (req: Request, res: Response) => {
  * @param res
  */
 export const update = async (req: Request, res: Response) => {
-	let data = await Applicant.findOne(Number(req.params["applicantId"]));
+	let data: Applicant | undefined = new Applicant();
+	data.id = Number(req.params["applicantId"]);
+	data = await Applicant.findOne(data);
 	if (!data) return res.status(505).redirect("/");
-	let data_admission = await Admission.findOne({ where: { id_applicant: Number(req.params["applicantId"]) } });
-	let data_request = await RequestApplicant.findOne({ where: { id_applicant: Number(req.params["applicantId"]) } });
+	let data_admission: Admission | undefined = new Admission();
+	data_admission.id_applicant = data;
+	data_admission = await Admission.findOne(data_admission);
+	let data_request: RequestApplicant | undefined = new RequestApplicant();
+	data_request.id_aplicant = data;
+	data_request = await RequestApplicant.findOne(data_request);
 	if (!data_request) data_request = new RequestApplicant();
 	if (!data_admission) data_admission = new Admission();
 	data.date_zayv = req.body.date_zayv;

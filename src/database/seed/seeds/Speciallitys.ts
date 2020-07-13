@@ -27,7 +27,7 @@ export default async function SeedSpecialitys() {
 	data.name = "СТРОИТЕЛЬСТВО И ЭКСПЛУАТАЦИЯ ЗДАНИЙ И СООРУЖЕНИЙ";
 	data.cvalificacia = "ТЕХНИК";
 	data.forma_obychenia = "заочная";
-	data.base_9 = "";
+	data.base_9 = "3 года 10 месяцев";
 	data.base_11 = "2 года 10 месяцев";
 	await Specialty.save(data);
 
@@ -106,6 +106,66 @@ export default async function SeedSpecialitys() {
 	data.code = "08.02.03";
 	data.name = "ПРОИЗВОДСТВО НЕМЕТАЛЛИЧЕСКИХ СТРОИТЕЛЬНЫХ ИЗДЕЛИЙ И КОНСТРУКЦИЙ";
 	data.cvalificacia = "ТЕХНИК ";
+	data.forma_obychenia = "очная";
+	data.base_9 = "3 года 10 месяцев";
+	data.base_11 = "2 года 10 месяцев";
+	await Specialty.save(data);
+
+	var data = new Specialty();
+	data.id = 12;
+	data.code = "08.01.06";
+	data.name = "МАСТЕР СУХОГО СТРОИТЕЛЬСТВА";
+	data.cvalificacia = "ТЕХНИК";
+	data.forma_obychenia = "очная";
+	data.base_9 = "3 года 10 месяцев";
+	data.base_11 = "2 года 10 месяцев";
+	await Specialty.save(data);
+
+	var data = new Specialty();
+	data.id = 13;
+	data.code = "08.01.07";
+	data.name = "МАСТЕР ОБЩЕСТРОИТЕЛЬНЫХ РАБОТ";
+	data.cvalificacia = "ТЕХНИК";
+	data.forma_obychenia = "очная";
+	data.base_9 = "3 года 10 месяцев";
+	data.base_11 = "2 года 10 месяцев";
+	await Specialty.save(data);
+
+	var data = new Specialty();
+	data.id = 14;
+	data.code = "08.01.14";
+	data.name = "МОНТАЖНИК САНИТАРНО – ТЕХНИЧЕСКИХ, ВЕНТИЛЯЦИОННЫХ СИСТЕМ И ОБОРУДОВАНИЯ";
+	data.cvalificacia = "ТЕХНИК";
+	data.forma_obychenia = "очная";
+	data.base_9 = "3 года 10 месяцев";
+	data.base_11 = "2 года 10 месяцев";
+	await Specialty.save(data);
+
+	var data = new Specialty();
+	data.id = 15;
+	data.code = "15.01.05";
+	data.name = "СВАРЩИК(электросварочные и газосварочные работы)";
+	data.cvalificacia = "ТЕХНИК";
+	data.forma_obychenia = "очная";
+	data.base_9 = "3 года 10 месяцев";
+	data.base_11 = "2 года 10 месяцев";
+	await Specialty.save(data);
+
+	var data = new Specialty();
+	data.id = 16;
+	data.code = "23.01.03";
+	data.name = "АВТОМЕХАНИК";
+	data.cvalificacia = "ТЕХНИК";
+	data.forma_obychenia = "очная";
+	data.base_9 = "3 года 10 месяцев";
+	data.base_11 = "2 года 10 месяцев";
+	await Specialty.save(data);
+
+	var data = new Specialty();
+	data.id = 17;
+	data.code = "54.01.20";
+	data.name = "ГРАФИЧЕСКИЙ ДИЗАЙНЕР";
+	data.cvalificacia = "ТЕХНИК";
 	data.forma_obychenia = "очная";
 	data.base_9 = "3 года 10 месяцев";
 	data.base_11 = "2 года 10 месяцев";

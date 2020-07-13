@@ -52,14 +52,6 @@ export const SearchPOST = async (req: Request, res: Response): Promise<any> => {
 					: req.body.grazhdanstvo
 				: In(["РФ", "ИГ"]),
 			oblast: req.body.oblast ? req.body.oblast : Not(""),
-			/* request: {
-				name_spec_1: req.body.spec
-				? isArray(req.body.spec)
-					?
-						In(req.body.spec)
-					: req.body.spec
-				: In(spec_arr)
-			} */
 			/**
 			 * Категория Контактов
 			 */
@@ -104,7 +96,25 @@ export const SearchPOST = async (req: Request, res: Response): Promise<any> => {
 		},
 		relations: ["admission", "request"],
 	});
-	//return res.json(applicants)
+	
+	if (req.body.spec)
+		applicants = applicants.filter((fn) => {
+			if (typeof req.body.spec == "object") {
+				for (const item of req.body.spec)
+					if (
+						fn.request.name_spec_1 == item ||
+						fn.request.name_spec_2 == item ||
+						fn.request.name_spec_3 == item
+					)
+						return fn;
+			} else if (typeof req.body.spec == "string")
+				if (
+					fn.request.name_spec_1 == req.body.spec ||
+					fn.request.name_spec_2 == req.body.spec ||
+					fn.request.name_spec_3 == req.body.spec
+				)
+					return fn;
+		});
 	MemorySearch.set(req.cookies.usr, applicants);
 	return res.status(200).render("home", { applicants, export_: true });
 };
